@@ -1,0 +1,30 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "Messenger project by Yandex Praktikum",
+  "scripts": {
+    "start": "parcel src/index.html --no-source-maps",
+    "build": "parcel build src/index.html --no-source-maps --dist-dir ./dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "Grigory Poleshchuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
+    "@parcel/transformer-sass": "2.7.0",
+    "parcel": "2.7.0",
+    "parcel-reporter-static-files-copy": "1.4.0"
+  },
+  "dependencies": {
+    "handlebars": "4.7.7"
+  }
+}
