@@ -1,0 +1,23 @@
+<section class="error-layout">
+  <div class="error-layout__container">
+    <div class="error-layout__picture-wrapper">
+      <img class='error-layout__picture' src="icons/bot.svg" width="80" height="80" alt="Робот">
+    </div>
+    <div class="error-layout__message">
+      <h2 class="error-layout__title">
+        {{ title }}
+      </h2>
+      <p class="error-layout__text">
+        {{ text }}
+      </p>
+      <time
+        class="error-layout__time"
+        date-time="{{date}}">
+          {{ dateString }}
+        </time>
+    </div>
+  </div>
+  <div class="error-layout__link-container">
+    {{>iconLink linkHref="/" linkText="Назад к чатам" icon=icon }}
+  </div>
+</section>

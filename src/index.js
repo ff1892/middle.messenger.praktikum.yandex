@@ -1,15 +1,27 @@
 import './components';
-import tpl from './modules/card/card.hbs';
+import './modules';
+import mainPage from './pages/main';
+import loginPage from './pages/login';
+import signupPage from './pages/signup';
+import notFoundPage from './pages/not-found';
+import errorPage from './pages/error';
 
-const card = tpl({
-  fname: 'students',
-});
+
+const pagesWithRoutes = {
+  ['']: mainPage,
+  login: loginPage,
+  signup: signupPage,
+  notfound: notFoundPage,
+  error: errorPage,
+};
+
+const currentLocation = window.location.pathname.slice(1);
+
+const currentPage = pagesWithRoutes[currentLocation];
 
 const onDomLoaded = () => {
   const root = document.querySelector('#root');
-  root.innerHTML = card;
-  const resButton = button('resButton', 'Button');
-  root.insertAdjacentHTML('beforeend', resButton);
+  root.innerHTML = currentPage;
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);

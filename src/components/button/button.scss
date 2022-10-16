@@ -1,0 +1,16 @@
+.button {
+  display: block;
+  background-color: $color-blue;
+  color: $color-white;
+  border: none;
+  padding: 15px 40px;
+  cursor: pointer;
+  border-radius: 50px;
+  font-size: inherit;
+
+  &:hover {
+    background-color: $color-blue-dark;
+  }
+}
+
+
