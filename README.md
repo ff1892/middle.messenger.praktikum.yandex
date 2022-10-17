@@ -1,6 +1,6 @@
-## Деплой
+## Пулл реквест
 
-[Netlify](https://heroic-mochi-16fa3a.netlify.app/)
+[Ссылка](https://github.com/ff1892/middle.messenger.praktikum.yandex/pull/1)
 
 
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
