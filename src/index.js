@@ -28,6 +28,16 @@ const currentPage = pagesWithRoutes[currentLocation];
 const onDomLoaded = () => {
   const root = document.querySelector('#root');
   root.innerHTML = currentPage;
+
+  // const mainLink = document.querySelectorAll('.main-link');
+
+  // mainLink.forEach((link) => {
+  //   link.addEventListener('click', (e) => {
+  //     e.preventDefault();
+  //     history.pushState(link.textContent, 'Page', link.href);
+  //     location.reload();
+  //   })
+  // })
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
