@@ -15,25 +15,25 @@ const formData = {
     },
     {
       label: 'Имя',
-      name: 'password',
-      type: 'password',
+      name: 'first_name',
+      type: 'text',
       placeholder: 'Александр'
     },
     {
       label: 'Фамилия',
-      name: 'login',
+      name: 'second_name',
       type: 'text',
       placeholder: 'Александров',
     },
     {
       label: 'Почта',
-      name: 'password',
-      type: 'password',
+      name: 'email',
+      type: 'text',
       placeholder: 'messengerceo@yandex.ru'
     },
     {
       label: 'Телефон',
-      name: 'login',
+      name: 'phone',
       type: 'text',
       placeholder: '+7 (555) 555 55 55',
     },
@@ -46,7 +46,7 @@ const formData = {
     {
       label: 'Повторите пароль',
       name: 'password',
-      type: 'password',
+      type: 'password_repeat',
       placeholder: '●●●●●'
     }
   ],

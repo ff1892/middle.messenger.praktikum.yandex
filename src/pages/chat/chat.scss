@@ -1,0 +1,17 @@
+.chat {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__title {
+    color: $color-blue;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+  }
+}
