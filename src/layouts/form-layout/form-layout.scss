@@ -1,0 +1,10 @@
+.form-layout {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    padding-top: 100px;
+    min-width: 400px;
+  }
+}

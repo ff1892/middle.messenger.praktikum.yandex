@@ -1,0 +1,43 @@
+.user-field {
+
+  &__label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-grey-dark;
+    // padding-bottom: 5px;
+  }
+
+  &__capture {
+    font-size: 20px;
+    flex-basis: 300px;
+  }
+
+  &__input {
+    color: $color-grey-dark-2;
+    margin-left: 20px;
+    width: 100%;
+    border-radius: 20px;
+    font-size: 15px;
+    margin-top: 8px;
+    display: block;
+    border: none;
+    padding: 10px 20px;
+    outline: none;
+
+    &:hover {
+      background-color: $color-grey-light;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px $color-blue;
+    }
+
+    &:disabled {
+      box-shadow: none;
+      background-color: transparent;
+    }
+  }
+}
+
+

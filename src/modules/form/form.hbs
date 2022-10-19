@@ -1,0 +1,16 @@
+<form class="form">
+  <h2 class="form__title">{{title}}</h2>
+  <fieldset class="form__fieldset">
+    {{#each inputs}}
+      <div class="form__field">
+        {{>field this}}
+      </div>
+    {{/each}}
+  </fieldset>
+    <div class="form__submit">
+      {{>button submit}}
+    </div>
+    {{#if link}}
+      <a class="form__link" href="{{link.href}}">{{link.text}}</a>
+    {{/if}}
+</form>
