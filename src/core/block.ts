@@ -18,7 +18,7 @@ class Block<TProps extends {}> {
   eventBus: () => EventBus;
 
   private _id: TNullable<string> = null;
-  private _element: TNullable<HTMLElement> = null;
+  protected _element: TNullable<HTMLElement> = null;
   private _meta: TNullable<{ tagName: string, props: Record<string, any>}> = null;
 
   constructor(tagName: string = 'div', propsAndChildren: TProps) {
@@ -47,11 +47,13 @@ class Block<TProps extends {}> {
     const children: Record<string, Block<TProps>> = {};
     const props: Record<string, any> = {};
 
+
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       value instanceof Block ?
         children[key] = value
         : props[key] = value;
-    });
+      }
+    );
 
     return { children, props };
   }

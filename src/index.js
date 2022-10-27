@@ -1,12 +1,16 @@
 import MainPage from './pages/main/main';
+import LoginPage from './pages/login/login';
+import SignupPage from './pages/signup/signup';
 import render from './utils/render';
 
-const mainPage = new MainPage();
+const mainPage = new MainPage({});
+const loginPage = new LoginPage({});
+const signupPage = new SignupPage({});
 
 const pagesWithRoutes = {
   ['']: mainPage,
-  login: mainPage,
-  // signup: signupPage,
+  login: loginPage,
+  signup: signupPage,
   // notfound: notFoundPage,
   // error: errorPage,
   // userform: userProfilePage,

@@ -1,10 +1,10 @@
 import Block from '../../core/block';
-import MainLink from '../../components/main-link/main-link';
+import MainLink, { TMainLinkProps } from '../../components/main-link/main-link';
 import tpl from './main.hbs';
 import compileGroup from '../../utils/compile-group';
 import { routesWithLabel } from '../../constants';
 
-const mainLinkData = routesWithLabel.slice(1).map(({ route, label}) => {
+const mainLinkData: Array<TMainLinkProps> = routesWithLabel.slice(1).map(({ route, label}) => {
   return {
     attributes: {
       class: 'main-link',
@@ -15,10 +15,12 @@ const mainLinkData = routesWithLabel.slice(1).map(({ route, label}) => {
   };
 });
 
-class MainPage extends Block {
-  constructor(props) {
+type TMainPageProps = {};
+
+class MainPage extends Block<TMainPageProps> {
+  constructor(props: TMainPageProps) {
     super ('div', props);
-    this._element.classList.add('main-page');
+    this.element!.classList.add('main-page');
     this.props.mainLinks = compileGroup(MainLink, mainLinkData);
   }
 
