@@ -1,4 +1,14 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
+import Block from '../../core/block';
 import tpl from './button.hbs';
 
-Handlebars.registerPartial('button', tpl);
+class Button extends Block {
+  constructor(props) {
+    super('button', props);
+  }
+
+  render() {
+    return this.compile(tpl, this.props);
+  }
+}
+
+export default Button;

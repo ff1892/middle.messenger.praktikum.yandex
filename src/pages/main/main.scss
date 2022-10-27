@@ -17,5 +17,9 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     min-width: 50%;
+
+    & >*:last-child {
+      grid-column: 1/-1;
+    }
   }
 }

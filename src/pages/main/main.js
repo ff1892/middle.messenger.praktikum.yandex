@@ -1,13 +1,30 @@
-import Handlebars from 'handlebars';
+import Block from '../../core/block';
+import MainLink from '../../components/main-link/main-link';
 import tpl from './main.hbs';
-import { Route, routeLabels } from '../../constants';
+import compileGroup from '../../utils/compile-group';
+import { routesWithLabel } from '../../constants';
 
-const links = Object.values(Route).map((href, index) => ({
-  href,
-  text: routeLabels[index],
-}));
+const mainLinkData = routesWithLabel.slice(1).map(({ route, label}) => {
+  return {
+    attributes: {
+      class: 'main-link',
+      href: route,
+    },
+    text: label,
+    withInternalId: true,
+  };
+});
 
-const mainPage = tpl({links});
+class MainPage extends Block {
+  constructor(props) {
+    super ('div', props);
+    this._element.classList.add('main-page');
+    this.props.mainLinks = compileGroup(MainLink, mainLinkData);
+  }
 
+  render() {
+    return this.compile(tpl, this.props);
+  }
+}
 
-export default mainPage;
+export default MainPage;

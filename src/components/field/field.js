@@ -1,4 +1,14 @@
-import Handlebars from 'handlebars/dist/handlebars.runtime';
+import Block from '../../core/block';
 import tpl from './field.hbs';
 
-Handlebars.registerPartial('field', tpl);
+class Field extends Block {
+  constructor(props) {
+    super ('div', props);
+  }
+
+  render() {
+    return tpl(this.props);
+  }
+}
+
+export default Field;
