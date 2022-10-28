@@ -6,7 +6,6 @@ type TFieldProps = {
   type: string,
   name: string,
   placeholder: string,
-  withInternalId?: boolean,
 }
 
 class Field extends Block<TFieldProps> {

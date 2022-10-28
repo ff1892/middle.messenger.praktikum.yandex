@@ -3,6 +3,8 @@ import LoginPage from './pages/login/login';
 import SignupPage from './pages/signup/signup';
 import ErrorPage from './pages/error/error';
 import NotFoundPage from './pages/not-found/not-found';
+import UserProfilePage from './pages/user-profile/user-profile';
+import PasswordProfilePage from './pages/password-profile/password-profile';
 import render from './utils/render';
 
 const mainPage = new MainPage();
@@ -10,6 +12,8 @@ const loginPage = new LoginPage();
 const signupPage = new SignupPage();
 const errorPage = new ErrorPage();
 const notFoundPage = new NotFoundPage();
+const userProfilePage = new UserProfilePage();
+const passwordProfilePage = new PasswordProfilePage();
 
 const pagesWithRoutes = {
   ['']: mainPage,
@@ -17,8 +21,8 @@ const pagesWithRoutes = {
   signup: signupPage,
   notfound: notFoundPage,
   error: errorPage,
-  // userform: userProfilePage,
-  // passwordform: passwordProfilePage,
+  userform: userProfilePage,
+  passwordform: passwordProfilePage,
   // chat: chatPage,
 };
 

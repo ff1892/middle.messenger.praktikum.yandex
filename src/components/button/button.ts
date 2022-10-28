@@ -7,7 +7,6 @@ type ButtonProps = {
     type: string,
   },
   value: string,
-  withInternalId?: boolean,
 }
 
 class Button extends Block<ButtonProps> {

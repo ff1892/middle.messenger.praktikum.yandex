@@ -18,7 +18,7 @@ class Block<P extends Record<string, any>> {
   protected childrenArr: Record<string, Block<P>[]>;
   eventBus: () => EventBus;
 
-  private _id: Nullable<string> = null;
+  private _id: string;
   protected _element: Nullable<HTMLElement> = null;
   private _meta: Nullable<{ tagName: string, props: Record<string, any>}> = null;
   private _setUpdate: boolean = false;
@@ -32,10 +32,7 @@ class Block<P extends Record<string, any>> {
     const eventBus = new EventBus();
 
     this._meta = { tagName, props };
-
-    if (props?.withInternalId) {
-      this._id = makeUUID();
-    }
+    this._id = makeUUID();
 
     this.props = this._makeProxyProps({...props, __id: this._id});
     this.children = this._makeProxyProps(children);
@@ -76,9 +73,7 @@ class Block<P extends Record<string, any>> {
   private _createDocumentElement(tagName: string) {
 
     const element = document.createElement(tagName);
-    if (this._id) {
-      element.setAttribute('data-id', this._id);
-    }
+    element.setAttribute('data-id', this._id);
     return element;
   }
 

@@ -6,7 +6,7 @@ type UserFieldType = {
   type: string,
   name: string,
   value: string,
-  placeholder: string,
+  placeholder?: string,
 };
 
 class UserField extends Block<UserFieldType> {

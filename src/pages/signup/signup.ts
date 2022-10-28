@@ -53,7 +53,7 @@ const signupInputsData = [
 ];
 
 const signupInputs = signupInputsData.map((inputData) => {
-  const inputProps = { ...inputData, withInternalId: true };
+  const inputProps = { ...inputData };
   return new Field(inputProps);
 })
 
@@ -63,7 +63,6 @@ const buttonProps = {
     type: 'submit',
   },
   value: 'Зарегистрироваться',
-  withInternalId: true,
 }
 
 const button = new Button(buttonProps);
@@ -77,14 +76,12 @@ const signupFormProps = {
     href: Route.LOGIN,
     text: 'Есть аккаунт?',
   },
-  withInternalId: true,
 }
 
 const signupForm = new Form(signupFormProps);
 
 const formLayout = new FormLayout({
   layoutElement: signupForm,
-  withInternalId: true,
 });
 
 type TSignupPageProps = {

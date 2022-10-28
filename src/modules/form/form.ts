@@ -2,9 +2,8 @@ import Block from '../../core/block';
 import tpl from './form.hbs';
 import Field from '../../components/field/field';
 
-type TFormProps = {
+type FormProps = {
   title: string,
-  withInternalId: boolean,
   link?: {
     href: string,
     text: string,
@@ -12,8 +11,8 @@ type TFormProps = {
   inputs: Field[],
 }
 
-class Form extends Block<TFormProps> {
-  constructor(props: TFormProps) {
+class Form extends Block<FormProps> {
+  constructor(props: FormProps) {
     super('form', props);
     this.element?.classList.add('form')
   }

@@ -5,7 +5,7 @@ import Block from '../../core/block';
 type IconLinkProps = {
   linkHref: string,
   icon: string,
-  linkText: string,
+  linkText: string
 }
 
 class IconLink extends Block<IconLinkProps> {

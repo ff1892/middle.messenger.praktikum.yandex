@@ -12,7 +12,6 @@ const loginField = new Field({
   name: 'login',
   type: 'text',
   placeholder: 'MessengerCeo',
-  withInternalId: true,
 });
 
 const passwordField = new Field({
@@ -20,7 +19,6 @@ const passwordField = new Field({
   name: 'password',
   type: 'password',
   placeholder: '●●●●●',
-  withInternalId: true,
 });
 
 const buttonProps = {
@@ -29,7 +27,6 @@ const buttonProps = {
     type: 'submit',
   },
   value: 'Войти',
-  withInternalId: true,
 }
 
 const button = new Button(buttonProps);
@@ -42,14 +39,12 @@ const loginFormProps = {
     href: Route.SIGNUP,
     text: 'Нет аккаунта?',
   },
-  withInternalId: true,
 }
 
 const loginForm = new Form(loginFormProps);
 
 const formLayout = new FormLayout({
   layoutElement: loginForm,
-  withInternalId: true,
 });
 
 type TLoginPageProps = {

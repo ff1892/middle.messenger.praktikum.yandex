@@ -1,13 +1,12 @@
 import Block from '../../core/block';
 import tpl from './form-layout.hbs';
 
-type TFormLayoutProps = {
+type FormLayoutProps = {
   layoutElement: Block<any>;
-  withInternalId: boolean;
 }
 
-class FormLayout extends Block<TFormLayoutProps> {
-  constructor(props: TFormLayoutProps) {
+class FormLayout extends Block<FormLayoutProps> {
+  constructor(props: FormLayoutProps) {
     super('div', props);
     this.element?.classList.add('form-layout');
   }

@@ -1,17 +1,16 @@
 import tpl from './main-link.hbs';
 import Block from '../../core/block';
 
-export type TMainLinkProps = {
+export type MainLinkProps = {
   attributes: {
     class: string,
     href: string,
   }
   text: string,
-  withInternalId?: boolean,
 }
 
-class MainLink extends Block<TMainLinkProps> {
-  constructor(props: TMainLinkProps) {
+class MainLink extends Block<MainLinkProps> {
+  constructor(props: MainLinkProps) {
     super ('a', props);
   }
 

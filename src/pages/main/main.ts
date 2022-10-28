@@ -1,16 +1,15 @@
 import Block from '../../core/block';
-import MainLink, { TMainLinkProps } from '../../components/main-link/main-link';
+import MainLink, { MainLinkProps } from '../../components/main-link/main-link';
 import tpl from './main.hbs';
 import { routesWithLabel } from '../../constants';
 
-const mainLinkData: Array<TMainLinkProps>
+const mainLinkData: Array<MainLinkProps>
   = routesWithLabel.map(({ route, label}) => ({
       attributes: {
         class: 'main-link',
         href: route,
       },
       text: label,
-      withInternalId: true,
   })
 );
 
