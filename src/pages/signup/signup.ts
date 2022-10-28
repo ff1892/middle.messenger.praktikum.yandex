@@ -53,8 +53,8 @@ const signupInputsData = [
 ];
 
 const signupInputs = signupInputsData.map((inputData) => {
-  const inputProps = { ...inputData, withIntenalId: true };
-  return new Field(inputProps).getContent()?.outerHTML;
+  const inputProps = { ...inputData, withInternalId: true };
+  return new Field(inputProps);
 })
 
 const buttonProps = {
@@ -70,7 +70,7 @@ const button = new Button(buttonProps);
 
 
 const signupFormProps = {
-  title: 'Вход',
+  title: 'Регистрация',
   inputs: signupInputs,
   button: button,
   link: {
@@ -80,10 +80,10 @@ const signupFormProps = {
   withInternalId: true,
 }
 
-const signipForm = new Form(signupFormProps);
+const signupForm = new Form(signupFormProps);
 
 const formLayout = new FormLayout({
-  layoutElement: signipForm,
+  layoutElement: signupForm,
   withInternalId: true,
 });
 

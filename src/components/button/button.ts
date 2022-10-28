@@ -1,7 +1,7 @@
 import Block from '../../core/block';
 import tpl from './button.hbs';
 
-type TButtonProps = {
+type ButtonProps = {
   attributes: {
     class: string,
     type: string,
@@ -10,8 +10,8 @@ type TButtonProps = {
   withInternalId?: boolean,
 }
 
-class Button extends Block<TButtonProps> {
-  constructor(props: TButtonProps) {
+class Button extends Block<ButtonProps> {
+  constructor(props: ButtonProps) {
     super('button', props);
   }
 

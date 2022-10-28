@@ -1,5 +1,6 @@
 import Block from '../../core/block';
 import tpl from './form.hbs';
+import Field from '../../components/field/field';
 
 type TFormProps = {
   title: string,
@@ -8,7 +9,7 @@ type TFormProps = {
     href: string,
     text: string,
   }
-  inputs: Array<string | undefined>;
+  inputs: Field[],
 }
 
 class Form extends Block<TFormProps> {

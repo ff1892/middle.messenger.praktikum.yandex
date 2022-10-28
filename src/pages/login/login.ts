@@ -12,14 +12,16 @@ const loginField = new Field({
   name: 'login',
   type: 'text',
   placeholder: 'MessengerCeo',
-}).getContent()?.outerHTML;
+  withInternalId: true,
+});
 
 const passwordField = new Field({
   label: 'Пароль',
   name: 'password',
   type: 'password',
   placeholder: '●●●●●',
-}).getContent()?.outerHTML;
+  withInternalId: true,
+});
 
 const buttonProps = {
   attributes: {
