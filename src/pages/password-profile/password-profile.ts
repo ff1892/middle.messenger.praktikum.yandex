@@ -1,9 +1,10 @@
 import tpl from './password-profile.hbs';
-import Block from '../../core/block';
+import Block from '../../services/block';
 import UserLayout from '../../layouts/user-layout/user-layout';
 import UserForm from '../../modules/user-form/user-form';
 import UserField from '../../components/user-field/user-field';
 import Button from '../../components/button/button';
+import getFormData from '../../utils/get-formdata';
 import { Route } from '../../constants';
 
 const formFieldsData = [
@@ -51,7 +52,10 @@ const passwordForm = new UserForm({
     text: 'Изменить данные профиля',
   },
   button,
-  inputs
+  inputs,
+  events: {
+    submit: getFormData,
+  }
 });
 
 type PasswordProfileType = Record<string, any>;

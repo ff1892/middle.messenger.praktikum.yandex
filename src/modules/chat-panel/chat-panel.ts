@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './chat-panel.hbs';
 import SearchInput from '../../components/search-input/search-input';
 import ButtonProfile from '../../components/button-profile/button-profile';

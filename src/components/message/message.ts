@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './message.hbs';
 
 type MessageProps = Record<string, any>;

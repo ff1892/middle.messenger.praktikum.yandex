@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './form.hbs';
 import Field from '../../components/field/field';
 
@@ -9,6 +9,9 @@ type FormProps = {
     text: string,
   }
   inputs: Field[],
+  events: {
+    submit: (evt: SubmitEvent) => void;
+  }
 }
 
 class Form extends Block<FormProps> {

@@ -1,19 +1,22 @@
-.search-input {
-  width: 100%;
-  height: 30px;
-  border: none;
-  padding-left: 30px;
-  padding-right: 10px;
-  background-color: $color-grey-light-2;
-  border-radius: 30px;
-  box-shadow: 0 0 0 1px $color-black-10;
-  outline: none;
+.search-form {
 
-  &::-webkit-search-cancel-button {
-    appearance: none;
-  }
+  &__input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    padding-left: 30px;
+    padding-right: 10px;
+    background-color: $color-grey-light-2;
+    border-radius: 30px;
+    box-shadow: 0 0 0 1px $color-black-10;
+    outline: none;
 
-  &:focus {
-    box-shadow: 0 0 0 1px $color-blue;
+    &::-webkit-search-cancel-button {
+      appearance: none;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 1px $color-blue;
+    }
   }
 }

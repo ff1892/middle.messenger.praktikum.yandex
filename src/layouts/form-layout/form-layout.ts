@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './form-layout.hbs';
 
 type FormLayoutProps = {

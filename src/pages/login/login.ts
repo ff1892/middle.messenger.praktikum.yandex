@@ -1,10 +1,11 @@
 import tpl from './login.hbs';
 import { Route } from '../../constants';
-import Block from '../../core/block';
+import Block from '../../services/block';
 import FormLayout from '../../layouts/form-layout/form-layout';
 import Button from '../../components/button/button';
 import Form from '../../modules/form/form';
 import Field from '../../components/field/field';
+import getFormData from '../../utils/get-formdata';
 
 
 const loginField = new Field({
@@ -39,6 +40,9 @@ const loginFormProps = {
     href: Route.SIGNUP,
     text: 'Нет аккаунта?',
   },
+  events: {
+    submit: getFormData,
+  }
 }
 
 const loginForm = new Form(loginFormProps);

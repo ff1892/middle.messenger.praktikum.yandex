@@ -1,20 +1,24 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
+import getFormData from '../../utils/get-formdata';
 import tpl from './search-input.hbs';
 
-type SearchInputProps = Record<string, any>;
+type SearchInputProps = {
+  events: {
+    submit: (evt: SubmitEvent) => void;
+  },
+};
+
+const searchInputProps = {
+  events: {
+    submit: getFormData,
+  }
+}
 
 class SearchInput extends Block<SearchInputProps> {
-  constructor(props: SearchInputProps = {}) {
-    props = {
-      attributes: {
-        class: 'search-input',
-        type: 'search',
-        name: 'search-chat',
-        placeholder: 'Поиск',
-        ['aria-label']: 'Поиск по чатам',
-      }
-    };
-    super('input', props);
+  constructor(props: SearchInputProps) {
+    props = searchInputProps;
+    super('form', props);
+    this.element?.classList.add('search-form');
   }
 
   render() {

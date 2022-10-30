@@ -1,5 +1,5 @@
 import tpl from './user-field.hbs';
-import Block from '../../core/block';
+import Block from '../../services/block';
 
 type UserFieldType = {
   label: string,

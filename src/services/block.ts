@@ -12,7 +12,6 @@ class Block<P extends Record<string, any>> {
     FLOW_RENDER: "flow:render"
   };
 
-
   protected props: Record<string, any>;
   protected children: Record<string, Block<P>>;
   protected childrenArr: Record<string, Block<P>[]>;

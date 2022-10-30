@@ -1,5 +1,5 @@
 import tpl from './user-layout.hbs';
-import Block from '../../core/block';
+import Block from '../../services/block';
 import IconLink from '../../components/icon-link/icon-link';
 import Button from '../../components/button/button';
 import { Route } from '../../constants';

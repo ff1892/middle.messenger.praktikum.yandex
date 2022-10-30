@@ -1,6 +1,6 @@
-import Block from '../core/block';
+import Block from '../services/block';
 
-const render = (query: string, block: Block<Record<string, any>>) => {
+const renderDOM = (query: string, block: Block<Record<string, any>>) => {
 
   const root = document.querySelector(query);
   root!.appendChild(block.getContent()!);
@@ -8,5 +8,5 @@ const render = (query: string, block: Block<Record<string, any>>) => {
   return root;
 }
 
-export default render;
+export default renderDOM;
 

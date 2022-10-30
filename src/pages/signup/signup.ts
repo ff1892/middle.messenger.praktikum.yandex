@@ -1,10 +1,11 @@
 import tpl from './signup.hbs';
 import { Route } from '../../constants';
-import Block from '../../core/block';
+import Block from '../../services/block';
 import FormLayout from '../../layouts/form-layout/form-layout';
 import Button from '../../components/button/button';
 import Form from '../../modules/form/form';
 import Field from '../../components/field/field';
+import getFormData from '../../utils/get-formdata';
 
 
 const signupInputsData = [
@@ -46,8 +47,8 @@ const signupInputsData = [
     },
     {
       label: 'Повторите пароль',
-      name: 'password',
-      type: 'password_repeat',
+      name: 'password_repeat',
+      type: 'password',
       placeholder: '●●●●●'
     }
 ];
@@ -76,6 +77,9 @@ const signupFormProps = {
     href: Route.LOGIN,
     text: 'Есть аккаунт?',
   },
+  events: {
+    submit: getFormData,
+  }
 }
 
 const signupForm = new Form(signupFormProps);

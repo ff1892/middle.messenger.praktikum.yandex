@@ -6,7 +6,7 @@ import NotFoundPage from './pages/not-found/not-found';
 import UserProfilePage from './pages/user-profile/user-profile';
 import PasswordProfilePage from './pages/password-profile/password-profile';
 import ChatPage from './pages/chat/chat';
-import render from './utils/render';
+import renderDOM from './utils/render-dom';
 
 const mainPage = new MainPage();
 const loginPage = new LoginPage();
@@ -33,7 +33,7 @@ const currentLocation = window.location.pathname.slice(1);
 const currentPage = pagesWithRoutes[currentLocation];
 
 const onDomLoaded = () => {
-  render('#root', currentPage);
+  renderDOM('#root', currentPage);
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);

@@ -1,5 +1,5 @@
 import tpl from './main-link.hbs';
-import Block from '../../core/block';
+import Block from '../../services/block';
 
 export type MainLinkProps = {
   attributes: {

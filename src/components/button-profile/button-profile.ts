@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './button-profile.hbs';
 
 type ButtonProfileProps = {

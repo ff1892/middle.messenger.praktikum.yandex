@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import MainLink, { MainLinkProps } from '../../components/main-link/main-link';
 import tpl from './main.hbs';
 import { routesWithLabel } from '../../constants';

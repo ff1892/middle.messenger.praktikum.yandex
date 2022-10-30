@@ -1,11 +1,12 @@
 import tpl from './user-profile.hbs';
-import Block from '../../core/block';
+import Block from '../../services/block';
 import UserLayout from '../../layouts/user-layout/user-layout';
 import UserForm from '../../modules/user-form/user-form';
 import UserField from '../../components/user-field/user-field';
 import { userData } from './user.data';
 import Button from '../../components/button/button';
 import { Route } from '../../constants';
+import getFormData from '../../utils/get-formdata';
 
 
 const inputs = userData.map((fieldData) => (
@@ -29,7 +30,10 @@ const userForm = new UserForm({
     text: 'Изменить пароль',
   },
   button,
-  inputs
+  inputs,
+  events: {
+    submit: getFormData,
+  }
 });
 
 type UserProfileType = Record<string, any>;

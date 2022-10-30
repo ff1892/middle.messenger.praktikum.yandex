@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './chat-preview.hbs';
 import Preview from '../../components/preview/preview';
 import Avatar from '../../components/avatar/avatar';

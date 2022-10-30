@@ -1,4 +1,4 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import IconLink from '../../components/icon-link/icon-link';
 import tpl from './error-layout.hbs';
 import { Route } from '../../constants';

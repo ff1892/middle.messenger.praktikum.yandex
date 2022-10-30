@@ -1,6 +1,6 @@
-import Block from '../../core/block';
+import Block from '../../services/block';
 import tpl from './preview.hbs';
-import cutString from '../../utils/string-length';
+import cutString from '../../utils/cut-string';
 
 type PreviewProps = Record<string, any>;
 
