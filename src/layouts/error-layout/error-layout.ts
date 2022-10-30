@@ -5,9 +5,6 @@ import { Route } from '../../constants';
 import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
 
 
-  // {{!-- {{>iconLink linkHref="/" linkText="На главную" icon=icon }} --}}
-
-
 type ErrorLayoutProps = {
   title: string,
   text: string,

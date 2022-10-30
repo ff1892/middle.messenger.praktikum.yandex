@@ -1,0 +1,39 @@
+.icon-button {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: transparent;
+
+  svg {
+    width: 25px;
+    height: 25px;
+
+    path {
+      fill: $color-black-70;
+    }
+  }
+
+  &:hover {
+    background-color: $color-black-10;
+  }
+
+  &--primary {
+
+    svg path {
+      fill: $color-blue;
+    }
+
+    &:hover {
+      background-color: $color-blue-10;
+    }
+  }
+}
+
+

@@ -1,0 +1,30 @@
+.chat-conversation {
+
+  &__container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container > * {
+    margin-bottom: 15px;
+  }
+
+  &__date {
+    align-self: center;
+    background-image: $gradient-blue;
+    padding: 5px 20px;
+    border-radius: 50px;
+    color: $color-white;
+    font-size: 12px;
+  }
+
+  &__message {
+    display: flex;
+
+    .message--mine,
+    .message-image--mine {
+      margin-left: auto;
+    }
+  }
+}
