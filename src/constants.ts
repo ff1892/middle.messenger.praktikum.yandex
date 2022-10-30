@@ -9,6 +9,13 @@ export enum Route {
   ERROR = '/error',
 };
 
+export enum ApiMethod {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+};
+
 export const routesWithLabel: Array<{ label: string, route: Route}> = [
   { label: 'Главная', route: Route.MAIN },
   { label: 'Чат', route: Route.CHAT },
