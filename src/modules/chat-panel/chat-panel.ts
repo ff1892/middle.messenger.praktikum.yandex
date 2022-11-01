@@ -10,7 +10,7 @@ const profile = new ButtonProfile({
     type: 'button',
     role: 'button',
     title: 'Данные профиля | Создать чат',
-    ['aria-label']: 'Данные профиля | Создать чат',
+    'aria-label': 'Данные профиля | Создать чат',
   },
 });
 
@@ -20,8 +20,8 @@ type ChatPanelProps = Record<string, any>
 
 class ChatPanel extends Block<ChatPanelProps> {
   constructor(props: ChatPanelProps = {}) {
-    props['profile'] = profile;
-    props['search'] = searchInput;
+    props.profile = profile;
+    props.search = searchInput;
     super('div', props);
     this.element?.classList.add('chat-panel');
   }

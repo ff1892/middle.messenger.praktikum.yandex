@@ -1,9 +1,8 @@
+import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
 import Block from '../../services/block';
 import IconLink from '../../components/icon-link/icon-link';
 import tpl from './error-layout.hbs';
 import { Route } from '../../constants';
-import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
-
 
 type ErrorLayoutProps = {
   title: string,
@@ -15,7 +14,7 @@ type ErrorLayoutProps = {
 
 class ErrorLayout extends Block<ErrorLayoutProps> {
   constructor(props: ErrorLayoutProps) {
-    props['iconLink'] = new IconLink({
+    props.iconLink = new IconLink({
       linkHref: Route.MAIN,
       icon: iconArrow,
       linkText: 'На главную',

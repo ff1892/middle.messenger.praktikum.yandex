@@ -5,69 +5,69 @@ type Options = Record<string, any>;
 
 class HTTPTransport {
 
-  get (url:string, options: Options = {}) {
+  get(url:string, options: Options = {}) {
     return this.request(
       url,
-      {...options, method: ApiMethod.GET},
-      options.timeout
+      { ...options, method: ApiMethod.GET },
+      options.timeout,
     );
-  };
+  }
 
-  post (url: string, options: Options = {}) {
+  post(url: string, options: Options = {}) {
     return this.request(
       url,
-      {...options, method: ApiMethod.POST},
-      options.timeout
+      { ...options, method: ApiMethod.POST },
+      options.timeout,
     );
-  };
+  }
 
-  put (url: string, options: Options = {}) {
+  put(url: string, options: Options = {}) {
     return this.request(
       url,
-      {...options, method: ApiMethod.PUT},
-      options.timeout
+      { ...options, method: ApiMethod.PUT },
+      options.timeout,
     );
-  };
+  }
 
-  delete (url:string, options: Options = {}) {
+  delete(url:string, options: Options = {}) {
     return this.request(
       url,
-      {...options, method: ApiMethod.DELETE},
-      options.timeout
+      { ...options, method: ApiMethod.DELETE },
+      options.timeout,
     );
-  };
+  }
 
-  request (
-      url:string,
-      options: Options = {},
-      timeout = 5000
-      ) {
+  request(
+    url:string,
+    options: Options = {},
+    timeout = 5000,
+  ) {
 
-    const {headers = {}, method, data} = options;
+    const { headers = {}, method, data } = options;
 
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
 
       if (!method) {
-          reject('No method');
-          return;
+        reject(new Error('No method'));
+        return;
       }
 
       const xhr = new XMLHttpRequest();
       const isGet = method === ApiMethod.GET;
 
       xhr.open(
-          method,
-          isGet && !!data
-              ? `${url}${queryStringify(data)}`
-              : url,
+        method,
+        isGet && !!data
+          ? `${url}${queryStringify(data)}`
+          : url,
       );
 
-      Object.keys(headers).forEach(key => {
-          xhr.setRequestHeader(key, headers[key]);
+      Object.keys(headers).forEach((key) => {
+        xhr.setRequestHeader(key, headers[key]);
       });
 
-      xhr.onload = function() {
-          resolve(xhr);
+      xhr.onload = () => {
+        resolve(xhr);
       };
 
       xhr.onabort = reject;
@@ -77,12 +77,12 @@ class HTTPTransport {
       xhr.ontimeout = reject;
 
       if (isGet || !data) {
-          xhr.send();
+        xhr.send();
       } else {
-          xhr.send(data);
+        xhr.send(data);
       }
     });
-  };
+  }
 }
 
 export default HTTPTransport;

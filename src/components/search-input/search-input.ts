@@ -11,8 +11,8 @@ type SearchInputProps = {
 const searchInputProps = {
   events: {
     submit: getFormData,
-  }
-}
+  },
+};
 
 class SearchInput extends Block<SearchInputProps> {
   constructor(props: SearchInputProps) {

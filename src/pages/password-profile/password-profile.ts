@@ -24,7 +24,7 @@ const formFieldsData = [
         blur: validator.handleFocus,
         input: validator.handleChange,
       },
-    })
+    }),
   },
   {
     label: 'Новый пароль',
@@ -40,7 +40,7 @@ const formFieldsData = [
         blur: validator.handleFocus,
         input: validator.handleChange,
       },
-    })
+    }),
   },
   {
     label: 'Новый пароль',
@@ -56,9 +56,9 @@ const formFieldsData = [
         blur: validator.handleFocus,
         input: validator.handleChange,
       },
-    })
+    }),
   },
-]
+];
 
 const inputs = formFieldsData.map((fieldData) => (
   new UserField(fieldData)
@@ -84,14 +84,14 @@ const passwordForm = new UserForm({
   inputs,
   events: {
     submit: validator.handleSubmit,
-  }
+  },
 });
 
 type PasswordProfileType = Record<string, any>;
 
 class PasswordProfilePage extends Block<PasswordProfileType> {
   constructor(props: PasswordProfileType = {}) {
-    props['userLayout'] = new UserLayout({
+    props.userLayout = new UserLayout({
       form: passwordForm,
     });
     super('section', props);

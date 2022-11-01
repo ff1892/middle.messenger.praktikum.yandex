@@ -8,7 +8,7 @@ type UserFieldType = {
 };
 
 class UserField extends Block<UserFieldType> {
-  constructor (props: UserFieldType) {
+  constructor(props: UserFieldType) {
     super('div', props);
     this.element?.classList.add('user-field');
   }

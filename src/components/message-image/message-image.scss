@@ -23,29 +23,29 @@
   }
 
   &--mine::before {
-      position: absolute;
-      content: '';
-      width: 20px;
-      height: 20px;
-      bottom: 18px;
-      right: 20px;
-      z-index: 20;
-      background-image: url('../static/icons/tick.svg');
+    position: absolute;
+    content: "";
+    width: 20px;
+    height: 20px;
+    bottom: 18px;
+    right: 20px;
+    z-index: 20;
+    background-image: url("../static/icons/tick.svg");
   }
 
   &--read::after {
     position: absolute;
-    content: '';
+    content: "";
     width: 20px;
     height: 20px;
     bottom: 18px;
     right: 16px;
     z-index: 20;
-    background-image: url('../static/icons/tick.svg');
+    background-image: url("../static/icons/tick.svg");
   }
 
   &--mine &__picture {
-    border-radius: 20px 20px 0 20px;
+    border-radius: 20px 20px 0;
   }
 
   &--mine &__timestamp {

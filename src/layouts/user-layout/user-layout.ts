@@ -1,10 +1,9 @@
+import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
 import tpl from './user-layout.hbs';
 import Block from '../../services/block';
 import IconLink from '../../components/icon-link/icon-link';
 import Button from '../../components/button/button';
 import { Route } from '../../constants';
-import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
-
 
 type UserLayoutProps = Record<string, any>;
 
@@ -20,12 +19,12 @@ const button = new Button({
     type: 'button',
   },
   value: 'Выйти',
-})
+});
 
 class UserLayout extends Block<UserLayoutProps> {
   constructor(props: UserLayoutProps = {}) {
-    props['iconLink'] = iconLink;
-    props['button'] = button;
+    props.iconLink = iconLink;
+    props.button = button;
     super('section', props);
     this.element?.classList.add('user-layout');
   }

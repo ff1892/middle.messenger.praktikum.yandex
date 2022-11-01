@@ -17,9 +17,8 @@ const userProfilePage = new UserProfilePage();
 const passwordProfilePage = new PasswordProfilePage();
 const chatPage = new ChatPage();
 
-
-const pagesWithRoutes = {
-  ['']: mainPage,
+const pagesWithRoutes: Record<string, any> = {
+  '': mainPage,
   chat: chatPage,
   login: loginPage,
   signup: signupPage,
@@ -34,8 +33,6 @@ const currentPage = pagesWithRoutes[currentLocation];
 
 const onDomLoaded = () => {
   renderDOM('#root', currentPage);
-}
+};
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
-
-import { InputRegexp } from './constants';

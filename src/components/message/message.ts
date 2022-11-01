@@ -8,11 +8,11 @@ class Message extends Block<MessageProps> {
     super('div', props);
     this.element?.classList.add('message');
 
-    if(props.isMine) {
+    if (props.isMine) {
       this.element?.classList.add('message--mine');
     }
 
-    if(props.isRead) {
+    if (props.isRead) {
       this.element?.classList.add('message--read');
     }
   }

@@ -17,7 +17,7 @@ type TextInputProps = {
 
 class TextInput extends Block<TextInputProps> {
   constructor(props: TextInputProps) {
-    super ('input', props);
+    super('input', props);
     this.element?.classList.add('text-input');
   }
 

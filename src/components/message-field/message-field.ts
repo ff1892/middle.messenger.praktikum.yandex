@@ -5,7 +5,7 @@ type MessageFieldProps = Record<string, any>;
 
 class MessageField extends Block<MessageFieldProps> {
   constructor(props: MessageFieldProps = {}) {
-    props['attrs'] = {
+    props.attrs = {
       type: 'text',
       name: 'message',
       class: 'message-field',

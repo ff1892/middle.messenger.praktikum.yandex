@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-case": "upper",
+    "declaration-no-important": true,
+    "indentation": [2, {"ignore": ["inside-parens"]}],
+    "selector-class-pattern": null
+  },
+  "ignoreFiles": [
+    "dist/*"
+  ]
+}

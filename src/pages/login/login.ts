@@ -8,7 +8,6 @@ import Field from '../../components/field/field';
 import TextInput from '../../components/text-input/text-input';
 import validator from '../../utils/validator';
 
-
 const loginField = new Field({
   label: 'Логин',
   input: new TextInput({
@@ -47,22 +46,22 @@ const buttonProps = {
     type: 'submit',
   },
   value: 'Войти',
-}
+};
 
 const button = new Button(buttonProps);
 
 const loginFormProps = {
   title: 'Вход',
   inputs: [loginField, passwordField],
-  button: button,
+  button,
   link: {
     href: Route.SIGNUP,
     text: 'Нет аккаунта?',
   },
   events: {
     submit: validator.handleSubmit,
-  }
-}
+  },
+};
 
 const loginForm = new Form(loginFormProps);
 
@@ -70,12 +69,11 @@ const formLayout = new FormLayout({
   layoutElement: loginForm,
 });
 
-type TLoginPageProps = {
-};
+type TLoginPageProps = Record<string, any>;
 
 class LoginPage extends Block<TLoginPageProps> {
-  constructor(props: TLoginPageProps) {
-    super('div', {...props, formLayout: formLayout});
+  constructor(props: TLoginPageProps = {}) {
+    super('div', { ...props, formLayout });
   }
 
   render() {

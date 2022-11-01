@@ -6,7 +6,6 @@ const renderDOM = (query: string, block: Block<Record<string, any>>) => {
   root!.appendChild(block.getContent()!);
   block.dispatchComponentDidMount();
   return root;
-}
+};
 
 export default renderDOM;
-

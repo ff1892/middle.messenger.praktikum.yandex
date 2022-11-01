@@ -10,8 +10,7 @@
     display: grid;
     grid-template-columns: min-content 1fr auto;
     grid-template-rows: min-content auto;
-    grid-column-gap: 10px;
-    grid-row-gap: 8px;
+    grid-gap: 8px 10px;
   }
 
   &__avatar {

@@ -8,11 +8,11 @@ class MessageImage extends Block<MessageImageProps> {
     super('div', props);
     this.element?.classList.add('message-image');
 
-    if(props.isMine) {
+    if (props.isMine) {
       this.element?.classList.add('message-image--mine');
     }
 
-    if(props.isRead) {
+    if (props.isRead) {
       this.element?.classList.add('message-image--read');
     }
   }

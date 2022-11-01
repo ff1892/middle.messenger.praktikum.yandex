@@ -9,9 +9,8 @@ import validator from '../../utils/validator';
 import { Route } from '../../constants';
 import { userData } from './user.data';
 
-
-const inputs = userData.map(({label, ...rest} ) => (
-  new UserField({label, input: new TextInput(rest)})
+const inputs = userData.map(({ label, ...rest }) => (
+  new UserField({ label, input: new TextInput(rest) })
 ));
 
 const button = new Button({
@@ -34,14 +33,14 @@ const userForm = new UserForm({
   inputs,
   events: {
     submit: validator.handleSubmit,
-  }
+  },
 });
 
 type UserProfileType = Record<string, any>;
 
 class UserProfilePage extends Block<UserProfileType> {
   constructor(props: UserProfileType = {}) {
-    props['userLayout'] = new UserLayout({
+    props.userLayout = new UserLayout({
       form: userForm,
     });
     super('section', props);

@@ -3,27 +3,24 @@ import MainLink, { MainLinkProps } from '../../components/main-link/main-link';
 import tpl from './main.hbs';
 import { routesWithLabel } from '../../constants';
 
-const mainLinkData: Array<MainLinkProps>
-  = routesWithLabel.map(({ route, label}) => ({
-      attrs: {
-        class: 'main-link',
-        href: route,
-      },
-      text: label,
-  })
-);
+const mainLinkData: Array<MainLinkProps> = routesWithLabel.map(({ route, label }) => ({
+  attrs: {
+    class: 'main-link',
+    href: route,
+  },
+  text: label,
+}));
 
 const mainLinks = mainLinkData.map((data) => (
-  new MainLink(data))
-);
+  new MainLink(data)));
 
 type TMainPageProps = Record<string, any>;
 
 class MainPage extends Block<TMainPageProps> {
   constructor(props: TMainPageProps = {}) {
-    props['mainLinks'] = mainLinks;
+    props.mainLinks = mainLinks;
 
-    super ('div', props);
+    super('div', props);
     this.element!.classList.add('main-page');
   }
 

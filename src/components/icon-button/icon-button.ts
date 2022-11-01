@@ -8,7 +8,7 @@ class IconButton extends Block<IconButtonProps> {
     super('button', props);
     this.element?.classList.add('icon-button');
 
-    if(props.primary) {
+    if (props.primary) {
       this.element?.classList.add('icon-button--primary');
     }
   }

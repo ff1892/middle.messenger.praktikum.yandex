@@ -17,7 +17,7 @@ type FormProps = {
 class Form extends Block<FormProps> {
   constructor(props: FormProps) {
     super('form', props);
-    this.element?.classList.add('form')
+    this.element?.classList.add('form');
   }
 
   render() {

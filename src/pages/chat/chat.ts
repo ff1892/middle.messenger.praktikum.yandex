@@ -11,17 +11,17 @@ import Avatar from '../../components/avatar/avatar';
 const avatar = new Avatar(({
   src: '/img/mock3.jpg',
   alt: 'Аватар чата',
-}))
+}));
 
 type ChatPageProps = Record<string, any>;
 
 class ChatPage extends Block<ChatPageProps> {
   constructor(props: ChatPageProps = {}) {
-    props['panel'] = new ChatPanel();
-    props['preview'] = new ChatPreview();
-    props['header'] = new ChatHeader({ avatar, title: 'Алексей Петрович'});
-    props['conversation'] = new ChatConversation();
-    props['message'] = new ChatMessage();
+    props.panel = new ChatPanel();
+    props.preview = new ChatPreview();
+    props.header = new ChatHeader({ avatar, title: 'Алексей Петрович' });
+    props.conversation = new ChatConversation();
+    props.message = new ChatMessage();
     super('div', props);
     this.element?.classList.add('chat');
   }

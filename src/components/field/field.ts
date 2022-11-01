@@ -9,7 +9,7 @@ type FieldProps = {
 
 class Field extends Block<FieldProps> {
   constructor(props: FieldProps) {
-    super ('div', props);
+    super('div', props);
   }
 
   render() {

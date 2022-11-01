@@ -11,7 +11,7 @@ export type MainLinkProps = {
 
 class MainLink extends Block<MainLinkProps> {
   constructor(props: MainLinkProps) {
-    super ('a', props);
+    super('a', props);
   }
 
   render() {

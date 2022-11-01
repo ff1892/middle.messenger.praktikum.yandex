@@ -3,7 +3,6 @@ import ErrorLayout from '../../layouts/error-layout/error-layout';
 import tpl from './error.hbs';
 import { getCurrentTime } from '../../utils/time';
 
-
 const currentDate = new Date();
 const date = currentDate.toISOString();
 const dateString = getCurrentTime();
@@ -13,13 +12,13 @@ const layoutData = {
   text: 'Что-то не то с сервером. Обещаем починить',
   date,
   dateString,
-}
+};
 
 type ErrorPageProps = Record<string, any>;
 
 class ErrorPage extends Block<ErrorPageProps> {
   constructor(props: ErrorPageProps = {}) {
-    props['errorLayout'] = new ErrorLayout(layoutData);
+    props.errorLayout = new ErrorLayout(layoutData);
 
     super('div', props);
     this.element?.classList.add('error-page');

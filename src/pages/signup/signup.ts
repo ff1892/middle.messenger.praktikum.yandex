@@ -8,119 +8,118 @@ import Field from '../../components/field/field';
 import TextInput from '../../components/text-input/text-input';
 import validator from '../../utils/validator';
 
-
 const signupInputsData = [
-    {
-      label: 'Логин',
-      input: new TextInput({
-        attrs: {
-          name: 'login',
-          type: 'text',
-          placeholder: 'MessengerCeo',
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Имя',
-      input: new TextInput({
-        attrs: {
-          name: 'first_name',
-          type: 'text',
-          placeholder: 'Александр'
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Фамилия',
-      input: new TextInput({
-        attrs: {
-          name: 'second_name',
-          type: 'text',
-          placeholder: 'Александров',
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Почта',
-      input: new TextInput({
-        attrs: {
-          name: 'email',
-          type: 'text',
-          placeholder: 'messengerceo@yandex.ru'
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Телефон',
-      input: new TextInput({
-        attrs: {
-          name: 'phone',
-          type: 'text',
-          placeholder: '+75555555555',
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Пароль',
-      input: new TextInput({
-        attrs: {
-          name: 'password',
-          type: 'password',
-          placeholder: '●●●●●'
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    },
-    {
-      label: 'Повторите пароль',
-      input: new TextInput({
-        attrs: {
-          name: 'password_repeat',
-          type: 'password',
-          placeholder: '●●●●●'
-        },
-        events: {
-          focus: validator.handleFocus,
-          blur: validator.handleFocus,
-          input: validator.handleChange,
-        },
-      }),
-    }
+  {
+    label: 'Логин',
+    input: new TextInput({
+      attrs: {
+        name: 'login',
+        type: 'text',
+        placeholder: 'MessengerCeo',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Имя',
+    input: new TextInput({
+      attrs: {
+        name: 'first_name',
+        type: 'text',
+        placeholder: 'Александр',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Фамилия',
+    input: new TextInput({
+      attrs: {
+        name: 'second_name',
+        type: 'text',
+        placeholder: 'Александров',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Почта',
+    input: new TextInput({
+      attrs: {
+        name: 'email',
+        type: 'text',
+        placeholder: 'messengerceo@yandex.ru',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Телефон',
+    input: new TextInput({
+      attrs: {
+        name: 'phone',
+        type: 'text',
+        placeholder: '+75555555555',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Пароль',
+    input: new TextInput({
+      attrs: {
+        name: 'password',
+        type: 'password',
+        placeholder: '●●●●●',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
+  {
+    label: 'Повторите пароль',
+    input: new TextInput({
+      attrs: {
+        name: 'password_repeat',
+        type: 'password',
+        placeholder: '●●●●●',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    }),
+  },
 ];
 
 const signupInputs = signupInputsData.map((inputData) => {
   const inputProps = { ...inputData };
   return new Field(inputProps);
-})
+});
 
 const buttonProps = {
   attrs: {
@@ -128,23 +127,22 @@ const buttonProps = {
     type: 'submit',
   },
   value: 'Зарегистрироваться',
-}
+};
 
 const button = new Button(buttonProps);
-
 
 const signupFormProps = {
   title: 'Регистрация',
   inputs: signupInputs,
-  button: button,
+  button,
   link: {
     href: Route.LOGIN,
     text: 'Есть аккаунт?',
   },
   events: {
     submit: validator.handleSubmit,
-  }
-}
+  },
+};
 
 const signupForm = new Form(signupFormProps);
 
@@ -152,12 +150,11 @@ const formLayout = new FormLayout({
   layoutElement: signupForm,
 });
 
-type TSignupPageProps = {
-};
+type SignupPageProps = Record<string, any>;
 
-class SignupPage extends Block<TSignupPageProps> {
-  constructor(props: TSignupPageProps) {
-    super('div', {...props, formLayout: formLayout});
+class SignupPage extends Block<SignupPageProps> {
+  constructor(props: SignupPageProps = {}) {
+    super('div', { ...props, formLayout });
   }
 
   render() {

@@ -1,30 +1,38 @@
-import EventBus from './event-bus';
+/* eslint-disable no-use-before-define */
 import { v4 as makeUUID } from 'uuid';
-import { Nullable } from '../types';
 import { TemplateDelegate } from 'handlebars';
+import EventBus from './event-bus';
+
+type Nullable<T> = T | null;
 
 class Block<P extends Record<string, any>> {
 
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
   protected props: Record<string, any>;
+
   protected children: Record<string, Block<P>>;
+
   protected childrenArr: Record<string, Block<P>[]>;
+
   eventBus: () => EventBus;
 
   private _id: string;
+
   protected _element: Nullable<HTMLElement> = null;
+
   private _meta: Nullable<{ tagName: string, props: Record<string, any>}> = null;
+
   private _setUpdate: boolean = false;
 
   constructor(
     tagName: string = 'div',
-    propsAndChildren: P | {} = {}
+    propsAndChildren: P | {} = {},
   ) {
 
     const { props, children, childrenArr } = this._getChildren(propsAndChildren);
@@ -33,7 +41,7 @@ class Block<P extends Record<string, any>> {
     this._meta = { tagName, props };
     this._id = makeUUID();
 
-    this.props = this._makeProxyProps({...props, __id: this._id});
+    this.props = this._makeProxyProps({ ...props, __id: this._id });
     this.children = this._makeProxyProps(children);
     this.childrenArr = this._makeProxyProps(childrenArr);
 
@@ -48,12 +56,11 @@ class Block<P extends Record<string, any>> {
     const children: Record<string, Block<P>> = {};
     const childrenArr: Record<string, Block<P>[]> = {};
 
-
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (Array.isArray(value) && value.every((valueEl) => valueEl instanceof Block)) {
         childrenArr[key] = value;
       } else if (value instanceof Block) {
-        children[key] = value
+        children[key] = value;
       } else {
         props[key] = value;
       }
@@ -83,24 +90,24 @@ class Block<P extends Record<string, any>> {
   }
 
   protected compile(template: TemplateDelegate, props: any) {
-    const propsAndStubs = {...props};
+    const propsAndStubs = { ...props };
 
     if (Object.entries(this.childrenArr).length > 0) {
       Object.entries(this.childrenArr).forEach(([key, childArr]) => {
         childArr.forEach((child) => {
-          const stubString = `<div data-id="${child._id}"></div>`
+          const stubString = `<div data-id="${child._id}"></div>`;
           if (Array.isArray(propsAndStubs[key])) {
-            propsAndStubs[key].push(stubString)
+            propsAndStubs[key].push(stubString);
           } else {
             propsAndStubs[key] = [stubString];
           }
         });
-      })
+      });
     }
 
     Object.entries(this.children).forEach(([key, child]) => {
-      propsAndStubs[key] = `<div data-id="${child._id}"></div>`
-    })
+      propsAndStubs[key] = `<div data-id="${child._id}"></div>`;
+    });
 
     const fragment = document.createElement('template');
     fragment.innerHTML = template(propsAndStubs);
@@ -108,8 +115,8 @@ class Block<P extends Record<string, any>> {
     Object.values(this.childrenArr).forEach((chidldren) => {
       chidldren.forEach((child) => {
         this._replace(child, fragment);
-      })
-    })
+      });
+    });
 
     Object.values(this.children).forEach((child) => {
       this._replace(child, fragment);
@@ -123,7 +130,7 @@ class Block<P extends Record<string, any>> {
     if (!stub) {
       return;
     }
-    stub.replaceWith(child.getContent()!)
+    stub.replaceWith(child.getContent()!);
   }
 
   protected init() {
@@ -163,7 +170,7 @@ class Block<P extends Record<string, any>> {
     return true;
   }
 
-  setProps (nextProps: P | {}) {
+  setProps(nextProps: P | {}) {
 
     if (!nextProps) {
       return;
@@ -190,8 +197,7 @@ class Block<P extends Record<string, any>> {
       this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldValue, this.props);
       this._setUpdate = false;
     }
-  };
-
+  }
 
   get element() {
     return this._element;
@@ -219,7 +225,7 @@ class Block<P extends Record<string, any>> {
 
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
 
       set(target, prop, value) {
@@ -231,17 +237,17 @@ class Block<P extends Record<string, any>> {
       },
 
       deleteProperty() {
-        throw new Error("Нет доступа");
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = 'block';
   }
 
   hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 
   addEvents() {
@@ -249,7 +255,7 @@ class Block<P extends Record<string, any>> {
 
     Object.keys(events).forEach((eventName) => {
       this._element!.addEventListener(eventName, events[eventName]);
-    })
+    });
   }
 
   removeEvents() {
@@ -257,7 +263,7 @@ class Block<P extends Record<string, any>> {
 
     Object.keys(events).forEach((eventName) => {
       this._element!.removeEventListener(eventName, events[eventName]);
-    })
+    });
   }
 
   addAttribute() {
@@ -270,4 +276,3 @@ class Block<P extends Record<string, any>> {
 }
 
 export default Block;
-

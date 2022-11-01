@@ -3,7 +3,6 @@ import tpl from './chat-conversation.hbs';
 import Message from '../../components/message/message';
 import MessageImage from '../../components/message-image/message-image';
 
-
 const mockText = 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.';
 
 const message = new Message({
@@ -24,7 +23,7 @@ const message3 = new MessageImage({
     desc: 'Kitten',
   },
   time: '10:25',
-})
+});
 
 const message4 = new Message({
   content: 'Тоже неплохо...',
@@ -39,12 +38,12 @@ const message5 = new MessageImage({
   },
   time: '10:30',
   isMine: true,
-})
+});
 
 const chatConversationProps = {
   messages: [message, message2, message3, message4, message5],
   date: '30 окт',
-}
+};
 
 type ChatConversationProps = Record<string, any>
 
