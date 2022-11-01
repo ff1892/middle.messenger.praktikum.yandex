@@ -24,24 +24,24 @@
 
   &--mine::before {
     position: absolute;
-    content: "";
+    content: '';
     width: 20px;
     height: 20px;
     bottom: 18px;
     right: 20px;
     z-index: 20;
-    background-image: url("../static/icons/tick.svg");
+    background-image: url('../static/icons/tick.svg');
   }
 
   &--read::after {
     position: absolute;
-    content: "";
+    content: '';
     width: 20px;
     height: 20px;
     bottom: 18px;
     right: 16px;
     z-index: 20;
-    background-image: url("../static/icons/tick.svg");
+    background-image: url('../static/icons/tick.svg');
   }
 
   &--mine &__picture {
