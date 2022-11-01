@@ -4,7 +4,7 @@ import tpl from './search-input.hbs';
 
 type SearchInputProps = {
   events: {
-    submit: (evt: SubmitEvent) => void;
+    submit: (e: SubmitEvent) => void;
   },
 };
 

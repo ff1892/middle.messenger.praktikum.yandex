@@ -14,7 +14,7 @@ type UserFormType = {
     text: string,
   },
   events: {
-    submit: (evt: SubmitEvent) => void;
+    submit: (e: SubmitEvent) => void;
   }
 };
 

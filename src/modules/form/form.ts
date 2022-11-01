@@ -10,7 +10,7 @@ type FormProps = {
   }
   inputs: Field[],
   events: {
-    submit: (evt: SubmitEvent) => void;
+    submit: (e: SubmitEvent) => void;
   }
 }
 

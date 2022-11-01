@@ -107,18 +107,18 @@ class Validator {
     }
   }
 
-  public handleFocus(evt: FocusEvent) {
-    this._validateInput(evt.target as HTMLInputElement);
+  public handleFocus(e: FocusEvent) {
+    this._validateInput(e.target as HTMLInputElement);
   }
 
-  public handleChange(evt: KeyboardEvent) {
-    this._removeError(evt.target as HTMLInputElement);
+  public handleChange(e: KeyboardEvent) {
+    this._removeError(e.target as HTMLInputElement);
   }
 
-  public handleSubmit(evt: SubmitEvent) {
-    getFormData(evt);
+  public handleSubmit(e: SubmitEvent) {
+    getFormData(e);
 
-    const form = evt.target as HTMLFormElement;
+    const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
 
     inputs.forEach(this._validateInput);

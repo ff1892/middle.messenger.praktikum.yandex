@@ -7,6 +7,9 @@ export type MainLinkProps = {
     href: string,
   }
   text: string,
+  events: {
+    click: (e: MouseEvent) => void,
+  },
 }
 
 class MainLink extends Block<MainLinkProps> {

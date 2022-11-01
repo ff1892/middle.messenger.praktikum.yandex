@@ -35,7 +35,7 @@ type ChatMessageProps = {
   sendButton: IconButton,
   messageField: MessageField,
   events: {
-    submit: (evt: SubmitEvent) => void,
+    submit: (e: SubmitEvent) => void,
   },
 } | {};
 
