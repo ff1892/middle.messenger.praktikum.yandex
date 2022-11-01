@@ -1,12 +1,10 @@
 import tpl from './user-field.hbs';
 import Block from '../../services/block';
+import TextInput from '../text-input/text-input';
 
 type UserFieldType = {
   label: string,
-  type: string,
-  name: string,
-  value: string,
-  placeholder?: string,
+  input: TextInput,
 };
 
 class UserField extends Block<UserFieldType> {

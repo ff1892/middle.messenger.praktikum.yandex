@@ -5,51 +5,115 @@ import FormLayout from '../../layouts/form-layout/form-layout';
 import Button from '../../components/button/button';
 import Form from '../../modules/form/form';
 import Field from '../../components/field/field';
-import getFormData from '../../utils/get-formdata';
+import TextInput from '../../components/text-input/text-input';
+import validator from '../../utils/validator';
 
 
 const signupInputsData = [
     {
       label: 'Логин',
-      name: 'login',
-      type: 'text',
-      placeholder: 'MessengerCeo',
+      input: new TextInput({
+        attrs: {
+          name: 'login',
+          type: 'text',
+          placeholder: 'MessengerCeo',
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Имя',
-      name: 'first_name',
-      type: 'text',
-      placeholder: 'Александр'
+      input: new TextInput({
+        attrs: {
+          name: 'first_name',
+          type: 'text',
+          placeholder: 'Александр'
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Фамилия',
-      name: 'second_name',
-      type: 'text',
-      placeholder: 'Александров',
+      input: new TextInput({
+        attrs: {
+          name: 'second_name',
+          type: 'text',
+          placeholder: 'Александров',
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Почта',
-      name: 'email',
-      type: 'text',
-      placeholder: 'messengerceo@yandex.ru'
+      input: new TextInput({
+        attrs: {
+          name: 'email',
+          type: 'text',
+          placeholder: 'messengerceo@yandex.ru'
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Телефон',
-      name: 'phone',
-      type: 'text',
-      placeholder: '+7 (555) 555 55 55',
+      input: new TextInput({
+        attrs: {
+          name: 'phone',
+          type: 'text',
+          placeholder: '+75555555555',
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Пароль',
-      name: 'password',
-      type: 'password',
-      placeholder: '●●●●●'
+      input: new TextInput({
+        attrs: {
+          name: 'password',
+          type: 'password',
+          placeholder: '●●●●●'
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     },
     {
       label: 'Повторите пароль',
-      name: 'password_repeat',
-      type: 'password',
-      placeholder: '●●●●●'
+      input: new TextInput({
+        attrs: {
+          name: 'password_repeat',
+          type: 'password',
+          placeholder: '●●●●●'
+        },
+        events: {
+          focus: validator.handleFocus,
+          blur: validator.handleFocus,
+          input: validator.handleChange,
+        },
+      }),
     }
 ];
 
@@ -59,7 +123,7 @@ const signupInputs = signupInputsData.map((inputData) => {
 })
 
 const buttonProps = {
-  attributes: {
+  attrs: {
     class: 'button',
     type: 'submit',
   },
@@ -78,7 +142,7 @@ const signupFormProps = {
     text: 'Есть аккаунт?',
   },
   events: {
-    submit: getFormData,
+    submit: validator.handleSubmit,
   }
 }
 

@@ -261,9 +261,9 @@ class Block<P extends Record<string, any>> {
   }
 
   addAttribute() {
-    const { attributes = {}} = this.props;
+    const { attrs = {} } = this.props;
 
-    Object.entries(attributes).forEach(([attr, value]) => {
+    Object.entries(attrs).forEach(([attr, value]) => {
       this._element!.setAttribute(attr, value as string);
     });
   }

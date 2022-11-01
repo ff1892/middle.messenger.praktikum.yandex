@@ -5,25 +5,44 @@ import FormLayout from '../../layouts/form-layout/form-layout';
 import Button from '../../components/button/button';
 import Form from '../../modules/form/form';
 import Field from '../../components/field/field';
-import getFormData from '../../utils/get-formdata';
+import TextInput from '../../components/text-input/text-input';
+import validator from '../../utils/validator';
 
 
 const loginField = new Field({
   label: 'Логин',
-  name: 'login',
-  type: 'text',
-  placeholder: 'MessengerCeo',
+  input: new TextInput({
+    attrs: {
+      name: 'login',
+      type: 'text',
+      placeholder: 'MessengerCeo',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
+  }),
 });
 
 const passwordField = new Field({
   label: 'Пароль',
-  name: 'password',
-  type: 'password',
-  placeholder: '●●●●●',
+  input: new TextInput({
+    attrs: {
+      name: 'password',
+      type: 'password',
+      placeholder: '●●●●●',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
+  }),
 });
 
 const buttonProps = {
-  attributes: {
+  attrs: {
     class: 'button',
     type: 'submit',
   },
@@ -41,7 +60,7 @@ const loginFormProps = {
     text: 'Нет аккаунта?',
   },
   events: {
-    submit: getFormData,
+    submit: validator.handleSubmit,
   }
 }
 

@@ -1,15 +1,14 @@
 import Block from '../../services/block';
 import tpl from './field.hbs';
+import TextInput from '../text-input/text-input';
 
-type TFieldProps = {
+type FieldProps = {
   label: string,
-  type: string,
-  name: string,
-  placeholder: string,
+  input: TextInput,
 }
 
-class Field extends Block<TFieldProps> {
-  constructor(props: TFieldProps) {
+class Field extends Block<FieldProps> {
+  constructor(props: FieldProps) {
     super ('div', props);
   }
 

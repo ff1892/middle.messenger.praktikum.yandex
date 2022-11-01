@@ -2,13 +2,7 @@
   <span class="user-field__capture">
     {{ label }}
   </span>
-<input
-  class="user-field__input"
-  type="{{type}}"
-  name="{{name}}"
-  value="{{value}}"
-  {{#if placeholder}}
-  placeholder="{{placeholder}}"
-  {{/if}}
-/>
+  {{{input}}}
+  <span class="user-field__validation error">
+  </span>
 </label>

@@ -5,9 +5,10 @@ import MessageField from '../../components/message-field/message-field';
 import iconAttach from 'bundle-text:../../../static/icons/attach.svg';
 import iconSend from 'bundle-text:../../../static/icons/message.svg';
 import getFormData from '../../utils/get-formdata';
+import validator from '../../utils/validator';
 
 const attachButton = new IconButton({
-  attributes: {
+  attrs: {
     type: 'button',
   },
   icon: iconAttach,
@@ -15,14 +16,20 @@ const attachButton = new IconButton({
 });
 
 const sendButton = new IconButton({
-  attributes: {
+  attrs: {
     type: 'submit',
   },
   icon: iconSend,
   primary: true,
 });
 
-const messageField = new MessageField();
+const messageField = new MessageField({
+  events: {
+    focus: validator.handleFocus,
+    blur: validator.handleFocus,
+    input: validator.handleChange,
+  }
+});
 
 type ChatMessageProps = {
   attachButton: IconButton,
@@ -38,7 +45,7 @@ const cchatMessageProps = {
   sendButton: sendButton,
   messageField: messageField,
   events: {
-    submit: getFormData,
+    submit: validator.handleSubmit,
   },
 }
 

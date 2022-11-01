@@ -5,7 +5,7 @@ import { routesWithLabel } from '../../constants';
 
 const mainLinkData: Array<MainLinkProps>
   = routesWithLabel.map(({ route, label}) => ({
-      attributes: {
+      attrs: {
         class: 'main-link',
         href: route,
       },

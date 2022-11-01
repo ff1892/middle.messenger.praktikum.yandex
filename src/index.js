@@ -37,3 +37,5 @@ const onDomLoaded = () => {
 }
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
+
+import { InputRegexp } from './constants';

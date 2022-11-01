@@ -4,7 +4,7 @@ import tpl from './button-profile.hbs';
 type ButtonProfileProps = {
   src: string,
   alt: string,
-  attributes: {
+  attrs: {
     type: string,
     role: string,
     title: string,

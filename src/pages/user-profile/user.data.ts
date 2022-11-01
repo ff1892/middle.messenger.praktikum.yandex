@@ -1,38 +1,82 @@
+import validator from '../../utils/validator';
+
 export const userData = [
   {
     label: 'Почта',
-    name: 'email',
-    type: 'text',
-    value: 'pochta@yandex.ru',
+    attrs: {
+      name: 'email',
+      type: 'text',
+      value: 'pochta@yandex.ru',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
   {
     label: 'Логин',
-    name: 'login',
-    type: 'text',
-    value: 'MessengerCeo',
+    attrs: {
+      name: 'login',
+      type: 'text',
+      value: 'MessengerCeo',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
   {
     label: 'Имя',
-    name: 'first_name',
-    type: 'text',
-    value: 'Александр',
+    attrs: {
+      name: 'first_name',
+      type: 'text',
+      value: 'Александр',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
   {
     label: 'Фамилия',
-    name: 'second_name',
-    type: 'text',
-    value: 'Александров',
+    attrs: {
+      name: 'second_name',
+      type: 'text',
+      value: 'Александров',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
   {
     label: 'Имя в чате',
-    name: 'display_name',
-    type: 'text',
-    value: 'Алекс',
+    attrs: {
+      name: 'display_name',
+      type: 'text',
+      value: 'Алекс',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
   {
     label: 'Телефон',
-    name: 'phone',
-    type: 'text',
-    value: '+7 (555) 555 55 55',
+    attrs: {
+      name: 'phone',
+      type: 'text',
+      value: '+75555555555',
+    },
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
   },
 ];

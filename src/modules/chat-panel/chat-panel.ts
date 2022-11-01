@@ -6,7 +6,7 @@ import ButtonProfile from '../../components/button-profile/button-profile';
 const profile = new ButtonProfile({
   src: '/img/mock6.jpg',
   alt: 'Ваш аватар',
-  attributes: {
+  attrs: {
     type: 'button',
     role: 'button',
     title: 'Данные профиля | Создать чат',

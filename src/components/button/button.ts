@@ -2,7 +2,7 @@ import Block from '../../services/block';
 import tpl from './button.hbs';
 
 type ButtonProps = {
-  attributes: {
+  attrs: {
     class: string,
     type: string,
   },

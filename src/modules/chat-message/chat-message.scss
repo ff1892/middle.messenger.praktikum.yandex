@@ -12,5 +12,14 @@
 
   &__field--text {
     flex-grow: 1;
+    position: relative;
+  }
+
+  &__validation {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    font-size: 10px;
+    color: $color-red;
   }
 }

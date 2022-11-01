@@ -15,7 +15,7 @@ const iconLink = new IconLink({
 });
 
 const button = new Button({
-  attributes: {
+  attrs: {
     class: 'button',
     type: 'button',
   },

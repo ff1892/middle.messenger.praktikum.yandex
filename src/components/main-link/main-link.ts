@@ -2,7 +2,7 @@ import tpl from './main-link.hbs';
 import Block from '../../services/block';
 
 export type MainLinkProps = {
-  attributes: {
+  attrs: {
     class: string,
     href: string,
   }

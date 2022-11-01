@@ -3,18 +3,19 @@ import Block from '../../services/block';
 import UserLayout from '../../layouts/user-layout/user-layout';
 import UserForm from '../../modules/user-form/user-form';
 import UserField from '../../components/user-field/user-field';
-import { userData } from './user.data';
 import Button from '../../components/button/button';
+import TextInput from '../../components/text-input/text-input';
+import validator from '../../utils/validator';
 import { Route } from '../../constants';
-import getFormData from '../../utils/get-formdata';
+import { userData } from './user.data';
 
 
-const inputs = userData.map((fieldData) => (
-  new UserField(fieldData)
+const inputs = userData.map(({label, ...rest} ) => (
+  new UserField({label, input: new TextInput(rest)})
 ));
 
 const button = new Button({
-  attributes: {
+  attrs: {
     class: 'button',
     type: 'submit',
   },
@@ -32,7 +33,7 @@ const userForm = new UserForm({
   button,
   inputs,
   events: {
-    submit: getFormData,
+    submit: validator.handleSubmit,
   }
 });
 

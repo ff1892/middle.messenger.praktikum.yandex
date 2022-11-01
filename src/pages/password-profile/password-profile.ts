@@ -6,28 +6,57 @@ import UserField from '../../components/user-field/user-field';
 import Button from '../../components/button/button';
 import getFormData from '../../utils/get-formdata';
 import { Route } from '../../constants';
+import TextInput from '../../components/text-input/text-input';
+import validator from '../../utils/validator';
 
 const formFieldsData = [
   {
     label: 'Старый пароль',
-    name: 'old_password',
-    type: 'password',
-    value: '',
-    placeholder: 'Ваш старый пароль',
+    input: new TextInput({
+      attrs: {
+        name: 'old_password',
+        type: 'password',
+        value: '',
+        placeholder: 'Ваш старый пароль',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    })
   },
   {
     label: 'Новый пароль',
-    name: 'new_password',
-    type: 'password',
-    value: '',
-    placeholder: 'Не менее шести символов',
+    input: new TextInput({
+      attrs: {
+        name: 'password',
+        type: 'password',
+        value: '',
+        placeholder: 'Не менее шести символов',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    })
   },
   {
     label: 'Новый пароль',
-    name: 'new_password_repeat',
-    type: 'password',
-    value: '',
-    placeholder: 'Повторите новый пароль',
+    input: new TextInput({
+      attrs: {
+        name: 'password_repeat',
+        type: 'password',
+        value: '',
+        placeholder: 'Повторите новый пароль',
+      },
+      events: {
+        focus: validator.handleFocus,
+        blur: validator.handleFocus,
+        input: validator.handleChange,
+      },
+    })
   },
 ]
 
@@ -36,7 +65,7 @@ const inputs = formFieldsData.map((fieldData) => (
 ));
 
 const button = new Button({
-  attributes: {
+  attrs: {
     class: 'button',
     type: 'submit',
   },
@@ -54,7 +83,7 @@ const passwordForm = new UserForm({
   button,
   inputs,
   events: {
-    submit: getFormData,
+    submit: validator.handleSubmit,
   }
 });
 
