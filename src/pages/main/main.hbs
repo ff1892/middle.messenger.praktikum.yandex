@@ -1,9 +1,11 @@
-<div class="main-page">
-  <h1 class="main-page__title">Мессенджер</h1>
-  <section class="main-page__links">
-    {{#each links}}
-      {{>mainLink this }}
+<h1 class="main-page__title">Мессенджер</h1>
+<nav class="main-page__links">
+  <ul class="main-page__links-list">
+    {{#each mainLinks}}
+    <li class="main-page__link-item">
+      {{{this}}}
+    </li>
     {{/each}}
-  </section>
-</div>
+  </ul>
+</nav>
 

@@ -1,15 +1,21 @@
-// COLOR
-
 $color-blue: #2C6BED;
+$color-blue-10: rgb(44 107 237 / 10%);
 $color-blue-dark: #2762DB;
+
+$color-red: #BC0022;
 
 $color-grey-light: #F8F8F8;
 $color-grey-light-2: #EBEBEB;
+$color-grey-light-3: #F6F6F6;
 
 $color-grey-dark: #E9E9E9;
 $color-grey-dark-2: #626262;
 
-
 $color-white: #F8F8F8;
 
-$color-black-40: rgba(0, 0, 0, 0.4);
+$color-basic-black: #1E1E1E;
+$color-black-10: rgb(0 0 0 / 10%);
+$color-black-40: rgb(0 0 0 / 40%);
+$color-black-70: rgb(0 0 0 / 70%);
+
+$gradient-blue: linear-gradient(to right, $color-blue, $color-blue-dark);

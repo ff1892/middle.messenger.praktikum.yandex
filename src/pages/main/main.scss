@@ -12,8 +12,11 @@
     letter-spacing: 2px;
   }
 
-  &__links {
+  &__links-list {
+    margin: 0;
+    padding: 0;
     display: grid;
+    list-style: none;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
     min-width: 50%;

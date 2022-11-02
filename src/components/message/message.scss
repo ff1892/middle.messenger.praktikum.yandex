@@ -1,0 +1,55 @@
+.message {
+  background-color: $color-grey-dark;
+  color: $color-basic-black;
+  max-width: 400px;
+  min-width: 200px;
+  padding: 20px;
+  border-radius: 20px 20px 20px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  position: relative;
+
+  &__container {
+    margin-bottom: 10px;
+  }
+
+  &__timestamp {
+    font-size: 12px;
+  }
+
+  &--mine {
+    border-radius: 20px 20px 0;
+    align-self: flex-end;
+    background-color: $color-blue;
+    color: $color-white;
+
+    ::before {
+      position: absolute;
+      content: '';
+      width: 20px;
+      height: 20px;
+      bottom: 18px;
+      right: 20px;
+      background-image: url('../static/icons/tick.svg');
+    }
+  }
+
+  &--read {
+    ::after {
+      position: absolute;
+      content: '';
+      width: 20px;
+      height: 20px;
+      bottom: 18px;
+      right: 15px;
+      background-image: url('../static/icons/tick.svg');
+    }
+  }
+
+  &--mine &__timestamp {
+    align-self: flex-end;
+    padding-right: 25px;
+  }
+}

@@ -1,11 +1,12 @@
 .user-field {
+  position: relative;
+  margin-bottom: 25px;
 
   &__label {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $color-grey-dark;
-    // padding-bottom: 5px;
   }
 
   &__capture {
@@ -38,6 +39,12 @@
       background-color: transparent;
     }
   }
+
+  &__validation {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    font-size: 10px;
+    color: $color-red;
+  }
 }
-
-

@@ -1,4 +1,5 @@
 .field {
+  position: relative;
 
   &__label {
     padding-left: 20px;
@@ -6,26 +7,15 @@
     cursor: pointer;
   }
 
-  &__input {
-    border-radius: 50px;
-    width: 100%;
-    font-size: 15px;
+  & input {
     margin-top: 8px;
-    display: block;
-    background-color: $color-grey-light;
-    border: none;
-    padding: 10px 20px;
-    box-shadow: 0 0 0 1px $color-grey-light-2;
-    outline: none;
+  }
 
-    &:hover {
-      background-color: $color-grey-dark;
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 1px $color-blue;
-    }
+  &__validation {
+    position: absolute;
+    top: 67px;
+    left: 20px;
+    font-size: 10px;
+    color: $color-red;
   }
 }
-
-

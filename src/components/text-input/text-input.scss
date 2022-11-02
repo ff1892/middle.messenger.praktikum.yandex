@@ -1,0 +1,25 @@
+.text-input {
+  border-radius: 50px;
+  width: 100%;
+  font-size: 15px;
+  margin-top: 8px;
+  display: block;
+  background-color: $color-grey-light;
+  border: none;
+  padding: 10px 20px;
+  box-shadow: 0 0 0 1px $color-grey-light-2;
+  outline: none;
+  position: relative;
+
+  &:hover {
+    background-color: $color-grey-dark;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 1px $color-blue;
+  }
+
+  &.error {
+    box-shadow: 0 0 0 1px $color-red;
+  }
+}

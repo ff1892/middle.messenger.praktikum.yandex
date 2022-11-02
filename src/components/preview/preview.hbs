@@ -1,0 +1,22 @@
+<div class="preview__container">
+  <div class="preview__avatar">
+    {{{avatar}}}
+  </div>
+  <h3 class="preview__title">
+    {{title}}
+  </h3>
+  <p class="preview__text">
+    {{text}}
+  </p>
+  <time
+    class="preview__time"
+    datetime="{{date}}"
+  >
+    {{dateString}}
+  </time>
+  <div class="preview__tick">
+    {{#if tickIcon}}
+      {{{tickIcon}}}
+    {{/if}}
+  </div>
+</div>
