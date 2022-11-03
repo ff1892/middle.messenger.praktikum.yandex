@@ -1,7 +1,8 @@
-import Block from '../../services/block';
 import tpl from './chat-panel.hbs';
-import SearchInput from '../../components/search-input/search-input';
-import ButtonProfile from '../../components/button-profile/button-profile';
+import { Block } from '../../services/block';
+import { SearchInput } from '../../components/search-input/search-input';
+import { ButtonProfile } from '../../components/button-profile/button-profile';
+import { getFormData } from '../../utils/get-formdata';
 
 const profile = new ButtonProfile({
   src: '/img/mock6.jpg',
@@ -14,7 +15,11 @@ const profile = new ButtonProfile({
   },
 });
 
-const searchInput = new SearchInput();
+const searchInput = new SearchInput({
+  events: {
+    submit: getFormData,
+  },
+});
 
 type ChatPanelProps = Record<string, any>
 
@@ -31,4 +36,4 @@ class ChatPanel extends Block<ChatPanelProps> {
   }
 }
 
-export default ChatPanel;
+export { ChatPanel };

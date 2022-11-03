@@ -1,12 +1,12 @@
 import tpl from './login.hbs';
 import { Route } from '../../constants';
-import Block from '../../services/block';
-import FormLayout from '../../layouts/form-layout/form-layout';
-import Button from '../../components/button/button';
-import Form from '../../modules/form/form';
-import Field from '../../components/field/field';
-import TextInput from '../../components/text-input/text-input';
-import validator from '../../utils/validator';
+import { Block } from '../../services/block';
+import { FormLayout } from '../../layouts/form-layout/form-layout';
+import { Button } from '../../components/button/button';
+import { Form } from '../../modules/form/form';
+import { Field } from '../../components/field/field';
+import { TextInput } from '../../components/text-input/text-input';
+import { validator } from '../../utils/validator';
 
 const loginField = new Field({
   label: 'Логин',
@@ -81,4 +81,4 @@ class LoginPage extends Block<TLoginPageProps> {
   }
 }
 
-export default LoginPage;
+export { LoginPage };

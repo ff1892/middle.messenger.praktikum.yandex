@@ -1,5 +1,5 @@
 import tpl from './main-link.hbs';
-import Block from '../../services/block';
+import { Block } from '../../services/block';
 
 export type MainLinkProps = {
   attrs: {
@@ -7,9 +7,6 @@ export type MainLinkProps = {
     href: string,
   }
   text: string,
-  events: {
-    click: (e: MouseEvent) => void,
-  },
 }
 
 class MainLink extends Block<MainLinkProps> {
@@ -22,4 +19,4 @@ class MainLink extends Block<MainLinkProps> {
   }
 }
 
-export default MainLink;
+export { MainLink };

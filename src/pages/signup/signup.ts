@@ -1,12 +1,12 @@
 import tpl from './signup.hbs';
+import { Block } from '../../services/block';
+import { FormLayout } from '../../layouts/form-layout/form-layout';
+import { Button } from '../../components/button/button';
+import { Form } from '../../modules/form/form';
+import { Field } from '../../components/field/field';
+import { TextInput } from '../../components/text-input/text-input';
 import { Route } from '../../constants';
-import Block from '../../services/block';
-import FormLayout from '../../layouts/form-layout/form-layout';
-import Button from '../../components/button/button';
-import Form from '../../modules/form/form';
-import Field from '../../components/field/field';
-import TextInput from '../../components/text-input/text-input';
-import validator from '../../utils/validator';
+import { validator } from '../../utils/validator';
 
 const signupInputsData = [
   {
@@ -162,4 +162,4 @@ class SignupPage extends Block<SignupPageProps> {
   }
 }
 
-export default SignupPage;
+export { SignupPage };

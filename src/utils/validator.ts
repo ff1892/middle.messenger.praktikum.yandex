@@ -1,5 +1,5 @@
 import { InputRegexp, ValidationMessage } from '../constants';
-import getFormData from './get-formdata';
+import { getFormData } from './get-formdata';
 
 class Validator {
 
@@ -136,4 +136,4 @@ class Validator {
 
 const validator = new Validator();
 
-export default validator;
+export { validator };

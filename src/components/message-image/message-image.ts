@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './message-image.hbs';
+import { Block } from '../../services/block';
 
 type MessageImageProps = Record<string, any>;
 
@@ -22,4 +22,4 @@ class MessageImage extends Block<MessageImageProps> {
   }
 }
 
-export default MessageImage;
+export { MessageImage };

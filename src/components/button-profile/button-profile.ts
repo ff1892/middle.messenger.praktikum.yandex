@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './button-profile.hbs';
+import { Block } from '../../services/block';
 
 type ButtonProfileProps = {
   src: string,
@@ -23,4 +23,4 @@ class ButtonProfile extends Block<ButtonProfileProps> {
   }
 }
 
-export default ButtonProfile;
+export { ButtonProfile };

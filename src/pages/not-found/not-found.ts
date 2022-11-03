@@ -1,6 +1,6 @@
-import Block from '../../services/block';
-import ErrorLayout from '../../layouts/error-layout/error-layout';
 import tpl from './not-found.hbs';
+import { Block } from '../../services/block';
+import { ErrorLayout } from '../../layouts/error-layout/error-layout';
 import { getCurrentTime } from '../../utils/time';
 
 const currentDate = new Date();
@@ -29,4 +29,4 @@ class NotFoundPage extends Block<NotFoundPageProps> {
   }
 }
 
-export default NotFoundPage;
+export { NotFoundPage };

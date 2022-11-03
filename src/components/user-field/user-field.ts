@@ -1,6 +1,6 @@
 import tpl from './user-field.hbs';
-import Block from '../../services/block';
-import TextInput from '../text-input/text-input';
+import { Block } from '../../services/block';
+import { TextInput } from '../text-input/text-input';
 
 type UserFieldType = {
   label: string,
@@ -18,4 +18,4 @@ class UserField extends Block<UserFieldType> {
   }
 }
 
-export default UserField;
+export { UserField };

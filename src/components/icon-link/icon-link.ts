@@ -1,5 +1,5 @@
 import tpl from './icon-link.hbs';
-import Block from '../../services/block';
+import { Block } from '../../services/block';
 
 type IconLinkProps = {
   linkHref: string,
@@ -18,4 +18,4 @@ class IconLink extends Block<IconLinkProps> {
   }
 }
 
-export default IconLink;
+export { IconLink };

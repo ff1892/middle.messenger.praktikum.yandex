@@ -1,12 +1,11 @@
 import tpl from './chat.hbs';
-import Block from '../../services/block';
-import ChatPanel from '../../modules/chat-panel/chat-panel';
-import ChatPreview from '../../modules/chat-preview/chat-preview';
-import ChatHeader from '../../modules/chat-header/chat-header';
-import ChatMessage from '../../modules/chat-message/chat-message';
-import ChatConversation from '../../modules/chat-conversation/chat-conversation';
-
-import Avatar from '../../components/avatar/avatar';
+import { Block } from '../../services/block';
+import { ChatPanel } from '../../modules/chat-panel/chat-panel';
+import { ChatPreview } from '../../modules/chat-preview/chat-preview';
+import { ChatHeader } from '../../modules/chat-header/chat-header';
+import { ChatMessage } from '../../modules/chat-message/chat-message';
+import { ChatConversation } from '../../modules/chat-conversation/chat-conversation';
+import { Avatar } from '../../components/avatar/avatar';
 
 const avatar = new Avatar(({
   src: '/img/mock3.jpg',
@@ -31,4 +30,4 @@ class ChatPage extends Block<ChatPageProps> {
   }
 }
 
-export default ChatPage;
+export { ChatPage };

@@ -1,4 +1,4 @@
-import queryStringify from '../utils/query-stringify';
+import { queryStringify } from '../utils/query-stringify';
 import { ApiMethod } from '../constants';
 
 type Options = Record<string, any>;
@@ -85,4 +85,4 @@ class HTTPTransport {
   }
 }
 
-export default HTTPTransport;
+export { HTTPTransport };

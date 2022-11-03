@@ -1,6 +1,5 @@
-import Block from '../../services/block';
-import getFormData from '../../utils/get-formdata';
 import tpl from './search-input.hbs';
+import { Block } from '../../services/block';
 
 type SearchInputProps = {
   events: {
@@ -8,15 +7,8 @@ type SearchInputProps = {
   },
 };
 
-const searchInputProps = {
-  events: {
-    submit: getFormData,
-  },
-};
-
 class SearchInput extends Block<SearchInputProps> {
   constructor(props: SearchInputProps) {
-    props = searchInputProps;
     super('form', props);
     this.element?.classList.add('search-form');
   }
@@ -26,4 +18,4 @@ class SearchInput extends Block<SearchInputProps> {
   }
 }
 
-export default SearchInput;
+export { SearchInput };

@@ -1,13 +1,12 @@
 import tpl from './password-profile.hbs';
-import Block from '../../services/block';
-import UserLayout from '../../layouts/user-layout/user-layout';
-import UserForm from '../../modules/user-form/user-form';
-import UserField from '../../components/user-field/user-field';
-import Button from '../../components/button/button';
-import getFormData from '../../utils/get-formdata';
+import { Block } from '../../services/block';
+import { UserLayout } from '../../layouts/user-layout/user-layout';
+import { UserForm } from '../../modules/user-form/user-form';
+import { UserField } from '../../components/user-field/user-field';
+import { Button } from '../../components/button/button';
+import { TextInput } from '../../components/text-input/text-input';
+import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
-import TextInput from '../../components/text-input/text-input';
-import validator from '../../utils/validator';
 
 const formFieldsData = [
   {
@@ -103,4 +102,4 @@ class PasswordProfilePage extends Block<PasswordProfileType> {
   }
 }
 
-export default PasswordProfilePage;
+export { PasswordProfilePage };

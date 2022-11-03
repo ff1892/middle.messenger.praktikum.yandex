@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './icon-button.hbs';
+import { Block } from '../../services/block';
 
 type IconButtonProps = Record<string, any>;
 
@@ -18,4 +18,4 @@ class IconButton extends Block<IconButtonProps> {
   }
 }
 
-export default IconButton;
+export { IconButton };

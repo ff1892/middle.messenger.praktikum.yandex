@@ -7,4 +7,4 @@ const getFormData = (e: SubmitEvent): void => {
   });
 };
 
-export default getFormData;
+export { getFormData };

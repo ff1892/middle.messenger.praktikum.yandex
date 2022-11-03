@@ -1,7 +1,7 @@
 import menuIcon from 'bundle-text:../../../static/icons/menu.svg';
-import Block from '../../services/block';
 import tpl from './chat-header.hbs';
-import IconButton from '../../components/icon-button/icon-button';
+import { Block } from '../../services/block';
+import { IconButton } from '../../components/icon-button/icon-button';
 
 const iconButton = new IconButton({
   type: 'button',
@@ -22,4 +22,4 @@ class ChatHeader extends Block<ChatHeaderProps> {
   }
 }
 
-export default ChatHeader;
+export { ChatHeader };

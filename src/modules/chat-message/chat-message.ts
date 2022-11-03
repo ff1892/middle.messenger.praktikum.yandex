@@ -1,10 +1,10 @@
 import iconAttach from 'bundle-text:../../../static/icons/attach.svg';
 import iconSend from 'bundle-text:../../../static/icons/message.svg';
-import Block from '../../services/block';
 import tpl from './chat-message.hbs';
-import IconButton from '../../components/icon-button/icon-button';
-import MessageField from '../../components/message-field/message-field';
-import validator from '../../utils/validator';
+import { Block } from '../../services/block';
+import { IconButton } from '../../components/icon-button/icon-button';
+import { MessageField } from '../../components/message-field/message-field';
+import { validator } from '../../utils/validator';
 
 const attachButton = new IconButton({
   attrs: {
@@ -60,4 +60,4 @@ class ChatMessage extends Block<ChatMessageProps> {
   }
 }
 
-export default ChatMessage;
+export { ChatMessage };

@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './message-field.hbs';
+import { Block } from '../../services/block';
 
 type MessageFieldProps = Record<string, any>;
 
@@ -19,4 +19,4 @@ class MessageField extends Block<MessageFieldProps> {
   }
 }
 
-export default MessageField;
+export { MessageField };

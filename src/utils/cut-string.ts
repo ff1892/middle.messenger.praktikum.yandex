@@ -2,4 +2,4 @@ const cutString = (symbolsCount: number, str: string): string => (str.length <= 
   ? str
   : `${str.slice(0, symbolsCount - 2)}...`);
 
-export default cutString;
+export { cutString };

@@ -1,7 +1,7 @@
 import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
-import Block from '../../services/block';
-import IconLink from '../../components/icon-link/icon-link';
 import tpl from './error-layout.hbs';
+import { Block } from '../../services/block';
+import { IconLink } from '../../components/icon-link/icon-link';
 import { Route } from '../../constants';
 
 type ErrorLayoutProps = {
@@ -28,4 +28,4 @@ class ErrorLayout extends Block<ErrorLayoutProps> {
   }
 }
 
-export default ErrorLayout;
+export { ErrorLayout };

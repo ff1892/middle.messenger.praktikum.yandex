@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './text-input.hbs';
+import { Block } from '../../services/block';
 
 type TextInputProps = {
   attrs: {
@@ -26,4 +26,4 @@ class TextInput extends Block<TextInputProps> {
   }
 }
 
-export default TextInput;
+export { TextInput };

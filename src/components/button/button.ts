@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './button.hbs';
+import { Block } from '../../services/block';
 
 type ButtonProps = {
   attrs: {
@@ -19,4 +19,4 @@ class Button extends Block<ButtonProps> {
   }
 }
 
-export default Button;
+export { Button };

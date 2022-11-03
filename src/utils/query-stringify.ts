@@ -9,4 +9,4 @@ const queryStringify = (data: Record<any, any>) => {
     .join('&')}`;
 };
 
-export default queryStringify;
+export { queryStringify };

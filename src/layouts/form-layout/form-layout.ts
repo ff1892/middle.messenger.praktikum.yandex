@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './form-layout.hbs';
+import { Block } from '../../services/block';
 
 type FormLayoutProps = {
   layoutElement: Block<any>;
@@ -16,4 +16,4 @@ class FormLayout extends Block<FormLayoutProps> {
   }
 }
 
-export default FormLayout;
+export { FormLayout };

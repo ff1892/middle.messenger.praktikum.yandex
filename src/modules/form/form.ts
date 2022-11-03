@@ -1,6 +1,6 @@
-import Block from '../../services/block';
 import tpl from './form.hbs';
-import Field from '../../components/field/field';
+import { Block } from '../../services/block';
+import { Field } from '../../components/field/field';
 
 type FormProps = {
   title: string,
@@ -25,4 +25,4 @@ class Form extends Block<FormProps> {
   }
 }
 
-export default Form;
+export { Form };

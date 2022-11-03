@@ -1,9 +1,9 @@
 import checkIcon from 'bundle-text:../../../static/icons/check.svg';
 import doubleheckIcon from 'bundle-text:../../../static/icons/double-check.svg';
-import Block from '../../services/block';
 import tpl from './chat-preview.hbs';
-import Preview from '../../components/preview/preview';
-import Avatar from '../../components/avatar/avatar';
+import { Block } from '../../services/block';
+import { Preview } from '../../components/preview/preview';
+import { Avatar } from '../../components/avatar/avatar';
 
 type ChatPreviewProps = Record<string, any>
 
@@ -39,4 +39,4 @@ class ChatPreview extends Block<ChatPreviewProps> {
   }
 }
 
-export default ChatPreview;
+export { ChatPreview };

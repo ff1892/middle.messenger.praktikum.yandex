@@ -1,6 +1,6 @@
-import Block from '../../services/block';
 import tpl from './preview.hbs';
-import cutString from '../../utils/cut-string';
+import { Block } from '../../services/block';
+import { cutString } from '../../utils/cut-string';
 
 type PreviewProps = Record<string, any>;
 
@@ -17,4 +17,4 @@ class Preview extends Block<PreviewProps> {
   }
 }
 
-export default Preview;
+export { Preview };

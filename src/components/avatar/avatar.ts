@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './avatar.hbs';
+import { Block } from '../../services/block';
 
 type AvatarProps = {
   src: string,
@@ -18,4 +18,4 @@ class Avatar extends Block<AvatarProps> {
   }
 }
 
-export default Avatar;
+export { Avatar };

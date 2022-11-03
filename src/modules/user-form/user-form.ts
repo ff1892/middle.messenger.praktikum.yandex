@@ -1,7 +1,7 @@
 import tpl from './user-form.hbs';
-import Block from '../../services/block';
-import UserField from '../../components/user-field/user-field';
-import Button from '../../components/button/button';
+import { Block } from '../../services/block';
+import { UserField } from '../../components/user-field/user-field';
+import { Button } from '../../components/button/button';
 
 type UserFormType = {
   avatar: string,
@@ -29,4 +29,4 @@ class UserForm extends Block<UserFormType> {
   }
 }
 
-export default UserForm;
+export { UserForm };

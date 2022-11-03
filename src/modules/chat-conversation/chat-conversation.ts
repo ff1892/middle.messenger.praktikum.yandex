@@ -1,7 +1,7 @@
-import Block from '../../services/block';
 import tpl from './chat-conversation.hbs';
-import Message from '../../components/message/message';
-import MessageImage from '../../components/message-image/message-image';
+import { Block } from '../../services/block';
+import { Message } from '../../components/message/message';
+import { MessageImage } from '../../components/message-image/message-image';
 
 const mockText = 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.';
 
@@ -59,4 +59,4 @@ class ChatConversation extends Block<ChatConversationProps> {
   }
 }
 
-export default ChatConversation;
+export { ChatConversation };
