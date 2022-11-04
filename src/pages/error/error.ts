@@ -19,7 +19,7 @@ class ErrorPage extends Block<ErrorPageProps> {
   constructor(props: ErrorPageProps = {}) {
     props.errorLayout = new ErrorLayout(layoutData);
 
-    super('div', props);
+    super('main', props);
     this.element?.classList.add('error-page');
   }
 

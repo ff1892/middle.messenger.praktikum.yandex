@@ -21,7 +21,7 @@ class MainPage extends Block<TMainPageProps> {
   constructor(props: TMainPageProps = {}) {
     props.mainLinks = mainLinks;
 
-    super('div', props);
+    super('main', props);
     this.element!.classList.add('main-page');
   }
 

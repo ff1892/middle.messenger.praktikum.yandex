@@ -21,7 +21,7 @@ class ChatPage extends Block<ChatPageProps> {
     props.header = new ChatHeader({ avatar, title: 'Алексей Петрович' });
     props.conversation = new ChatConversation();
     props.message = new ChatMessage();
-    super('div', props);
+    super('main', props);
     this.element?.classList.add('chat');
   }
 

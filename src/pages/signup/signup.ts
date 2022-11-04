@@ -154,7 +154,7 @@ type SignupPageProps = Record<string, any>;
 
 class SignupPage extends Block<SignupPageProps> {
   constructor(props: SignupPageProps = {}) {
-    super('div', { ...props, formLayout });
+    super('main', { ...props, formLayout });
   }
 
   render() {

@@ -56,23 +56,24 @@
     border: none;
     margin: 0;
     padding: 0;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 
   &__field {
     margin-bottom: 15px;
   }
 
-  &__submit {
-    align-self: flex-start;
-    margin-bottom: 20px;
+  &__footer {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__submit {
     font-size: 15px;
   }
 
   &__link {
-    align-self: flex-start;
     font-size: 15px;
     color: $color-blue;
     text-decoration: none;

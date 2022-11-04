@@ -20,7 +20,7 @@ class NotFoundPage extends Block<NotFoundPageProps> {
   constructor(props: NotFoundPageProps = {}) {
     props.errorLayout = new ErrorLayout(layoutData);
 
-    super('div', props);
+    super('main', props);
     this.element?.classList.add('notfound-page');
   }
 

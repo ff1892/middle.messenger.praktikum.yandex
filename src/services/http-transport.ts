@@ -2,46 +2,27 @@ import { queryStringify } from '../utils/query-stringify';
 import { ApiMethod } from '../constants';
 
 type Options = Record<string, any>;
+type HTTPMethod = (url: string, options?: Options) => Promise<unknown>;
 
 class HTTPTransport {
 
-  get(url:string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.GET },
-      options.timeout,
-    );
-  }
+  get: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.GET }, options.timeout)
+  );
 
-  post(url: string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.POST },
-      options.timeout,
-    );
-  }
+  post: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.POST }, options.timeout)
+  );
 
-  put(url: string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.PUT },
-      options.timeout,
-    );
-  }
+  put: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.PUT }, options.timeout)
+  );
 
-  delete(url:string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.DELETE },
-      options.timeout,
-    );
-  }
+  delete: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.DELETE }, options.timeout)
+  );
 
-  request(
-    url:string,
-    options: Options = {},
-    timeout = 5000,
-  ) {
+  request(url:string, options: Options = {}, timeout = 5000) {
 
     const { headers = {}, method, data } = options;
 

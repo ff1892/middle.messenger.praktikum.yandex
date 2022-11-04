@@ -7,24 +7,23 @@ import { Route } from '../../constants';
 
 type UserLayoutProps = Record<string, any>;
 
-const iconLink = new IconLink({
-  linkHref: Route.CHAT,
-  linkText: 'Вернуться к чатам',
-  icon: iconArrow,
-});
-
-const button = new Button({
-  attrs: {
-    class: 'button',
-    type: 'button',
-  },
-  value: 'Выйти',
-});
-
 class UserLayout extends Block<UserLayoutProps> {
   constructor(props: UserLayoutProps = {}) {
-    props.iconLink = iconLink;
-    props.button = button;
+
+    props.iconLink = new IconLink({
+      linkHref: Route.CHAT,
+      linkText: 'Вернуться к чатам',
+      icon: iconArrow,
+    });
+
+    props.button = new Button({
+      attrs: {
+        class: 'button',
+        type: 'button',
+      },
+      value: 'Выйти',
+    });
+
     super('section', props);
     this.element?.classList.add('user-layout');
   }

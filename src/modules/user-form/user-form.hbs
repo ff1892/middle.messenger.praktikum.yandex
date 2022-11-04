@@ -31,9 +31,11 @@
     </div>
   {{/each}}
 </fieldset>
-  <div class="user-form__submit">
-    {{{button}}}
+  <div class="user-form__footer">
+    <div class="user-form__submit">
+      {{{button}}}
+    </div>
+    {{#if link}}
+      <a class="user-form__link" href="{{link.href}}">{{link.text}}</a>
+    {{/if}}
   </div>
-  {{#if link}}
-    <a class="user-form__link" href="{{link.href}}">{{link.text}}</a>
-  {{/if}}

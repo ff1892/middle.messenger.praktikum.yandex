@@ -73,7 +73,7 @@ type TLoginPageProps = Record<string, any>;
 
 class LoginPage extends Block<TLoginPageProps> {
   constructor(props: TLoginPageProps = {}) {
-    super('div', { ...props, formLayout });
+    super('main', { ...props, formLayout });
   }
 
   render() {
