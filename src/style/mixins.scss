@@ -1,0 +1,27 @@
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin absolute($width, $height, $content: '') {
+  position: absolute;
+  height: $height;
+  content: $content;
+
+  @if $width != 'none' {
+    width: $width;
+  }
+
+  @if $height != 'none' {
+    height: $height;
+  }
+}
+
+@mixin resetList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+

@@ -26,10 +26,7 @@
     color: $color-white;
 
     ::before {
-      position: absolute;
-      content: '';
-      width: 20px;
-      height: 20px;
+      @include absolute(20px, 20px, '');
       bottom: 18px;
       right: 20px;
       background-image: url('../static/icons/tick.svg');
@@ -38,10 +35,7 @@
 
   &--read {
     ::after {
-      position: absolute;
-      content: '';
-      width: 20px;
-      height: 20px;
+      @include absolute(20px, 20px, '');
       bottom: 18px;
       right: 15px;
       background-image: url('../static/icons/tick.svg');

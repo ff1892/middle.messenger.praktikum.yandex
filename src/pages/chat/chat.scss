@@ -35,9 +35,7 @@
     position: relative;
 
     &::before {
-      position: absolute;
-      content: '';
-      height: 2px;
+      @include absolute('none', 2px, '');
       top: 0;
       left: 15px;
       right: 15px;
