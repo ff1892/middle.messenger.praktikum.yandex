@@ -11,9 +11,11 @@ class UserLayout extends Block<UserLayoutProps> {
   constructor(props: UserLayoutProps = {}) {
 
     props.iconLink = new IconLink({
-      linkHref: Route.CHAT,
       linkText: 'Вернуться к чатам',
       icon: iconArrow,
+      attrs: {
+        href: Route.CHAT,
+      },
     });
 
     props.button = new Button({

@@ -7,6 +7,8 @@ import { Field } from '../../components/field/field';
 import { TextInput } from '../../components/text-input/text-input';
 import { Route } from '../../constants';
 import { validator } from '../../utils/validator';
+import { Link } from '../../components/link/link';
+import { router } from '../../services/router';
 
 const signupInputsData = [
   {
@@ -135,10 +137,12 @@ const signupFormProps = {
   title: 'Регистрация',
   inputs: signupInputs,
   button,
-  link: {
-    href: Route.LOGIN,
+  link: new Link({
     text: 'Есть аккаунт?',
-  },
+    attrs: {
+      href: Route.LOGIN,
+    },
+  }),
   events: {
     submit: validator.handleSubmit,
   },

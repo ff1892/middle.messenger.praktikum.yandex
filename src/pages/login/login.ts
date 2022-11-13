@@ -7,6 +7,8 @@ import { Form } from '../../modules/form/form';
 import { Field } from '../../components/field/field';
 import { TextInput } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
+import { Link } from '../../components/link/link';
+import { router } from '../../services/router';
 
 const loginField = new Field({
   label: 'Логин',
@@ -54,10 +56,12 @@ const loginFormProps = {
   title: 'Вход',
   inputs: [loginField, passwordField],
   button,
-  link: {
-    href: Route.SIGNUP,
+  link: new Link({
     text: 'Нет аккаунта?',
-  },
+    attrs: {
+      href: Route.SIGNUP,
+    },
+  }),
   events: {
     submit: validator.handleSubmit,
   },

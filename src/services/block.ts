@@ -5,7 +5,7 @@ import { EventBus } from './event-bus';
 
 type Nullable<T> = T | null;
 
-class Block<P extends Record<string, any>> {
+class Block<P extends Record<string, any> = any> {
 
   static EVENTS = {
     INIT: 'init',

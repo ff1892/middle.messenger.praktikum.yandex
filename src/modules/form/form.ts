@@ -1,13 +1,11 @@
 import tpl from './form.hbs';
 import { Block } from '../../services/block';
 import { Field } from '../../components/field/field';
+import { Link } from '../../components/link/link'
 
 type FormProps = {
   title: string,
-  link?: {
-    href: string,
-    text: string,
-  }
+  link?: Link,
   inputs: Field[],
   events: {
     submit: (e: SubmitEvent) => void;

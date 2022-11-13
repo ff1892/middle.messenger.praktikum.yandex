@@ -15,9 +15,11 @@ type ErrorLayoutProps = {
 class ErrorLayout extends Block<ErrorLayoutProps> {
   constructor(props: ErrorLayoutProps) {
     props.iconLink = new IconLink({
-      linkHref: Route.MAIN,
       icon: iconArrow,
-      linkText: 'На главную',
+      linkText: 'Вернуться к чатам',
+      attrs: {
+        href: Route.CHAT,
+      }
     });
     super('section', props);
     this.element?.classList.add('error-layout');

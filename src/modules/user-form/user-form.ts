@@ -2,6 +2,7 @@ import tpl from './user-form.hbs';
 import { Block } from '../../services/block';
 import { UserField } from '../../components/user-field/user-field';
 import { Button } from '../../components/button/button';
+import { Link } from '../../components/link/link';
 
 type UserFormType = {
   avatar: string,
@@ -9,10 +10,7 @@ type UserFormType = {
   inputs: UserField[];
   title: string,
   button: Button,
-  link?: {
-    href: string,
-    text: string,
-  },
+  link?: Link,
   events: {
     submit: (e: SubmitEvent) => void;
   }

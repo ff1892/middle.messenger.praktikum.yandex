@@ -4,7 +4,7 @@ export const Route = {
   SIGNUP: '/signup',
   CHAT: '/chat',
   USERFORM: '/userform',
-  PASSWORDFORM: 'passwordform',
+  PASSWORDFORM: '/passwordform',
   NOTFOUND: '/notfound',
   ERROR: '/error',
 };
@@ -50,3 +50,7 @@ export const routesWithLabel: Array<{ label: string, route: string }> = [
   { label: 'Ошибка 404', route: Route.NOTFOUND },
   { label: 'Ошибка 500', route: Route.ERROR },
 ];
+
+export const StoreEvents = {
+  Updated: 'updated',
+};

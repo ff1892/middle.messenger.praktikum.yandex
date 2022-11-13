@@ -7,6 +7,7 @@ import { Button } from '../../components/button/button';
 import { TextInput } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
+import { Link } from '../../components/link/link';
 
 const formFieldsData = [
   {
@@ -75,10 +76,12 @@ const passwordForm = new UserForm({
   title: 'Алекс',
   avatar: 'img/avatar-default.png',
   avatarDescription: 'Аватар по умолчанию',
-  link: {
-    href: Route.USERFORM,
+  link: new Link({
     text: 'Изменить данные профиля',
-  },
+    attrs: {
+      href: Route.USERFORM,
+    },
+  }),
   button,
   inputs,
   events: {
@@ -93,7 +96,7 @@ class PasswordProfilePage extends Block<PasswordProfileType> {
     props.userLayout = new UserLayout({
       form: passwordForm,
     });
-    super('section', props);
+    super('main', props);
     this.element?.classList.add('user-profile-page');
   }
 

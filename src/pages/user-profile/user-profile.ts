@@ -8,6 +8,7 @@ import { TextInput } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { userData } from './user.data';
+import { Link } from '../../components/link/link';
 
 const inputs = userData.map(({ label, ...rest }) => (
   new UserField({ label, input: new TextInput(rest) })
@@ -25,10 +26,12 @@ const userForm = new UserForm({
   title: 'Алекс',
   avatar: 'img/avatar-default.png',
   avatarDescription: 'Аватар по умолчанию',
-  link: {
-    href: Route.PASSWORDFORM,
+  link: new Link({
     text: 'Изменить пароль',
-  },
+    attrs: {
+      href: Route.PASSWORDFORM,
+    },
+  }),
   button,
   inputs,
   events: {
@@ -43,7 +46,7 @@ class UserProfilePage extends Block<UserProfileType> {
     props.userLayout = new UserLayout({
       form: userForm,
     });
-    super('section', props);
+    super('main', props);
     this.element?.classList.add('user-profile-page');
   }
 

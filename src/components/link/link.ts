@@ -1,10 +1,9 @@
-import tpl from './icon-link.hbs';
+import tpl from './link.hbs';
 import { Block } from '../../services/block';
 import { router } from '../../services/router';
 
-type IconLinkProps = {
-  icon: string,
-  linkText: string,
+type LinkProps = {
+  text: string,
   attrs: {
     href: string,
   },
@@ -13,8 +12,9 @@ type IconLinkProps = {
   }
 }
 
-class IconLink extends Block<IconLinkProps> {
-  constructor(props: IconLinkProps) {
+class Link extends Block<LinkProps> {
+  constructor(props: LinkProps) {
+
     super('a', {...props, events: {
       click: (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ class IconLink extends Block<IconLinkProps> {
       }
     }});
 
-    this.element?.classList.add('icon-link');
+    this.element?.classList.add('link');
   }
 
   render() {
@@ -30,4 +30,4 @@ class IconLink extends Block<IconLinkProps> {
   }
 }
 
-export { IconLink };
+export { Link };
