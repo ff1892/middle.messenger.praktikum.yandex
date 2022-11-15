@@ -1,4 +1,4 @@
-const queryStringify = (data: Record<any, any>) => {
+const queryStringify = (data: Record<any, any>): string => {
 
   if (typeof data !== 'object') {
     return '';

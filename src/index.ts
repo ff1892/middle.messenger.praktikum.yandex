@@ -10,6 +10,9 @@ import { Route } from './constants';
 import { router } from './services/router';
 import { Block } from './services/block';
 
+import { authAPI } from './api/auth-api';
+import { MOCK_DATA } from './mock';
+
 
 const onDomLoaded = () => {
   router
@@ -25,3 +28,7 @@ const onDomLoaded = () => {
 };
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
+
+// authAPI.logout();
+// authAPI.login(MOCK_DATA.login);
+authAPI.getUser();

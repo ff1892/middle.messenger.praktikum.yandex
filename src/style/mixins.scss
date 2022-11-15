@@ -4,9 +4,8 @@
   align-items: center;
 }
 
-@mixin absolute($width, $height, $content: '') {
+@mixin absolute($width, $height: '', $content: '') {
   position: absolute;
-  height: $height;
   content: $content;
 
   @if $width != 'none' {

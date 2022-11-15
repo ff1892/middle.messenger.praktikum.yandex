@@ -1,10 +1,11 @@
-const getFormData = (e: SubmitEvent): void => {
-  e.preventDefault();
+const getFormData = (e: SubmitEvent): Record<string, any> => {
   const formData = new FormData(e.target as HTMLFormElement);
-  [...formData].forEach(([name, value]) => {
-    // eslint-disable-next-line no-console
-    console.log(`${name}: ${value}`);
+  const data: Record<string, any> = {};
+  [...formData].forEach(([key, value]) => {
+    data[key] = value;
   });
+  console.log(data);
+  return data;
 };
 
 export { getFormData };

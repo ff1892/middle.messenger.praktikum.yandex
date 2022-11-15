@@ -10,49 +10,53 @@ import { validator } from '../../utils/validator';
 import { Link } from '../../components/link/link';
 import { router } from '../../services/router';
 
-const loginField = new Field({
-  label: 'Логин',
-  input: new TextInput({
+
+const loginInput = new TextInput({
     attrs: {
       name: 'login',
       type: 'text',
-      placeholder: 'MessengerCeo',
+      placeholder: 'Your login',
     },
     events: {
       focus: validator.handleFocus,
       blur: validator.handleFocus,
       input: validator.handleChange,
     },
-  }),
+});
+
+const passwordInput = new TextInput({
+  attrs: {
+    name: 'password',
+    type: 'password',
+    placeholder: '●●●●●',
+  },
+  events: {
+    focus: validator.handleFocus,
+    blur: validator.handleFocus,
+    input: validator.handleChange,
+  },
+});
+
+
+const loginField = new Field({
+  label: 'Логин',
+  input: loginInput,
 });
 
 const passwordField = new Field({
   label: 'Пароль',
-  input: new TextInput({
-    attrs: {
-      name: 'password',
-      type: 'password',
-      placeholder: '●●●●●',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
-    },
-  }),
+  input: passwordInput,
 });
 
-const buttonProps = {
+const button = new Button({
   attrs: {
     class: 'button',
     type: 'submit',
   },
   value: 'Войти',
-};
+});
 
-const button = new Button(buttonProps);
-
-const loginFormProps = {
+const loginForm = new Form({
   title: 'Вход',
   inputs: [loginField, passwordField],
   button,
@@ -65,18 +69,14 @@ const loginFormProps = {
   events: {
     submit: validator.handleSubmit,
   },
-};
-
-const loginForm = new Form(loginFormProps);
+});
 
 const formLayout = new FormLayout({
   layoutElement: loginForm,
 });
 
-type TLoginPageProps = Record<string, any>;
-
-class LoginPage extends Block<TLoginPageProps> {
-  constructor(props: TLoginPageProps = {}) {
+class LoginPage extends Block<{}> {
+  constructor(props = {}) {
     super('main', { ...props, formLayout });
   }
 

@@ -8,7 +8,12 @@
   border-radius: 50px;
   font-size: inherit;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $color-blue-dark;
+  }
+
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
   }
 }

@@ -107,16 +107,43 @@ class Validator {
     }
   }
 
+  private _disableButton(e: SubmitEvent) {
+    const form = e.target as HTMLFormElement;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (!button) {
+      return;
+    }
+    button.disabled = true;
+  }
+
+  private _enableButton(input: HTMLInputElement) {
+    const form = input.closest('form');
+    if (!form) {
+      return;
+    }
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (!button) {
+      return;
+    }
+    button.disabled = false;
+  }
+
   public handleFocus(e: FocusEvent) {
     this._validateInput(e.target as HTMLInputElement);
   }
 
   public handleChange(e: KeyboardEvent) {
-    this._removeError(e.target as HTMLInputElement);
+    const input = e.target as HTMLInputElement;
+    this._removeError(input);
+    this._enableButton(input);
+  }
+
+  public getFormData(e: SubmitEvent) {
+    return getFormData(e);
   }
 
   public handleSubmit(e: SubmitEvent) {
-    getFormData(e);
+    e.preventDefault();
 
     const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
@@ -124,12 +151,8 @@ class Validator {
     inputs.forEach(this._validateInput);
     const isValidForm = [...inputs].every(this._checkIsValid);
 
-    if (isValidForm) {
-      // eslint-disable-next-line no-console
-      console.log('Все поля валидны');
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('Какие-то поля невалидны');
+    if (!isValidForm) {
+      this._disableButton(e);
     }
   }
 }

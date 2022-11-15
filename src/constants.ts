@@ -1,3 +1,22 @@
+export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+
+export const HEADERS_DEFAULT = {['content-type']: 'application/json'};
+
+export enum ConvertMethod {
+  TO_SNAKE_CASE = 'snakeCase',
+  TO_CAMEL_CASE = 'camelCase',
+}
+
+export const ApiRoute = {
+  AUTH: '/auth',
+  CHATS: '/chats',
+  USERS: '/users',
+  AUTH_SIGNUP: '/signup',
+  AUTH_LOGIN: '/signin',
+  AUTH_USER: '/user',
+  AUTH_LOGOUT: '/logout',
+};
+
 export const Route = {
   MAIN: '/',
   LOGIN: '/login',
