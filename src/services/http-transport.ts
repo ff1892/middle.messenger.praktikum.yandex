@@ -52,19 +52,13 @@ class HTTPTransport {
         xhr.setRequestHeader(key, headers[key]);
       });
 
-      // if (json) {
-      //   xhr.setRequestHeader('content-type', 'application/json');
-      // }
-
-      // xhr.onload = () => {
-      //   if(xhr.status < 300) {
-      //     resolve(xhr)
-      //   } else {
-      //     reject(xhr);
-      //   }
-      // };
-
-      xhr.onload = () => resolve(xhr);
+      xhr.onload = () => {
+        if(xhr.status < 300) {
+          resolve(xhr)
+        } else {
+          reject(xhr);
+        }
+      };
 
       xhr.onabort = () => reject(xhr);
       xhr.onerror = () => reject(xhr);

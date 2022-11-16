@@ -12,23 +12,36 @@ import { Block } from './services/block';
 
 import { authAPI } from './api/auth-api';
 import { MOCK_DATA } from './mock';
+import { authController } from './controllers/auth-controller';
+import { store } from './services/store';
 
 
 const onDomLoaded = () => {
   router
-  .use(Route.MAIN, MainPage as typeof Block)
-  .use(Route.LOGIN, LoginPage as typeof Block)
-  .use(Route.SIGNUP, SignupPage as typeof Block)
-  .use(Route.CHAT, ChatPage as typeof Block)
-  .use(Route.USERFORM, UserProfilePage as typeof Block)
-  .use(Route.PASSWORDFORM, PasswordProfilePage as typeof Block)
-  .use(Route.NOTFOUND, NotFoundPage as typeof Block)
-  .use(Route.ERROR, ErrorPage as typeof Block)
-  .start();
+    .openPaths(Route.LOGIN, Route.SIGNUP, Route.ERROR, Route.NOTFOUND)
+    .hideAuthPaths(Route.LOGIN, Route.SIGNUP)
+    .protectedCb(authController.checkUser.bind(authController))
+    .hiddenAuthCb(authController.checkHiddenAuth.bind(authController))
+    .use(Route.MAIN, MainPage as typeof Block)
+    .use(Route.LOGIN, LoginPage as typeof Block)
+    .use(Route.SIGNUP, SignupPage as typeof Block)
+    .use(Route.CHAT, ChatPage as typeof Block)
+    .use(Route.USERFORM, UserProfilePage as typeof Block)
+    .use(Route.PASSWORDFORM, PasswordProfilePage as typeof Block)
+    .use(Route.ERROR, ErrorPage as typeof Block)
+    .use(Route.NOTFOUND, NotFoundPage as typeof Block)
+    .start();
 };
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
 
-// authAPI.logout();
+authAPI.logout();
 // authAPI.login(MOCK_DATA.login);
-authAPI.getUser();
+// authAPI.signup(MOCK_DATA.signup);
+// authAPI.getUser();
+
+// authAPI.login(MOCK_DATA.login);
+// authController.checkUser();
+// console.log(store.getState());
+
+// console.log(store.getState())

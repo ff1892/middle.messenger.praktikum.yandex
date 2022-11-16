@@ -6,16 +6,22 @@ import { Button } from '../../components/button/button';
 import { Form } from '../../modules/form/form';
 import { Field } from '../../components/field/field';
 import { TextInput } from '../../components/text-input/text-input';
-import { validator } from '../../utils/validator';
 import { Link } from '../../components/link/link';
-import { router } from '../../services/router';
+import { validator } from '../../utils/validator';
+import { authController } from '../../controllers/auth-controller';
+import { LoginModel } from '../../types/data-model';
 
+const handleSubmit = (e: SubmitEvent) => {
+  validator.handleSubmit(e);
+  const formData = validator.getFormData(e);
+  authController.login(e, formData as LoginModel);
+}
 
 const loginInput = new TextInput({
     attrs: {
       name: 'login',
       type: 'text',
-      placeholder: 'Your login',
+      placeholder: 'Логин',
     },
     events: {
       focus: validator.handleFocus,
@@ -48,6 +54,13 @@ const passwordField = new Field({
   input: passwordInput,
 });
 
+const link = new Link({
+  text: 'Нет аккаунта?',
+  attrs: {
+    href: Route.SIGNUP,
+  },
+})
+
 const button = new Button({
   attrs: {
     class: 'button',
@@ -60,14 +73,9 @@ const loginForm = new Form({
   title: 'Вход',
   inputs: [loginField, passwordField],
   button,
-  link: new Link({
-    text: 'Нет аккаунта?',
-    attrs: {
-      href: Route.SIGNUP,
-    },
-  }),
+  link,
   events: {
-    submit: validator.handleSubmit,
+    submit: handleSubmit,
   },
 });
 

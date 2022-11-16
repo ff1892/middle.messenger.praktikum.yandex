@@ -1,25 +1,23 @@
-import { isObject } from './is-object';
-
 type Indexed<T = any> = {
   [key in string]: T;
 };
 
 const merge = (lhs: Indexed, rhs: Indexed): Indexed => {
-  const stack = new Set();
-
-  Object.keys(rhs).forEach((key) => {
-    let finalVal = rhs[key];
-
-    if (!stack.has(finalVal)) {
-      stack.add(finalVal);
-      if (isObject(lhs[key] as Indexed) && isObject(rhs[key] as Indexed)) {
-        finalVal = merge(lhs[key] as Indexed, rhs[key] as Indexed);
-      }
-      lhs[key] = finalVal;
-      stack.delete(finalVal);
+  for (let p in rhs) {
+    if (!rhs.hasOwnProperty(p)) {
+        continue;
     }
 
-  });
+    try {
+      if (rhs[p].constructor === Object) {
+          rhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);
+      } else {
+          lhs[p] = rhs[p];
+      }
+    } catch(e) {
+        lhs[p] = rhs[p];
+    }
+  }
 
   return lhs;
 };
@@ -44,4 +42,7 @@ const setObject = (
   return merge(object as Indexed, result);
 };
 
-export { setObject };
+export {
+  setObject,
+  merge,
+};

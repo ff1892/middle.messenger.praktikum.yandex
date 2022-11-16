@@ -4,7 +4,6 @@ const getFormData = (e: SubmitEvent): Record<string, any> => {
   [...formData].forEach(([key, value]) => {
     data[key] = value;
   });
-  console.log(data);
   return data;
 };
 

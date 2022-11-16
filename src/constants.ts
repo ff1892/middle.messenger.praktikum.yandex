@@ -9,7 +9,7 @@ export enum ConvertMethod {
 
 export const ApiRoute = {
   AUTH: '/auth',
-  CHATS: '/chats',
+  CHATS: '/messenger',
   USERS: '/users',
   AUTH_SIGNUP: '/signup',
   AUTH_LOGIN: '/signin',
@@ -21,7 +21,7 @@ export const Route = {
   MAIN: '/',
   LOGIN: '/login',
   SIGNUP: '/signup',
-  CHAT: '/chat',
+  CHAT: '/messenger',
   USERFORM: '/userform',
   PASSWORDFORM: '/passwordform',
   NOTFOUND: '/notfound',
@@ -36,7 +36,7 @@ export const ApiMethod = {
 };
 
 export const InputRegexp: Record<string, RegExp> = {
-  LOGIN: /^[a-z]{1}[a-z\d\-_]{2,19}$/i,
+  LOGIN: /^[a-z]{1}[a-z\d\_-]{2,19}$/i,
   PASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   OLD_PASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   EMAIL: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
