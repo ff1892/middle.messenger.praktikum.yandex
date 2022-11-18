@@ -18,6 +18,8 @@ class Validator {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitAvatar = this.handleSubmitAvatar.bind(this);
+    this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
   }
 
   private _checkValue(value: string, regexp: RegExp) {
@@ -36,7 +38,7 @@ class Validator {
   private _checkIsValid(input: HTMLInputElement) {
     const inputName = input.name.toUpperCase();
 
-    if (inputName === 'PASSWORD_REPEAT') {
+    if (inputName === 'PASSWORDREPEAT') {
       return this._checkValueRepeat(input);
     }
 
@@ -153,7 +155,29 @@ class Validator {
 
     if (!isValidForm) {
       this._disableButton(e);
+      return false;
     }
+
+    return true;
+  }
+
+  public handleSubmitAvatar(e: SubmitEvent) {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+    const input = form.querySelector('input')!;
+
+    if (!input?.value) {
+      this._setText(input, ValidationMessage.AVATAR);
+      return false;
+    }
+
+    return true;
+  }
+
+  public handleChangeAvatar(e: FormDataEvent) {
+    const input = e.target as HTMLInputElement;
+    this._setText(input, '');
   }
 }
 

@@ -12,7 +12,10 @@ import { authController } from '../../controllers/auth-controller';
 import { LoginModel } from '../../types/data-model';
 
 const handleSubmit = (e: SubmitEvent) => {
-  validator.handleSubmit(e);
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
   const formData = validator.getFormData(e);
   authController.login(e, formData as LoginModel);
 }

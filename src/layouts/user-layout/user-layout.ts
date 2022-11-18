@@ -4,6 +4,7 @@ import { Block } from '../../services/block';
 import { IconLink } from '../../components/icon-link/icon-link';
 import { Button } from '../../components/button/button';
 import { Route } from '../../constants';
+import { authController } from '../../controllers/auth-controller';
 
 type UserLayoutProps = Record<string, any>;
 
@@ -24,6 +25,9 @@ class UserLayout extends Block<UserLayoutProps> {
         type: 'button',
       },
       value: 'Выйти',
+      events: {
+        click: authController.logout.bind(authController),
+      },
     });
 
     super('section', props);

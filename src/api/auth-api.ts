@@ -21,12 +21,12 @@ class AuthAPI extends BaseAPI {
     );
   }
 
-  getUser() {
-    return this.get(ApiRoute.AUTH_USER);
-  }
-
   logout() {
     return this.post(ApiRoute.AUTH_LOGOUT);
+  }
+
+  getUser() {
+    return this.get(ApiRoute.AUTH_USER);
   }
 }
 

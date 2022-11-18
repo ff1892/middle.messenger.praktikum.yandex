@@ -3,12 +3,11 @@ import { Block } from '../../services/block';
 import { UserField } from '../../components/user-field/user-field';
 import { Button } from '../../components/button/button';
 import { Link } from '../../components/link/link';
+import { UserFormHeader } from '../user-form-header/user-form-header';
 
 type UserFormType = {
-  avatar: string,
-  avatarDescription: string,
+  header: UserFormHeader,
   inputs: UserField[];
-  title: string,
   button: Button,
   link?: Link,
   events: {
@@ -18,7 +17,7 @@ type UserFormType = {
 
 class UserForm extends Block<UserFormType> {
   constructor(props: UserFormType) {
-    super('form', props);
+    super('section', props);
     this.element?.classList.add('user-form');
   }
 
@@ -26,5 +25,6 @@ class UserForm extends Block<UserFormType> {
     return this.compile(tpl, this.props);
   }
 }
+
 
 export { UserForm };

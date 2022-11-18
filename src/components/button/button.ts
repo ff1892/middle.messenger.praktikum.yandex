@@ -3,10 +3,12 @@ import { Block } from '../../services/block';
 
 type ButtonProps = {
   attrs: {
-    class: string,
+    class?: string,
     type: string,
+    'aria-label'?: string,
   },
-  value: string,
+  value?: string,
+  events?: Record<string, any>,
 }
 
 class Button extends Block<ButtonProps> {

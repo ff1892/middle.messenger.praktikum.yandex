@@ -1,4 +1,5 @@
 .message-form {
+
   &__fieldset {
     display: flex;
     align-items: center;
@@ -20,5 +21,21 @@
     left: 0;
     font-size: 10px;
     color: $color-red;
+  }
+
+  &__button {
+    position: relative;
+    margin-right: 20px;
+
+    &::before {
+      @include absolute(50px, 30px);
+      top: -20px;
+    }
+  }
+
+  &__popup {
+    min-width: 250px;
+    position: absolute;
+    bottom: 50px;
   }
 }

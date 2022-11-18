@@ -9,19 +9,16 @@ import { ChatPage } from './pages/chat/chat';
 import { Route } from './constants';
 import { router } from './services/router';
 import { Block } from './services/block';
-
-import { authAPI } from './api/auth-api';
-import { MOCK_DATA } from './mock';
 import { authController } from './controllers/auth-controller';
-import { store } from './services/store';
+
 
 
 const onDomLoaded = () => {
   router
     .openPaths(Route.LOGIN, Route.SIGNUP, Route.ERROR, Route.NOTFOUND)
-    .hideAuthPaths(Route.LOGIN, Route.SIGNUP)
+    // .hideAuthPaths(Route.LOGIN, Route.SIGNUP)
     .protectedCb(authController.checkUser.bind(authController))
-    .hiddenAuthCb(authController.checkHiddenAuth.bind(authController))
+    // .hiddenAuthCb(authController.checkHiddenAuth.bind(authController))
     .use(Route.MAIN, MainPage as typeof Block)
     .use(Route.LOGIN, LoginPage as typeof Block)
     .use(Route.SIGNUP, SignupPage as typeof Block)
@@ -34,14 +31,3 @@ const onDomLoaded = () => {
 };
 
 document.addEventListener('DOMContentLoaded', onDomLoaded);
-
-authAPI.logout();
-// authAPI.login(MOCK_DATA.login);
-// authAPI.signup(MOCK_DATA.signup);
-// authAPI.getUser();
-
-// authAPI.login(MOCK_DATA.login);
-// authController.checkUser();
-// console.log(store.getState());
-
-// console.log(store.getState())

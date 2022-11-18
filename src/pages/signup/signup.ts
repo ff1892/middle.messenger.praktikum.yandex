@@ -4,147 +4,50 @@ import { FormLayout } from '../../layouts/form-layout/form-layout';
 import { Button } from '../../components/button/button';
 import { Form } from '../../modules/form/form';
 import { Field } from '../../components/field/field';
-import { TextInput } from '../../components/text-input/text-input';
 import { Route } from '../../constants';
 import { validator } from '../../utils/validator';
 import { Link } from '../../components/link/link';
-import { router } from '../../services/router';
+import { signupInputsData } from './sign-up.data';
+import { SignupModel } from '../../types/data-model';
+import { authController } from '../../controllers/auth-controller';
 
-const signupInputsData = [
-  {
-    label: 'Логин',
-    input: new TextInput({
-      attrs: {
-        name: 'login',
-        type: 'text',
-        placeholder: 'MessengerCeo',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Имя',
-    input: new TextInput({
-      attrs: {
-        name: 'first_name',
-        type: 'text',
-        placeholder: 'Александр',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Фамилия',
-    input: new TextInput({
-      attrs: {
-        name: 'second_name',
-        type: 'text',
-        placeholder: 'Александров',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Почта',
-    input: new TextInput({
-      attrs: {
-        name: 'email',
-        type: 'text',
-        placeholder: 'messengerceo@yandex.ru',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Телефон',
-    input: new TextInput({
-      attrs: {
-        name: 'phone',
-        type: 'text',
-        placeholder: '+75555555555',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'password',
-        type: 'password',
-        placeholder: '●●●●●',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Повторите пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'password_repeat',
-        type: 'password',
-        placeholder: '●●●●●',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-];
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
+  const formData = validator.getFormData(e);
+  delete formData.passwordRepeat;
+  authController.signup(e, formData as SignupModel);
+}
 
 const signupInputs = signupInputsData.map((inputData) => {
   const inputProps = { ...inputData };
   return new Field(inputProps);
 });
 
-const buttonProps = {
+const button = new Button({
   attrs: {
     class: 'button',
     type: 'submit',
   },
   value: 'Зарегистрироваться',
-};
+});
 
-const button = new Button(buttonProps);
+const link = new Link({
+  text: 'Есть аккаунт?',
+    attrs: {
+      href: Route.LOGIN,
+    },
+});
 
 const signupFormProps = {
   title: 'Регистрация',
   inputs: signupInputs,
   button,
-  link: new Link({
-    text: 'Есть аккаунт?',
-    attrs: {
-      href: Route.LOGIN,
-    },
-  }),
+  link,
   events: {
-    submit: validator.handleSubmit,
+  submit: handleSubmit,
   },
 };
 
@@ -154,10 +57,8 @@ const formLayout = new FormLayout({
   layoutElement: signupForm,
 });
 
-type SignupPageProps = Record<string, any>;
-
-class SignupPage extends Block<SignupPageProps> {
-  constructor(props: SignupPageProps = {}) {
+class SignupPage extends Block<{}> {
+  constructor(props = {}) {
     super('main', { ...props, formLayout });
   }
 

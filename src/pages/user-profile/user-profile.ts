@@ -9,6 +9,8 @@ import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { userData } from './user.data';
 import { Link } from '../../components/link/link';
+import { modalAvatar } from '../../modules/modal/modal';
+import { userFormHeader } from '../../modules/user-form-header/user-form-header';
 
 const inputs = userData.map(({ label, ...rest }) => (
   new UserField({ label, input: new TextInput(rest) })
@@ -22,10 +24,10 @@ const button = new Button({
   value: 'Изменить данные',
 });
 
+
+
 const userForm = new UserForm({
-  title: 'Алекс',
-  avatar: 'img/avatar-default.png',
-  avatarDescription: 'Аватар по умолчанию',
+  header: userFormHeader,
   link: new Link({
     text: 'Изменить пароль',
     attrs: {

@@ -1,10 +1,43 @@
 import iconAttach from 'bundle-text:../../../static/icons/attach.svg';
 import iconSend from 'bundle-text:../../../static/icons/message.svg';
+import iconPhoto from 'bundle-text:../../../static/icons/photo.svg';
+import iconSticker from 'bundle-text:../../../static/icons/smile.svg';
 import tpl from './chat-message.hbs';
 import { Block } from '../../services/block';
 import { IconButton } from '../../components/icon-button/icon-button';
 import { MessageField } from '../../components/message-field/message-field';
 import { validator } from '../../utils/validator';
+import { BoxPopup } from '../../components/box-popup/box-popup';
+import { PopupLink } from '../../components/popup-link/popup-link';
+import { Popup } from '../../components/popup/popup';
+
+const filePopupLink = new PopupLink({
+  icon: iconPhoto,
+  text: 'Фото/видео',
+  attrs: {
+    type: 'button',
+    role: 'button',
+  },
+  events: {
+    click: () => alert('Add photo'),
+  },
+});
+
+const stickerPopupLink = new PopupLink({
+  icon: iconSticker,
+  text: 'Стикер',
+  attrs: {
+    type: 'button',
+    role: 'button',
+  },
+  events: {
+    click: () => alert('Add sticker'),
+  },
+});
+
+const popup = new Popup({
+  items: [filePopupLink, stickerPopupLink],
+})
 
 const attachButton = new IconButton({
   attrs: {
@@ -30,10 +63,24 @@ const messageField = new MessageField({
   },
 });
 
+const boxPopup = new BoxPopup({
+  attrs: {
+    class: 'message-form__button',
+  },
+  wrapperClass: 'message-form__popup',
+  iconButton: attachButton,
+  popup,
+  events: {
+    mouseenter: popup.showParent.bind(popup),
+    mouseleave: popup.hideParent.bind(popup),
+  },
+})
+
 type ChatMessageProps = {
   attachButton: IconButton,
   sendButton: IconButton,
   messageField: MessageField,
+  boxPopup: BoxPopup,
   events: {
     submit: (e: SubmitEvent) => void,
   },
@@ -43,6 +90,7 @@ export const chatMessageProps = {
   attachButton,
   sendButton,
   messageField,
+  boxPopup,
   events: {
     submit: validator.handleSubmit,
   },

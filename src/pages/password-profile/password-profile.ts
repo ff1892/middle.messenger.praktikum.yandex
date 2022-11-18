@@ -8,13 +8,14 @@ import { TextInput } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { Link } from '../../components/link/link';
+import { passwordFormHeader } from '../../modules/user-form-header/user-form-header';
 
 const formFieldsData = [
   {
     label: 'Старый пароль',
     input: new TextInput({
       attrs: {
-        name: 'old_password',
+        name: 'oldPassword',
         type: 'password',
         value: '',
         placeholder: 'Ваш старый пароль',
@@ -46,7 +47,7 @@ const formFieldsData = [
     label: 'Новый пароль',
     input: new TextInput({
       attrs: {
-        name: 'password_repeat',
+        name: 'passwordRepeat',
         type: 'password',
         value: '',
         placeholder: 'Повторите новый пароль',
@@ -73,9 +74,7 @@ const button = new Button({
 });
 
 const passwordForm = new UserForm({
-  title: 'Алекс',
-  avatar: 'img/avatar-default.png',
-  avatarDescription: 'Аватар по умолчанию',
+  header: passwordFormHeader,
   link: new Link({
     text: 'Изменить данные профиля',
     attrs: {

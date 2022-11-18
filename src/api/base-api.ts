@@ -1,7 +1,7 @@
 import { httpTransport } from '../services/http-transport';
 import { HEADERS_DEFAULT, BASE_URL } from '../constants';
 import { isObject } from '../utils/is-object';
-import { convertKeysToCamel } from '../utils/convert-keys';
+import { convertKeysToCamel, convertKeysToSnake } from '../utils/convert-keys';
 
 type OptionsType = Record<string, any>;
 type MethodType = (url: string, options?: OptionsType) => Promise<XMLHttpRequest>;
@@ -18,9 +18,11 @@ abstract class BaseAPI {
 
   private _setOptions(options?: OptionsType): OptionsType {
     const newOptions = options || {};
-    return newOptions.headers ?
-      newOptions
-      : { ...newOptions, headers: HEADERS_DEFAULT }
+    newOptions.headers ??= HEADERS_DEFAULT;
+    if (newOptions.data) {
+      newOptions.data = convertKeysToSnake(newOptions.data);
+    }
+    return newOptions;
   }
 
   private _getUrl(url: string) {

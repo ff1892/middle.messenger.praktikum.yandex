@@ -30,7 +30,7 @@ export const userData = [
   {
     label: 'Имя',
     attrs: {
-      name: 'first_name',
+      name: 'firstName',
       type: 'text',
       value: 'Александр',
     },
@@ -43,7 +43,7 @@ export const userData = [
   {
     label: 'Фамилия',
     attrs: {
-      name: 'second_name',
+      name: 'secondName',
       type: 'text',
       value: 'Александров',
     },
@@ -56,7 +56,7 @@ export const userData = [
   {
     label: 'Имя в чате',
     attrs: {
-      name: 'display_name',
+      name: 'displayName',
       type: 'text',
       value: 'Алекс',
     },

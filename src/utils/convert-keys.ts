@@ -1,3 +1,4 @@
+import { isObject } from './is-object';
 import { ConvertMethod } from '../constants';
 
 const convertToCamel = (str: string) => {
@@ -13,11 +14,15 @@ const convertToSnake = (str: string) => {
 }
 
 const convertKeys = (method: ConvertMethod) => (
-  (obj: Record<string, any>) => {
+  (data: Record<string, any>) => {
+
+    if (!isObject(data)) {
+      return data;
+    }
 
     const modified: Record<string, any> = {};
 
-    Object.entries(obj).forEach(([key, val]) => {
+    Object.entries(data).forEach(([key, val]) => {
       const newKey =
         method === ConvertMethod.TO_SNAKE_CASE ?
           convertToSnake(key)
