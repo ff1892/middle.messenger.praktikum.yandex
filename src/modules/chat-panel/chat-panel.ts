@@ -9,6 +9,7 @@ import { Route } from '../../constants';
 import { router } from '../../services/router';
 import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
 import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
+import { modalAddChat } from '../modal/modal';
 
 const profileLink = new PopupLink({
   icon: iconProfile,
@@ -29,7 +30,7 @@ const newChatBtn = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('NEW CHAT'),
+    click: () => modalAddChat.show(),
   }
 })
 

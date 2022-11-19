@@ -9,8 +9,8 @@ import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { userData } from './user.data';
 import { Link } from '../../components/link/link';
-import { modalAvatar } from '../../modules/modal/modal';
 import { userFormHeader } from '../../modules/user-form-header/user-form-header';
+import { connect } from '../../utils/connect';
 
 const inputs = userData.map(({ label, ...rest }) => (
   new UserField({ label, input: new TextInput(rest) })

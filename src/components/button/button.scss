@@ -16,4 +16,12 @@
     opacity: 0.8;
     cursor: not-allowed;
   }
+
+  &--secondary {
+    background-color: $color-red;
+  }
+
+  &--secondary:hover:not(:disabled) {
+    background-color: $color-red-dark;
+  }
 }

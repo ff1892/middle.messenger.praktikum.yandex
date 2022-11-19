@@ -20,6 +20,7 @@ class Validator {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitAvatar = this.handleSubmitAvatar.bind(this);
     this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   private _checkValue(value: string, regexp: RegExp) {
@@ -144,6 +145,13 @@ class Validator {
     return getFormData(e);
   }
 
+  public closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.remove();
+    }
+  }
+
   public handleSubmit(e: SubmitEvent) {
     e.preventDefault();
 
@@ -158,6 +166,7 @@ class Validator {
       return false;
     }
 
+    this.closeModal();
     return true;
   }
 

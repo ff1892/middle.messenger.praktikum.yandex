@@ -8,6 +8,11 @@ import { IconButton } from '../../components/icon-button/icon-button';
 import { Popup } from '../../components/popup/popup';
 import { PopupLink } from '../../components/popup-link/popup-link';
 import { BoxPopup } from '../../components/box-popup/box-popup';
+import {
+  modalAddUser,
+  modalDeleteUser,
+  modalConfirm,
+} from '../modal/modal';
 
 const addUserLink = new PopupLink({
   icon: addUserIcon,
@@ -17,7 +22,7 @@ const addUserLink = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('Add user')
+    click: () => modalAddUser.show(),
   },
 });
 
@@ -30,7 +35,7 @@ const deleteUserLink = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('Delete user')
+    click: () => modalDeleteUser.show(),
   },
 });
 
@@ -43,7 +48,7 @@ const deleteChatLink = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('Delete chat')
+    click: () => modalConfirm.show(),
   },
 });
 
