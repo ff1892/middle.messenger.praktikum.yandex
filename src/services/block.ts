@@ -182,15 +182,15 @@ class Block<P extends Record<string, any> = any> {
     const { props, children, childrenArr } = this._getChildren(nextProps);
 
     if (Object.values(props).length) {
-      Object.assign(this.props, nextProps);
+      Object.assign(this.props, props);
     }
 
     if (Object.values(children).length) {
-      Object.assign(this.children, nextProps);
+      Object.assign(this.children, children);
     }
 
     if (Object.values(childrenArr).length) {
-      Object.assign(this.childrenArr, nextProps);
+      Object.assign(this.childrenArr, childrenArr);
     }
 
     if (this._setUpdate) {
@@ -221,6 +221,10 @@ class Block<P extends Record<string, any> = any> {
 
   private _makeProxyProps(props: any) {
 
+    const setUpdate = () => {
+      this._setUpdate = true;
+    }
+
     return new Proxy(props, {
 
       get(target, prop) {
@@ -231,7 +235,7 @@ class Block<P extends Record<string, any> = any> {
       set(target, prop, value) {
         if (target[prop] !== value) {
           target[prop] = value;
-          this._setUpdate = true;
+          setUpdate();
         }
         return true;
       },
