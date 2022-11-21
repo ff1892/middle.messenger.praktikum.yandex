@@ -51,6 +51,9 @@ class Block<P extends Record<string, any> = any> {
 
   }
 
+  customize(): void {
+  }
+
   private _getChildren(propsAndChildren: P | {}) {
     const props: Record<string, any> = {};
     const children: Record<string, Block<P>> = {};
@@ -86,6 +89,7 @@ class Block<P extends Record<string, any> = any> {
   private _createResources() {
     const { tagName } = this._meta!;
     this._element = this._createDocumentElement(tagName);
+    this.customize();
     this.addAttribute();
   }
 

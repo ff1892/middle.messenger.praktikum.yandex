@@ -2,8 +2,20 @@ import tpl from './avatar-form.hbs';
 import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
 import { validator } from '../../utils/validator';
+import { userController } from '../../controllers/user-controller';
 
 type AvatarFormProps = Record<string, any>;
+
+
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmitAvatar(e);
+  if (!isValid) {
+    return;
+  }
+
+  const formData = new FormData(e.target as HTMLFormElement);
+  userController.updateAvatar(formData);
+}
 
 const avatarFormProps = {
   attrs: {
@@ -35,7 +47,7 @@ const avatarForm = new AvatarForm({
     value: 'Поменять аватар',
   }),
     events: {
-      submit: validator.handleSubmitAvatar,
+      submit: handleSubmit,
       change: validator.handleChangeAvatar,
     }
 });

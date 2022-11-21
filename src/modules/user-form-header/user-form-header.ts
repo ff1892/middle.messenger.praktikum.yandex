@@ -2,17 +2,12 @@ import tpl from './user-form-header.hbs';
 import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
 import { modalAvatar } from '../modal/modal';
+import { connect } from '../../utils/connect';
+import { RESOURCES_URL } from '../../constants';
 
-type UserFormHeaderType = {
-  avatar: string,
-  avatarDescription: string,
-  title: string,
-  buttonChange: Button,
-};
+class UserFormHeaderBase extends Block {
 
-class UserFormHeader extends Block<UserFormHeaderType> {
-  constructor(props: UserFormHeaderType) {
-    super('div', props);
+  customize() {
     this.element?.classList.add('user-form__header');
   }
 
@@ -21,10 +16,19 @@ class UserFormHeader extends Block<UserFormHeaderType> {
   }
 }
 
-const userFormHeader = new UserFormHeader({
-  title: 'Misha',
-  avatar: 'img/avatar-default.png',
-  avatarDescription: 'Аватар по умолчанию',
+const withUser = connect((state) => {
+  const user = {...state.currentUser }
+  return {
+    title: user.firstName,
+    avatar: user.avatar ? RESOURCES_URL + user.avatar : user.avatar,
+  }
+});
+
+const UserFormHeader = withUser(UserFormHeaderBase);
+
+const userFormHeader = new UserFormHeader('div', {
+  title: '',
+  avatar: null,
   buttonChange: new Button({
     attrs: {
       type: 'button',
@@ -37,7 +41,7 @@ const userFormHeader = new UserFormHeader({
   }),
 });
 
-const passwordFormHeader = new UserFormHeader({
+const passwordFormHeader = new UserFormHeader('div', {
   title: 'Misha',
   avatar: 'img/avatar-default.png',
   avatarDescription: 'Аватар по умолчанию',

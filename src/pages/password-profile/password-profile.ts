@@ -9,63 +9,36 @@ import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { Link } from '../../components/link/link';
 import { passwordFormHeader } from '../../modules/user-form-header/user-form-header';
+import { passwordFormData } from './password-profile.data';
+import { userController } from '../../controllers/user-controller';
 
-const formFieldsData = [
-  {
-    label: 'Старый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'oldPassword',
-        type: 'password',
-        value: '',
-        placeholder: 'Ваш старый пароль',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Новый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'password',
-        type: 'password',
-        value: '',
-        placeholder: 'Не менее шести символов',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Новый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'passwordRepeat',
-        type: 'password',
-        value: '',
-        placeholder: 'Повторите новый пароль',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-];
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
+  const formData = validator.getFormData(e);
+  delete formData.passwordRepeat;
+  userController.updatePassword(e, formData);
+}
 
-const inputs = formFieldsData.map((fieldData) => (
+const formFieldsData = passwordFormData.map(({label, attrs}) => ({
+  label,
+  input: new TextInput({
+    attrs,
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    }
+  }),
+}))
+
+const formInputs = formFieldsData.map((fieldData) => (
   new UserField(fieldData)
 ));
 
-const button = new Button({
+const submitButton = new Button({
   attrs: {
     class: 'button',
     type: 'submit',
@@ -73,18 +46,20 @@ const button = new Button({
   value: 'Изменить пароль',
 });
 
+const formLink = new Link({
+  text: 'Изменить данные профиля',
+  attrs: {
+    href: Route.USERFORM,
+  },
+});
+
 const passwordForm = new UserForm({
   header: passwordFormHeader,
-  link: new Link({
-    text: 'Изменить данные профиля',
-    attrs: {
-      href: Route.USERFORM,
-    },
-  }),
-  button,
-  inputs,
+  link: formLink,
+  button: submitButton,
+  inputs: formInputs,
   events: {
-    submit: validator.handleSubmit,
+    submit: handleSubmit,
   },
 });
 

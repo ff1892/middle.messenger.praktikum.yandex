@@ -9,6 +9,8 @@ export type UserModel = {
   avatar: string,
 };
 
+export type ProfileModel = Omit<UserModel, 'id'|'avatar'>
+
 export type SignupModel = {
   first_name: string,
   second_name: string,

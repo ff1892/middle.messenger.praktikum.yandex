@@ -4,19 +4,35 @@ import { UserLayout } from '../../layouts/user-layout/user-layout';
 import { UserForm } from '../../modules/user-form/user-form';
 import { UserField } from '../../components/user-field/user-field';
 import { Button } from '../../components/button/button';
-import { TextInput } from '../../components/text-input/text-input';
+import { TextInputBase, withValue } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
 import { userData } from './user.data';
 import { Link } from '../../components/link/link';
 import { userFormHeader } from '../../modules/user-form-header/user-form-header';
-import { connect } from '../../utils/connect';
+import { userController } from '../../controllers/user-controller';
 
-const inputs = userData.map(({ label, ...rest }) => (
-  new UserField({ label, input: new TextInput(rest) })
-));
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
+  const formData = validator.getFormData(e);
+  userController.updateProfile(formData);
+}
 
-const button = new Button({
+const formInputs = userData.map(({ label, ...rest }) => {
+
+  const select = withValue(rest.attrs.name);
+  const input = select(TextInputBase);
+
+  return new UserField({
+    label,
+    input: new input('input', rest),
+  });
+});
+
+const submitButton = new Button({
   attrs: {
     class: 'button',
     type: 'submit',
@@ -24,30 +40,34 @@ const button = new Button({
   value: 'Изменить данные',
 });
 
-
+const formLink = new Link({
+  text: 'Изменить пароль',
+  attrs: {
+    href: Route.PASSWORDFORM,
+  },
+});
 
 const userForm = new UserForm({
   header: userFormHeader,
-  link: new Link({
-    text: 'Изменить пароль',
-    attrs: {
-      href: Route.PASSWORDFORM,
-    },
-  }),
-  button,
-  inputs,
+  link: formLink,
+  button: submitButton,
+  inputs: formInputs,
   events: {
-    submit: validator.handleSubmit,
+    submit: handleSubmit,
   },
 });
+
+const userLayout = new UserLayout({
+  form: userForm,
+})
 
 type UserProfileType = Record<string, any>;
 
 class UserProfilePage extends Block<UserProfileType> {
   constructor(props: UserProfileType = {}) {
-    props.userLayout = new UserLayout({
-      form: userForm,
-    });
+
+    props.userLayout = userLayout;
+
     super('main', props);
     this.element?.classList.add('user-profile-page');
   }

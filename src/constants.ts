@@ -1,4 +1,5 @@
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+export const RESOURCES_URL = BASE_URL + '/resources';
 
 export const HEADERS_DEFAULT = {['content-type']: 'application/json'};
 
@@ -10,11 +11,14 @@ export enum ConvertMethod {
 export const ApiRoute = {
   AUTH: '/auth',
   CHATS: '/messenger',
-  USERS: '/users',
+  USER: '/user',
   AUTH_SIGNUP: '/signup',
   AUTH_LOGIN: '/signin',
   AUTH_USER: '/user',
   AUTH_LOGOUT: '/logout',
+  USER_PROFILE: '/profile',
+  USER_PASSWORD: '/password',
+  USER_AVATAR: '/profile/avatar',
 };
 
 export const Route = {
@@ -39,6 +43,7 @@ export const InputRegexp: Record<string, RegExp> = {
   LOGIN: /^[a-z]{1}[a-z\d\_-]{2,19}$/i,
   PASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   OLDPASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
+  NEWPASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   EMAIL: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
   PHONE: /^[+\d][\d]{9,14}$/,
   FIRSTNAME: /^[A-ZА-ЯЁ]{1}[A-Za-zА-Яa-яёЁ]{0,20}[-]?[A-Za-zА-Яa-яёЁ]{1,20}$/,
@@ -51,6 +56,7 @@ export const ValidationMessage: Record<string, string> = {
   LOGIN: 'От 3 до 20 символов: латиница, цифры, дефис и нижнее подчеркивание',
   PASSWORD: 'От 8 до 40 символов, хотя бы одна заглавная буква и цифра',
   OLDPASSWORD: 'От 8 до 40 символов, хотя бы одна заглавная буква и цифра',
+  NEWPASSWORD: 'От 8 до 40 символов, хотя бы одна заглавная буква и цифра',
   PASSWORDREPEAT: 'Пароли несовпадают или неверный формат пароля',
   EMAIL: 'Латиница, обязательно @',
   PHONE: 'От 10 до 15 цифр, может начинаться с +',

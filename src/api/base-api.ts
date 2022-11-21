@@ -19,7 +19,7 @@ abstract class BaseAPI {
   private _setOptions(options?: OptionsType): OptionsType {
     const newOptions = options || {};
     newOptions.headers ??= HEADERS_DEFAULT;
-    if (newOptions.data) {
+    if (newOptions.data && !newOptions.notConvert) {
       newOptions.data = convertKeysToSnake(newOptions.data);
     }
     return newOptions;
@@ -59,6 +59,22 @@ abstract class BaseAPI {
 
   post: MethodType = (url, options?) => {
     return this._http.post(
+      this._getUrl(url),
+      this._setOptions(options),
+    )
+    .then(this._parseResponse);
+  }
+
+  put: MethodType = (url, options?) => {
+    return this._http.put(
+      this._getUrl(url),
+      this._setOptions(options),
+    )
+    .then(this._parseResponse);
+  }
+
+  delete: MethodType = (url, options?) => {
+    return this._http.delete(
       this._getUrl(url),
       this._setOptions(options),
     )

@@ -36,6 +36,7 @@
   }
 
   &__img {
+    object-fit: cover;
     z-index: 2;
     border-radius: 50%;
     position: relative;

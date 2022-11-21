@@ -9,9 +9,9 @@ type Indexed<T = any> = {
 
 const connect = (mapStateToProps: (state: Indexed) => Indexed) => (
   (Component: typeof Block) => (
-    class extends Component {
+    class WithStore extends Component {
 
-      constructor(tagName: string, props: Indexed) {
+      constructor(tagName: string, props: Indexed = {}) {
 
         let state = mapStateToProps(store.getState());
 

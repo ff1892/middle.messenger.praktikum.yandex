@@ -29,7 +29,8 @@ class Validator {
 
   private _checkValueRepeat(input: HTMLInputElement) {
     const parent = input.closest('form') as HTMLFormElement;
-    const sibling = parent.querySelector('input[name="password"]') as HTMLInputElement;
+    const sibling = parent.querySelector('input[name="password"]') as HTMLInputElement
+    || parent.querySelector('input[name="newPassword"]') as HTMLInputElement;
 
     return input.value !== ''
       ? input.value === sibling.value
