@@ -1,5 +1,3 @@
-import { validator } from '../../utils/validator';
-
 export const userData = [
   {
     label: 'Почта',
@@ -7,11 +5,6 @@ export const userData = [
     attrs: {
       name: 'email',
       type: 'text',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
@@ -21,11 +14,6 @@ export const userData = [
       name: 'login',
       type: 'text',
     },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
-    },
   },
   {
     value: '',
@@ -33,11 +21,6 @@ export const userData = [
     attrs: {
       name: 'firstName',
       type: 'text',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
@@ -47,11 +30,6 @@ export const userData = [
       name: 'secondName',
       type: 'text',
     },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
-    },
   },
   {
     value: '',
@@ -60,11 +38,6 @@ export const userData = [
       name: 'displayName',
       type: 'text',
     },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
-    },
   },
   {
     value: '',
@@ -72,11 +45,6 @@ export const userData = [
     attrs: {
       name: 'phone',
       type: 'text',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
 ];

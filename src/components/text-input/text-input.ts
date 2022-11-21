@@ -1,7 +1,6 @@
 import tpl from './text-input.hbs';
 import { Block } from '../../services/block';
 import { connect } from '../../utils/connect';
-import { authController } from '../../controllers/auth-controller';
 
 type TextInputProps = {
   attrs: {
@@ -28,19 +27,20 @@ class TextInput extends Block<TextInputProps> {
   }
 }
 
-class TextInputBase extends Block {
+class TextInputStore extends Block {
 
   customize() {
     this.element?.classList.add('text-input');
   }
 
-  async componentDidMount() {
-    await authController.checkUser();
+  componentDidUpdate() {
     const element = this.element as HTMLInputElement;
     element.value = this.props.value;
+    return true;
   }
 
   render() {
+    console.log(this.compile(tpl, this.props));
     return this.compile(tpl, this.props);
   }
 };
@@ -55,4 +55,4 @@ const withValue = (name: string) => connect((state) => {
   return {value: ''};
 });
 
-export { TextInput, TextInputBase, withValue };
+export { TextInput, TextInputStore, withValue };

@@ -4,13 +4,13 @@ import { UserLayout } from '../../layouts/user-layout/user-layout';
 import { UserForm } from '../../modules/user-form/user-form';
 import { UserField } from '../../components/user-field/user-field';
 import { Button } from '../../components/button/button';
-import { TextInputBase, withValue } from '../../components/text-input/text-input';
+import { TextInputStore, withValue } from '../../components/text-input/text-input';
 import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
-import { userData } from './user.data';
 import { Link } from '../../components/link/link';
 import { userFormHeader } from '../../modules/user-form-header/user-form-header';
 import { userController } from '../../controllers/user-controller';
+import { userData } from './user.data';
 
 const handleSubmit = (e: SubmitEvent) => {
   const isValid = validator.handleSubmit(e);
@@ -21,15 +21,23 @@ const handleSubmit = (e: SubmitEvent) => {
   userController.updateProfile(formData);
 }
 
-const formInputs = userData.map(({ label, ...rest }) => {
-
-  const select = withValue(rest.attrs.name);
-  const input = select(TextInputBase);
+const formInputs = userData.map(({ label, value, attrs }) => {
+  const withName = withValue(attrs.name);
+  const InputWithName = withName(TextInputStore);
+  const currentInput = new InputWithName('input', {
+    value,
+    attrs,
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
+  })
 
   return new UserField({
     label,
-    input: new input('input', rest),
-  });
+    input: currentInput,
+  })
 });
 
 const submitButton = new Button({
