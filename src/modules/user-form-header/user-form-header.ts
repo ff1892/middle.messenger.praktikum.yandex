@@ -1,7 +1,7 @@
 import tpl from './user-form-header.hbs';
 import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
-import { modalAvatar } from '../modal/modal';
+import { modalAvatarUser } from '../modal/modal';
 import { connect } from '../../utils/connect';
 import { RESOURCES_URL } from '../../constants';
 
@@ -36,7 +36,7 @@ const userFormHeader = new UserFormHeader('div', {
     },
     value: 'Поменять аватар',
     events: {
-      click: modalAvatar.show.bind(modalAvatar),
+      click: modalAvatarUser.show.bind(modalAvatarUser),
     },
   }),
 });
@@ -52,7 +52,7 @@ const passwordFormHeader = new UserFormHeader('div', {
     },
     value: 'Поменять аватар',
     events: {
-      click: modalAvatar.show.bind(modalAvatar),
+      click: modalAvatarUser.show.bind(modalAvatarUser),
     },
   }),
 })

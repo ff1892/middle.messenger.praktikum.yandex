@@ -2,6 +2,7 @@ import tpl from './chat-preview.hbs';
 import { Block } from '../../services/block';
 import { connect } from '../../utils/connect';
 import { chatsController } from '../../controllers/chats-controller';
+import { RESOURCES_URL } from '../../constants';
 
 const handleChange = (e: InputEvent) => {
   const input = e.target as HTMLInputElement;
@@ -30,7 +31,15 @@ class ChatPreviewWithStore extends Block {
 
 const withChats = connect((state) => {
   const chats = state.chatsList;
-  return { previewData: chats };
+  if (chats) {
+    const modified = chats.map((chat: Record<string, any>) => {
+      const avatarSrc = chat.avatar ? RESOURCES_URL + chat.avatar : '';
+      return { ...chat, avatar: avatarSrc };
+    })
+    return { previewData: modified }
+  }
+
+  return { previewData: [] };
 });
 
 const ChatWithPreview = withChats(ChatPreviewWithStore);

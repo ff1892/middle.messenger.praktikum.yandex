@@ -3,18 +3,34 @@ import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
 import { validator } from '../../utils/validator';
 import { userController } from '../../controllers/user-controller';
+import { store } from '../../services/store';
+import { chatsController } from '../../controllers/chats-controller';
 
 type AvatarFormProps = Record<string, any>;
 
 
-const handleSubmit = (e: SubmitEvent) => {
+const handleSubmitForm = (e: SubmitEvent, callback: (formData: FormData) => void) => {
   const isValid = validator.handleSubmitAvatar(e);
   if (!isValid) {
     return;
   }
 
   const formData = new FormData(e.target as HTMLFormElement);
-  userController.updateAvatar(formData);
+  callback(formData);
+}
+
+const handleSubmitUser = (e: SubmitEvent) => {
+  handleSubmitForm(e, (formData) => {
+    userController.updateAvatar(formData);
+  });
+}
+
+const handleSubmitChat = (e: SubmitEvent) => {
+  handleSubmitForm(e, (formData) => {
+    const id = store.getState().currentChat.id;
+    formData.set('chatId', id);
+    chatsController.updateAvatar(formData);
+  })
 }
 
 const avatarFormProps = {
@@ -38,7 +54,7 @@ class AvatarForm extends Block<AvatarFormProps> {
   }
 }
 
-const avatarForm = new AvatarForm({
+const avatarFormUser = new AvatarForm({
   submitButton: new Button({
     attrs: {
       class: 'button',
@@ -47,9 +63,26 @@ const avatarForm = new AvatarForm({
     value: 'Поменять аватар',
   }),
     events: {
-      submit: handleSubmit,
+      submit: handleSubmitUser,
       change: validator.handleChangeAvatar,
     }
 });
 
-export { avatarForm };
+const avatarFormChat = new AvatarForm({
+  submitButton: new Button({
+    attrs: {
+      class: 'button',
+      type: 'submit',
+    },
+    value: 'Поменять аватар',
+  }),
+    events: {
+      submit: handleSubmitChat,
+      change: validator.handleChangeAvatar,
+    }
+});
+
+export {
+  avatarFormUser,
+  avatarFormChat,
+};

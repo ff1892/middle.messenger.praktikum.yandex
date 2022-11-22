@@ -20,6 +20,7 @@ export const ApiRoute = {
   USER_PASSWORD: '/password',
   USER_AVATAR: '/profile/avatar',
   CHATS_GET: '',
+  CHATS_AVATAR: '/avatar',
 };
 
 export const Route = {

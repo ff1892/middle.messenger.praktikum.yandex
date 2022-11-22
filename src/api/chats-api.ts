@@ -11,6 +11,17 @@ class ChatsAPI extends BaseAPI {
       ApiRoute.CHATS_GET,
     );
   }
+
+  updateAvatar(data: FormData) {
+    return this.put(
+      ApiRoute.CHATS_AVATAR,
+      {
+        headers: {},
+        notConvert: true,
+        data,
+      },
+    );
+  }
 }
 
 const chatsAPI = new ChatsAPI();

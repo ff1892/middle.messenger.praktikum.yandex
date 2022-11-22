@@ -12,10 +12,10 @@ import {
   modalAddUser,
   modalDeleteUser,
   modalConfirm,
-  modalAvatar,
+  modalAvatarChat,
 } from '../modal/modal';
 import { connect } from '../../utils/connect';
-import { Avatar } from '../../components/avatar/avatar';
+import { AvatarWithChat } from '../../components/avatar/avatar';
 import { Button } from '../../components/button/button';
 
 const addUserLink = new PopupLink({
@@ -81,20 +81,13 @@ const boxPopup = new BoxPopup({
     mouseleave: popup.hideParent.bind(popup),
   },
 })
-// props.boxPopup = boxPopup;
+
+const avatar = new AvatarWithChat('div', {});
 
 class ChatHeaderWithStore extends Block {
 
   customize() {
     this.element?.classList.add('chat-header');
-  }
-
-  componentDidUpdate() {
-    this.props.avatar = new Avatar({
-      src: this.props.img,
-      alt: `Аватар чата ${this.props.title}`,
-    });
-    return true;
   }
 
   render() {
@@ -115,10 +108,7 @@ const ChatHeaderWithChat = withCurrentChat(ChatHeaderWithStore);
 const ChatHeader = new ChatHeaderWithChat( 'div', {
   title: 'Чат',
   boxPopup,
-  avatar: new Avatar({
-    src:  '',
-    alt: 'Аватар чата',
-  }),
+  avatar,
   buttonChange: new Button({
     attrs: {
       type: 'button',
@@ -126,7 +116,7 @@ const ChatHeader = new ChatHeaderWithChat( 'div', {
     },
     value: 'Поменять аватар',
     events: {
-      click: modalAvatar.show.bind(modalAvatar),
+      click: modalAvatarChat.show.bind(modalAvatarChat),
     },
   }),
   }
