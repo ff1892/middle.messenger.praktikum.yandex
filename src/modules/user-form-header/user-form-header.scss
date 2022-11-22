@@ -18,10 +18,12 @@
 
     .user-form__avatar-change {
       z-index: 10;
+      opacity: 1;
     }
   }
 
   &__avatar-change {
+    cursor: pointer;
     position: absolute;
     z-index: 1;
     font-size: 10px;
@@ -33,6 +35,8 @@
     right: 0;
     background-color: $color-black-40;
     color: $color-white;
+    opacity: 0;
+    transition: all ease 0.2s;
   }
 
   &__img {

@@ -12,7 +12,11 @@ import {
   modalAddUser,
   modalDeleteUser,
   modalConfirm,
+  modalAvatar,
 } from '../modal/modal';
+import { connect } from '../../utils/connect';
+import { Avatar } from '../../components/avatar/avatar';
+import { Button } from '../../components/button/button';
 
 const addUserLink = new PopupLink({
   icon: addUserIcon,
@@ -77,19 +81,55 @@ const boxPopup = new BoxPopup({
     mouseleave: popup.hideParent.bind(popup),
   },
 })
+// props.boxPopup = boxPopup;
 
-type ChatHeaderProps = Record<string, any>;
+class ChatHeaderWithStore extends Block {
 
-class ChatHeader extends Block<ChatHeaderProps> {
-  constructor(props: ChatHeaderProps = {}) {
-    props.boxPopup = boxPopup;
-    super('div', props);
+  customize() {
     this.element?.classList.add('chat-header');
+  }
+
+  componentDidUpdate() {
+    this.props.avatar = new Avatar({
+      src: this.props.img,
+      alt: `Аватар чата ${this.props.title}`,
+    });
+    return true;
   }
 
   render() {
     return this.compile(tpl, this.props);
   }
 }
+
+const withCurrentChat = connect((state) => {
+  const chat = {...state.currentChat };
+  return {
+    title: chat.title,
+    img: chat.avatar,
+  };
+});
+
+const ChatHeaderWithChat = withCurrentChat(ChatHeaderWithStore);
+
+const ChatHeader = new ChatHeaderWithChat( 'div', {
+  title: 'Чат',
+  boxPopup,
+  avatar: new Avatar({
+    src:  '',
+    alt: 'Аватар чата',
+  }),
+  buttonChange: new Button({
+    attrs: {
+      type: 'button',
+      class: 'chat-header__avatar-change',
+    },
+    value: 'Поменять аватар',
+    events: {
+      click: modalAvatar.show.bind(modalAvatar),
+    },
+  }),
+  }
+)
 
 export { ChatHeader };

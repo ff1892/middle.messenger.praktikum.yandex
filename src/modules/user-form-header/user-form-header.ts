@@ -42,8 +42,8 @@ const userFormHeader = new UserFormHeader('div', {
 });
 
 const passwordFormHeader = new UserFormHeader('div', {
-  title: 'Misha',
-  avatar: 'img/avatar-default.png',
+  title: '',
+  avatar: null,
   avatarDescription: 'Аватар по умолчанию',
   buttonChange: new Button({
     attrs: {

@@ -1,12 +1,11 @@
 import tpl from './chat-preview.hbs';
 import { Block } from '../../services/block';
-import { Preview } from '../../components/preview/preview';
-import { Avatar } from '../../components/avatar/avatar';
 import { connect } from '../../utils/connect';
 import { chatsController } from '../../controllers/chats-controller';
-import { store } from '../../services/store';
 
-const handleChange = (id: number) => {
+const handleChange = (e: InputEvent) => {
+  const input = e.target as HTMLInputElement;
+  const id = +input.value;
   chatsController.getCurrentChat(id);
 }
 
@@ -17,30 +16,9 @@ class ChatPreviewWithStore extends Block {
   }
 
   componentDidUpdate() {
-
-    const previews = this.props.dataChats.map(( chat: Record<string,any>) => (
-      new Preview ({
-        attrs: {
-          ['data-id']: chat.id,
-        },
-        avatar: new Avatar({
-          src: chat.avatar,
-          alt: `Аватар чата: ${ chat.title }`,
-          unreadCount: chat.unreadCount,
-        }),
-        title: chat.title,
-        text: chat.lastMessage?.content || '',
-        date: chat.lastMessage?.date || null,
-        dateString: '12 окт',
-        events: {
-          input: () => handleChange(chat.id),
-        },
-      })
-    ));
-
-    this.props.previews = previews;
-    console.log(this.props.previews);
-
+    this.props.events = {
+      change: handleChange,
+    };
     return true;
   }
 
@@ -52,10 +30,10 @@ class ChatPreviewWithStore extends Block {
 
 const withChats = connect((state) => {
   const chats = state.chatsList;
-  return { dataChats: chats };
+  return { previewData: chats };
 });
 
 const ChatWithPreview = withChats(ChatPreviewWithStore);
-const ChatPreview = new ChatWithPreview('div', { previews: []});
+const ChatPreview = new ChatWithPreview('form', { previews: []});
 
 export { ChatPreview };

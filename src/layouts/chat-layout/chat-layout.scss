@@ -1,0 +1,41 @@
+.chat-current {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+
+    &__header {
+      display: flex;
+      align-items: center;
+      padding: 20px 40px;
+      box-shadow: 0 1px 4px 0 $color-black-10;
+    }
+
+    &__conversation {
+      padding-right: 15px;
+      overflow-y: scroll;
+    }
+
+    &__message {
+      padding: 20px 40px;
+      position: relative;
+
+      &::before {
+        @include absolute('none', 2px, '');
+        top: 0;
+        left: 15px;
+        right: 15px;
+        background-color: $color-black-10;
+      }
+    }
+}
+
+.no-current {
+    height: 100vh;
+    @include flexCenter;
+
+  &__text {
+    margin: 0;
+    font-size: 20px;
+    color: $color-blue;
+  }
+}

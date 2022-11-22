@@ -11,7 +11,7 @@ const connect = (mapStateToProps: (state: Indexed) => Indexed) => (
   (Component: typeof Block) => (
     class WithStore extends Component {
 
-      constructor(tagName: string, props: Indexed = {}) {
+      constructor(tagName: string = 'div', props: Indexed = {}) {
 
         let state = mapStateToProps(store.getState());
 
