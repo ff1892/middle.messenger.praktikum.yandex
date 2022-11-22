@@ -8,7 +8,7 @@ class Preview extends Block<PreviewProps> {
   constructor(props: PreviewProps) {
     props.text = cutString(45, props.text);
     props.title = cutString(22, props.title);
-    super('div', props);
+    super('label', props);
     this.element?.classList.add('preview');
   }
 

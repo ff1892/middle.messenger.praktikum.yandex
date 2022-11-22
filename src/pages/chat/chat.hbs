@@ -1,17 +1,29 @@
 <div class="chat__container">
-  <section class="chat__panel">
-    {{{panel}}}
-  </section>
-  <section class="chat__preview">
-    {{{preview}}}
-  </section>
-  <section class="chat__header">
-    {{{header}}}
-  </section>
-  <section class="chat__conversation">
-    {{{conversation}}}
-  </section>
-  <section class="chat__message">
-    {{{message}}}
-  </section>
+  <div class="chat__left">
+    <section class="chat__panel">
+      {{{panel}}}
+    </section>
+    <section class="chat__preview">
+      {{{preview}}}
+    </section>
+  </div>
+  <div class="chat__right no-current">
+    {{#if currentId}}
+      <section class="chat__header">
+        {{{header}}}
+      </section>
+      <section class="chat__conversation">
+        {{{conversation}}}
+      </section>
+      <section class="chat__message">
+        {{{message}}}
+      </section>
+    {{else}}
+      <div class="no-current__container">
+        <p class="no-current__text">
+          Выберите чат или создайте новый 💌
+        </p>
+      </div>
+    {{/if}}
+  </div>
 </div>

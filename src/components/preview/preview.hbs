@@ -1,3 +1,4 @@
+<input class="preview__input visually-hidden" type="radio" name="avatar">
 <div class="preview__container">
   <div class="preview__avatar">
     {{{avatar}}}
@@ -6,7 +7,13 @@
     {{title}}
   </h3>
   <p class="preview__text">
-    {{text}}
+    {{#if text}}
+      {{text}}
+    {{else}}
+      <span class="preview__text--default">
+        Пока нет сообщений
+      </span>
+    {{/if}}
   </p>
   <time
     class="preview__time"

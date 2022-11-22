@@ -38,12 +38,12 @@ abstract class BaseAPI {
 
     const parsed = JSON.parse(response);
 
-    if(isObject(parsed)) {
-      return convertKeysToCamel(parsed);
-    }
-
     if(Array.isArray(parsed)) {
       return parsed.map(convertKeysToCamel);
+    }
+
+    if(isObject(parsed)) {
+      return convertKeysToCamel(parsed);
     }
 
     return parsed;

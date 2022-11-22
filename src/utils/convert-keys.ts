@@ -23,11 +23,17 @@ const convertKeys = (method: ConvertMethod) => (
     const modified: Record<string, any> = {};
 
     Object.entries(data).forEach(([key, val]) => {
-      const newKey =
+      let [newKey, newVal] = [key, val];
+
+      if (isObject(val)) {
+        newVal = convertKeys(method)(newVal);
+      }
+
+      newKey =
         method === ConvertMethod.TO_SNAKE_CASE ?
           convertToSnake(key)
           : convertToCamel(key);
-      modified[newKey] = val;
+      modified[newKey] = newVal;
     });
 
     return modified;

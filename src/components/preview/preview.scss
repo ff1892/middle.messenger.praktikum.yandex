@@ -1,9 +1,14 @@
 .preview {
   padding: 10px 15px;
   cursor: pointer;
+  display: block;
 
   &:hover {
     background-color: $color-blue-10;
+  }
+
+  &:has(input:checked) {
+    background-color: $color-blue-20;
   }
 
   &__container {
@@ -30,6 +35,11 @@
     font-size: 12px;
     grid-column: 2 / 3;
     align-self: start;
+
+    &--default {
+      opacity: 0.5;
+      font-style: italic;
+    }
   }
 
   &__time {

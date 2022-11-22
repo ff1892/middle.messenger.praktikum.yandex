@@ -44,6 +44,7 @@ const isEqual = (
 
   stack.delete(value);
   stack.delete(other);
+
   return result;
 }
 

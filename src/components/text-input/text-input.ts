@@ -40,7 +40,6 @@ class TextInputStore extends Block {
   }
 
   render() {
-    console.log(this.compile(tpl, this.props));
     return this.compile(tpl, this.props);
   }
 };

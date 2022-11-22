@@ -6,6 +6,8 @@ import { ChatHeader } from '../../modules/chat-header/chat-header';
 import { ChatMessage } from '../../modules/chat-message/chat-message';
 import { ChatConversation } from '../../modules/chat-conversation/chat-conversation';
 import { Avatar } from '../../components/avatar/avatar';
+import { chatsController } from '../../controllers/chats-controller';
+
 
 const avatar = new Avatar(({
   src: '/img/mock3.jpg',
@@ -16,13 +18,18 @@ type ChatPageProps = Record<string, any>;
 
 class ChatPage extends Block<ChatPageProps> {
   constructor(props: ChatPageProps = {}) {
+    props.currentId = 1;
     props.panel = new ChatPanel();
-    props.preview = new ChatPreview();
+    props.preview = ChatPreview;
     props.header = new ChatHeader({ avatar, title: 'Alex' });
     props.conversation = new ChatConversation();
     props.message = new ChatMessage();
     super('main', props);
     this.element?.classList.add('chat');
+  }
+
+  componentDidMount() {
+    chatsController.getChats();
   }
 
   render() {

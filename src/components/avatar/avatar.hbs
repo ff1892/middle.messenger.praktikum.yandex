@@ -1,8 +1,16 @@
+{{#if src}}
 <img
   class="avatar__image"
   src="{{src}}"
   alt="{{alt}}"
 >
+{{else}}
+<img
+  class="avatar__image"
+  src="img/avatar-default.png"
+  alt="Аватар по умолчанию"
+>
+{{/if}}
 {{#if unreadCount}}
   <span class="avatar__unread">
     {{unreadCount}}

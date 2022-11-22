@@ -10,7 +10,7 @@ export enum ConvertMethod {
 
 export const ApiRoute = {
   AUTH: '/auth',
-  CHATS: '/messenger',
+  CHATS: '/chats',
   USER: '/user',
   AUTH_SIGNUP: '/signup',
   AUTH_LOGIN: '/signin',
@@ -19,6 +19,7 @@ export const ApiRoute = {
   USER_PROFILE: '/profile',
   USER_PASSWORD: '/password',
   USER_AVATAR: '/profile/avatar',
+  CHATS_GET: '',
 };
 
 export const Route = {

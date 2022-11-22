@@ -1,42 +1,61 @@
-import checkIcon from 'bundle-text:../../../static/icons/check.svg';
-import doubleheckIcon from 'bundle-text:../../../static/icons/double-check.svg';
 import tpl from './chat-preview.hbs';
 import { Block } from '../../services/block';
 import { Preview } from '../../components/preview/preview';
 import { Avatar } from '../../components/avatar/avatar';
+import { connect } from '../../utils/connect';
+import { chatsController } from '../../controllers/chats-controller';
+import { store } from '../../services/store';
 
-type ChatPreviewProps = Record<string, any>
+const handleChange = (id: number) => {
+  chatsController.getCurrentChat(id);
+}
 
-const preview = new Preview({
-  avatar: new Avatar({ src: '/img/mock4.jpg', alt: 'Аватар чата', unreadCount: 15 }),
-  title: 'Рабочий чат 🤯',
-  text: 'Если оборачивать даты в простые блоки <div> или другие элементы, они будут восприниматься интерпретатором как простой текст',
-  date: '2022-10-30',
-  dateString: 'Вс',
-  tickIcon: doubleheckIcon,
-});
+class ChatPreviewWithStore extends Block {
 
-const preview2 = new Preview({
-  avatar: new Avatar({ src: '/img/mock5.jpg', alt: 'Аватар чата' }),
-  title: 'Rock-n-roll Kiiiiing',
-  text: 'Прикольно!',
-  date: '2022-10-12',
-  dateString: '12 окт',
-  tickIcon: checkIcon,
-});
-
-const previews = [preview, preview2];
-
-class ChatPreview extends Block<ChatPreviewProps> {
-  constructor(props: ChatPreviewProps = {}) {
-    props.previews = previews;
-    super('div', props);
+  customize() {
     this.element?.classList.add('chat-preview');
+  }
+
+  componentDidUpdate() {
+
+    const previews = this.props.dataChats.map(( chat: Record<string,any>) => (
+      new Preview ({
+        attrs: {
+          ['data-id']: chat.id,
+        },
+        avatar: new Avatar({
+          src: chat.avatar,
+          alt: `Аватар чата: ${ chat.title }`,
+          unreadCount: chat.unreadCount,
+        }),
+        title: chat.title,
+        text: chat.lastMessage?.content || '',
+        date: chat.lastMessage?.date || null,
+        dateString: '12 окт',
+        events: {
+          input: () => handleChange(chat.id),
+        },
+      })
+    ));
+
+    this.props.previews = previews;
+    console.log(this.props.previews);
+
+    return true;
   }
 
   render() {
     return this.compile(tpl, this.props);
   }
 }
+
+
+const withChats = connect((state) => {
+  const chats = state.chatsList;
+  return { dataChats: chats };
+});
+
+const ChatWithPreview = withChats(ChatPreviewWithStore);
+const ChatPreview = new ChatWithPreview('div', { previews: []});
 
 export { ChatPreview };

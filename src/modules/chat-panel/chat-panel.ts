@@ -10,6 +10,7 @@ import { router } from '../../services/router';
 import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
 import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
 import { modalAddChat } from '../modal/modal';
+import { AvatarWithUser } from '../../components/avatar/avatar';
 
 const profileLink = new PopupLink({
   icon: iconProfile,
@@ -18,7 +19,10 @@ const profileLink = new PopupLink({
     href: Route.USERFORM,
   },
   events: {
-    click: () => router.go(Route.USERFORM),
+    click: (e: MouseEvent) => {
+      e.preventDefault();
+      router.go(Route.USERFORM);
+    },
   }
 })
 
@@ -38,15 +42,13 @@ const popup = new Popup({
   items: [profileLink, newChatBtn],
 });
 
-const profile = new ButtonProfile({
-  src: '/img/mock6.jpg',
+const avatar = new AvatarWithUser('div', {
+  src: 'null',
   alt: 'Ваш аватар',
-  attrs: {
-    type: 'button',
-    role: 'button',
-    title: 'Данные профиля | Создать чат',
-    'aria-label': 'Данные профиля | Создать чат',
-  },
+});
+
+const profile = new ButtonProfile({
+  avatar,
   popup,
   events: {
     mouseenter: popup.showParent.bind(popup),
