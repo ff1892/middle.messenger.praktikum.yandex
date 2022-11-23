@@ -5,14 +5,19 @@ import { loader } from '../components/loader/loader';
 
 abstract class BaseController {
 
-  protected onError(error: XMLHttpRequest) {
+  protected onError(error: XMLHttpRequest, message?: string) {
 
-    if (!error.response) {
+    if (!error.response && !message) {
       return router.go(Route.ERROR);
     }
 
-    const { reason } = JSON.parse(error.response);
-    const toast = new Toast({ text: reason, isError: true });
+    let reason = '';
+
+    if (!message) {
+      reason = JSON.parse(error.response.reason);
+    }
+
+    const toast = new Toast({ text: message || reason, isError: true });
     toast.show();
   }
 

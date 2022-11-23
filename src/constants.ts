@@ -17,10 +17,15 @@ export const ApiRoute = {
   AUTH_USER: '/user',
   AUTH_LOGOUT: '/logout',
   USER_PROFILE: '/profile',
+  USER_SEARCH: '/search',
   USER_PASSWORD: '/password',
   USER_AVATAR: '/profile/avatar',
   CHATS_GET: '',
+  CHATS_CREATE: '',
+  CHATS_DELETE: '',
   CHATS_AVATAR: '/avatar',
+  CHATS_ADD_USER: '/users',
+  CHATS_DELETE_USER: '/users',
 };
 
 export const Route = {
@@ -52,6 +57,7 @@ export const InputRegexp: Record<string, RegExp> = {
   SECONDNAME: /^[A-ZА-ЯЁ]{1}[A-Za-zА-Яa-яёЁ]{0,20}[-]?[A-Za-zА-Яa-яёЁ]{1,20}$/,
   DISPLAYNAME: /^[\wa-я\-@$!%*#?&]{3,20}$/i,
   MESSAGE: /(?!\s*$).+/,
+  CHAT: /^[a-zа-яё\d]{1}[a-zа-яё\d\_-\s]{2,35}$/i,
 };
 
 export const ValidationMessage: Record<string, string> = {
@@ -67,6 +73,7 @@ export const ValidationMessage: Record<string, string> = {
   DISPLAYNAME: 'Латиница или кириллица. От 3 до 20 символов',
   MESSAGE: 'Пустое сообщение',
   AVATAR: 'Нужно выбрать файл',
+  CHAT: 'Не более 36 символов. Начинается с буквы или цифры',
 };
 
 export const routesWithLabel: Array<{ label: string, route: string }> = [

@@ -12,6 +12,24 @@ class ChatsAPI extends BaseAPI {
     );
   }
 
+  createChat(data: { title: string }) {
+    return this.post(
+      ApiRoute.CHATS_CREATE,
+      { json: true, data },
+    );
+  }
+
+  deleteChat(data: { chatId: number }) {
+    return this.delete(
+      ApiRoute.CHATS_DELETE,
+      {
+        json: true,
+        notConvert: true,
+        data
+      },
+    );
+  }
+
   updateAvatar(data: FormData) {
     return this.put(
       ApiRoute.CHATS_AVATAR,
@@ -19,6 +37,28 @@ class ChatsAPI extends BaseAPI {
         headers: {},
         notConvert: true,
         data,
+      },
+    );
+  }
+
+  addUser(data: { users: number[], chatId: number }) {
+    return this.put(
+      ApiRoute.CHATS_ADD_USER,
+      {
+        json: true,
+        notConvert: true,
+        data
+      },
+    );
+  }
+
+  deleteUser(data: { users: number[], chatId: number }) {
+    return this.delete(
+      ApiRoute.CHATS_DELETE_USER,
+      {
+        json: true,
+        notConvert: true,
+        data
       },
     );
   }

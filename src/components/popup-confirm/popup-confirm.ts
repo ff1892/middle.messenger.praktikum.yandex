@@ -2,6 +2,7 @@ import tpl from './popup-confirm.hbs';
 import { Block } from '../../services/block';
 import { Button } from '../button/button';
 import { validator } from '../../utils/validator';
+import { chatsController } from '../../controllers/chats-controller';
 
 type PopupConfirmProps = {
   title: string,
@@ -30,10 +31,7 @@ const popupConfirm = new PopupConfirm({
     },
     value: 'Удалить',
     events: {
-      click: () => {
-        alert('Confirm');
-        validator.closeModal();
-      },
+      click: () => chatsController.deleteChat(),
     },
   }),
   rejectButton: new Button({

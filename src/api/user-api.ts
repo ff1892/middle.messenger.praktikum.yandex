@@ -30,6 +30,13 @@ class UserAPI extends BaseAPI {
       },
     );
   }
+
+  searchUser(data: { login: string }) {
+    return this.post(
+      ApiRoute.USER_SEARCH,
+      { json: true, data },
+    )
+  }
 }
 
 const userAPI = new UserAPI();

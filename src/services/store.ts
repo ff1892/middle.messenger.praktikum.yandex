@@ -15,6 +15,7 @@ class Store extends EventBus {
 
   setState(path: string, value: Indexed) {
     setObject(this._state, path, value);
+
     this.emit(StoreEvents.Updated, this._state);
   }
 }

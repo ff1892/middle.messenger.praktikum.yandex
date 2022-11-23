@@ -46,6 +46,22 @@ class UserController extends BaseController {
       .catch(this.onError)
       .finally(this.hideLoader);
   }
+
+  getUserByLogin(login: string) {
+
+     return userAPI.searchUser({ login })
+      .then((users) => {
+        if (Array.isArray(users)) {
+          if (!users.length || !users.some((user) => login === user.login)) {
+            throw new Error();
+          }
+          return users.filter((user) => login === user.login)[0];
+        }
+      })
+      .catch((err) => {
+        this.onError(err, 'Нет пользователя с таким логином');
+      });
+  }
 }
 
 const userController = new UserController();
