@@ -21,8 +21,10 @@ class ChatsController extends BaseController {
 
   getCurrentChat(id: number) {
     const chats = store.getState().chatsList;
-    const currentChat = getCurrentChatById(id, chats);
-    store.setState('currentChat', currentChat);
+    if (chats.length) {
+      const currentChat = getCurrentChatById(id, chats);
+      store.setState('currentChat', currentChat);
+    }
   }
 
   clearCurrentChat() {

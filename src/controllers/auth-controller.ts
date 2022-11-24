@@ -3,6 +3,7 @@ import { Route } from '../constants';
 import { BaseController } from './base-controller';
 import { authAPI } from '../api/auth-api';
 import { store } from '../services/store';
+import { chatsController } from './chats-controller';
 
 class AuthController extends BaseController {
 
@@ -11,6 +12,7 @@ class AuthController extends BaseController {
     return authAPI.login(data)
       .then(() => {
         this.clearInputs(e);
+        chatsController.getChats();
         this.redirect(Route.CHAT);
       })
       .catch(this.onError)
@@ -22,6 +24,7 @@ class AuthController extends BaseController {
     return authAPI.signup(data)
       .then(() => {
         this.clearInputs(e);
+        chatsController.getChats();
         this.redirect(Route.CHAT);
       })
       .catch(this.onError)
@@ -31,8 +34,8 @@ class AuthController extends BaseController {
   logout() {
     return authAPI.logout()
       .then(() => {
-        store.setState('currentUser', { id: null });
         this.redirect(Route.LOGIN);
+        store.dropState();
       })
       .catch(this.onError);
   }
