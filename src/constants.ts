@@ -31,13 +31,12 @@ export const ApiRoute = {
 };
 
 export const Route = {
-  MAIN: '/',
-  LOGIN: '/login',
+  LOGIN: '/',
   SIGNUP: '/signup',
   CHAT: '/messenger',
   USERFORM: '/userform',
   PASSWORDFORM: '/passwordform',
-  NOTFOUND: '/notfound',
+  NOTFOUND: '/404',
   ERROR: '/error',
 };
 
@@ -77,17 +76,6 @@ export const ValidationMessage: Record<string, string> = {
   AVATAR: 'Нужно выбрать файл',
   CHAT: 'Не более 36 символов. Начинается с буквы или цифры',
 };
-
-export const routesWithLabel: Array<{ label: string, route: string }> = [
-  { label: 'Главная', route: Route.MAIN },
-  { label: 'Чат', route: Route.CHAT },
-  { label: 'Авторизация', route: Route.LOGIN },
-  { label: 'Регистрация', route: Route.SIGNUP },
-  { label: 'Редактирование профиля', route: Route.USERFORM },
-  { label: 'Изменение пароля', route: Route.PASSWORDFORM },
-  { label: 'Ошибка 404', route: Route.NOTFOUND },
-  { label: 'Ошибка 500', route: Route.ERROR },
-];
 
 export const StoreEvents = {
   Updated: 'updated',

@@ -31,6 +31,7 @@ class AuthController extends BaseController {
   logout() {
     return authAPI.logout()
       .then(() => {
+        store.setState('currentUser', { id: null });
         this.redirect(Route.LOGIN);
       })
       .catch(this.onError);
@@ -48,6 +49,10 @@ class AuthController extends BaseController {
   }
 
   checkHiddenAuth() {
+    const currentUser = store.getState().currentUser;
+    if (!currentUser || !currentUser.id) {
+      return;
+    }
     return authAPI.getUser()
       .then(() => {
         this.redirect(Route.CHAT);

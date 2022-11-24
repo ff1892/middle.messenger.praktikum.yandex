@@ -71,7 +71,6 @@ const sendButton = new IconButton({
 const messageField = new MessageField({
   events: {
     focus: validator.handleFocus,
-    blur: validator.handleFocus,
     input: validator.handleChange,
   },
 });

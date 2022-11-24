@@ -14,7 +14,8 @@ abstract class BaseController {
     let reason = '';
 
     if (!message) {
-      reason = JSON.parse(error.response.reason);
+      const response = JSON.parse(error.response);
+      reason = response.reason;
     }
 
     const toast = new Toast({ text: message || reason, isError: true });
