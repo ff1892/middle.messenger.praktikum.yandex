@@ -1,7 +1,7 @@
 .chat-current {
-  display: grid;
   min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
 
     &__header {
       display: flex;
@@ -13,6 +13,10 @@
     &__conversation {
       padding-right: 15px;
       overflow-y: scroll;
+      height: 0px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
     }
 
     &__message {

@@ -10,6 +10,19 @@ import { validator } from '../../utils/validator';
 import { BoxPopup } from '../../components/box-popup/box-popup';
 import { PopupLink } from '../../components/popup-link/popup-link';
 import { Popup } from '../../components/popup/popup';
+import { messageController } from '../../controllers/message-controller';
+
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
+  const form = <HTMLFormElement>e.target;
+  const input = form.querySelector('input[name="message"]') as HTMLInputElement;
+  const message = input.value;
+  messageController.sendMessage(message);
+  input.value = '';
+}
 
 const filePopupLink = new PopupLink({
   icon: iconPhoto,
@@ -92,7 +105,7 @@ export const chatMessageProps = {
   messageField,
   boxPopup,
   events: {
-    submit: validator.handleSubmit,
+    submit: handleSubmit,
   },
 };
 

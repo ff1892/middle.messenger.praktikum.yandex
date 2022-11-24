@@ -3,8 +3,8 @@
   color: $color-basic-black;
   max-width: 400px;
   min-width: 200px;
-  padding: 20px;
-  border-radius: 20px 20px 20px 0;
+  padding: 10px;
+  border-radius: 12px 12px 12px 0;
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -12,28 +12,41 @@
   position: relative;
 
   &__container {
+    margin-bottom: 7px;
+  }
+
+  &__author {
+    margin: 0;
+    padding: 0;
     margin-bottom: 10px;
   }
 
+  &__text {
+    margin: 0;
+    padding: 0;
+  }
+
   &__timestamp {
-    font-size: 12px;
+    font-size: 10px;
+    opacity: 0.7;
+    align-self: flex-end;
   }
 
   &--mine {
-    border-radius: 20px 20px 0;
+    border-radius: 12px 12px 0;
     align-self: flex-end;
     background-color: $color-blue;
     color: $color-white;
+  }
 
+  &--read {
     ::before {
       @include absolute(20px, 20px, '');
       bottom: 18px;
       right: 20px;
       background-image: url('../static/icons/tick.svg');
     }
-  }
 
-  &--read {
     ::after {
       @include absolute(20px, 20px, '');
       bottom: 18px;
@@ -44,6 +57,6 @@
 
   &--mine &__timestamp {
     align-self: flex-end;
-    padding-right: 25px;
+    padding-right: 10px;
   }
 }

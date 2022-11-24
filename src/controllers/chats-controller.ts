@@ -133,6 +133,14 @@ class ChatsController extends BaseController {
       })
       .finally(this.hideLoader);
   }
+
+  getToken(id: number) {
+    return chatsAPI.getToken(id)
+      .then((token) => {
+        return token as {token: string} | unknown;
+      })
+      .catch(this.onError);
+  }
 }
 
 const chatsController = new ChatsController();

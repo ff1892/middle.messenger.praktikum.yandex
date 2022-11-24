@@ -1,11 +1,14 @@
 <div class="chat-conversation__container">
+  {{#if date}}
   <span class="chat-conversation__date">
     {{date}}
   </span>
+  {{/if}}
   {{#each messages}}
     <div class="chat-conversation__message">
       {{{this}}}
     </div>
   {{/each}}
+  {{{m1}}}
 </div>
 

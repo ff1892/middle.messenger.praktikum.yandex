@@ -1,5 +1,6 @@
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 export const RESOURCES_URL = BASE_URL + '/resources';
+export const SOCKET_URL = 'wss://ya-praktikum.tech/ws/chats';
 
 export const HEADERS_DEFAULT = {['content-type']: 'application/json'};
 
@@ -26,6 +27,7 @@ export const ApiRoute = {
   CHATS_AVATAR: '/avatar',
   CHATS_ADD_USER: '/users',
   CHATS_DELETE_USER: '/users',
+  CHATS_TOKEN: '/token',
 };
 
 export const Route = {

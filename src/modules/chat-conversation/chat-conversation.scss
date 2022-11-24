@@ -1,8 +1,14 @@
 .chat-conversation {
+  margin-top: auto;
+
+
   &__container {
+    overflow-y: scroll;
+    height: 100%;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
   }
 
   &__container > * {

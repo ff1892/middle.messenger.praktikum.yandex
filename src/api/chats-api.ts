@@ -62,6 +62,13 @@ class ChatsAPI extends BaseAPI {
       },
     );
   }
+
+  getToken(chatId: number) {
+    return this.post(
+      `${ApiRoute.CHATS_TOKEN}/${chatId}`,
+      { json: true },
+    )
+  }
 }
 
 const chatsAPI = new ChatsAPI();

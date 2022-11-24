@@ -1,62 +1,46 @@
 import tpl from './chat-conversation.hbs';
 import { Block } from '../../services/block';
 import { Message } from '../../components/message/message';
-import { MessageImage } from '../../components/message-image/message-image';
+import { connect } from '../../utils/connect';
+import { getTimeFromDate } from '../../utils/time';
 
-const mockText = 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона.';
+class ChatConversationWithStore extends Block {
 
-const message = new Message({
-  content: mockText,
-  time: '10:22',
-});
-
-const message2 = new Message({
-  content: 'Круто!',
-  time: '10:23',
-  isMine: true,
-  isRead: true,
-});
-
-const message3 = new MessageImage({
-  content: {
-    src: '/img/mock1.jpeg',
-    desc: 'Kitten',
-  },
-  time: '10:25',
-});
-
-const message4 = new Message({
-  content: 'Тоже неплохо...',
-  time: '10:28',
-  isMine: true,
-});
-
-const message5 = new MessageImage({
-  content: {
-    src: '/img/mock2.jpeg',
-    desc: 'Bill',
-  },
-  time: '10:30',
-  isMine: true,
-});
-
-const chatConversationProps = {
-  messages: [message, message2, message3, message4, message5],
-  date: '30 окт',
-};
-
-type ChatConversationProps = Record<string, any>
-
-class ChatConversation extends Block<ChatConversationProps> {
-  constructor(props: ChatConversationProps = {}) {
-    props = chatConversationProps;
-    super('div', props);
+  customize() {
     this.element?.classList.add('chat-conversation');
   }
 
   render() {
     return this.compile(tpl, this.props);
   }
+
+  scroll() {
+    if (this.element) {
+      this.element.scrollTop = this.element.scrollHeight;
+    }
+  }
 }
+
+const withMessages = connect((state) => {
+  const data = state.messages;
+  const user = state.currentUser;
+  if (!data || !user) {
+    return { messagesData: [] };
+  }
+  return {
+    messages: data.map((message: Record<string, any>) => {
+      return new Message({
+        content: message.content,
+        time: getTimeFromDate(new Date(message.time)),
+        isMine: message.userId === user.id,
+        author: `ID: ${message.userId}`,
+      })
+    }).reverse(),
+  };
+});
+
+const ChatConversationWithMessages = withMessages(ChatConversationWithStore);
+
+const ChatConversation = new ChatConversationWithMessages('div', { messages: [] });
 
 export { ChatConversation };
