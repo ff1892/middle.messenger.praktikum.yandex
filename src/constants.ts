@@ -34,8 +34,8 @@ export const Route = {
   LOGIN: '/',
   SIGNUP: '/signup',
   CHAT: '/messenger',
-  USERFORM: '/userform',
-  PASSWORDFORM: '/passwordform',
+  USERFORM: '/settings',
+  PASSWORDFORM: '/settings-password',
   NOTFOUND: '/404',
   ERROR: '/error',
 };
