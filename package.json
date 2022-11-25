@@ -9,7 +9,7 @@
     }
   },
   "scripts": {
-    "start": "parcel build src/index.html --dist-dir ./dist && node src/server.js",
+    "start": "node src/server.js",
     "build": "parcel build src/index.html --no-source-maps --dist-dir ./dist",
     "dev": "parcel src/index.html --no-cache --open",
     "eslint:check": "eslint --ext .ts ./src ",
@@ -34,7 +34,6 @@
     "@anikin/parcel-transformer-handlebars-precompile": "1.0.1",
     "@parcel/transformer-inline-string": "2.7.0",
     "@parcel/transformer-sass": "2.7.0",
-    "@parcel/validator-typescript": "2.7.0",
     "@types/chai": "4.3.4",
     "@types/mocha": "10.0.0",
     "@types/uuid": "8.3.4",
@@ -57,6 +56,7 @@
     "typescript": "4.8.4"
   },
   "dependencies": {
+    "@parcel/validator-typescript": "^2.7.0",
     "express": "4.18.2",
     "handlebars": "4.7.7",
     "uuid": "9.0.0"
