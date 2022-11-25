@@ -9,7 +9,7 @@
     }
   },
   "scripts": {
-    "start": "parcel src/index.html node src/server.js",
+    "start": "node src/server.js",
     "build": "parcel build src/index.html --no-source-maps --dist-dir ./dist",
     "dev": "parcel src/index.html --no-cache --open",
     "eslint:check": "eslint --ext .ts ./src ",
