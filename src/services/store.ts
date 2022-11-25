@@ -13,8 +13,9 @@ class Store extends EventBus {
     return this._state;
   }
 
-  dropState() {
-    this._state = {};
+  dropState(path: string, value: Indexed | Indexed[]) {
+    this._state[path] = value;
+    this.emit(StoreEvents.Updated, this.getState());
   }
 
   setState(path: string, value: Indexed | Indexed[]) {

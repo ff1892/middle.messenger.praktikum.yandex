@@ -31,6 +31,7 @@ class ChatPreviewWithStore extends Block {
 
 const withChats = connect((state) => {
   const chats = state.chatsList;
+
   if (chats && chats.length) {
     const modified = chats.map((chat: Record<string, any>) => {
       const avatarSrc = chat.avatar ? RESOURCES_URL + chat.avatar : '';
@@ -42,7 +43,7 @@ const withChats = connect((state) => {
     return { previewData: modified };
   }
 
-  return { previewData: [] };
+  return { previewData: null };
 });
 
 const ChatWithPreview = withChats(ChatPreviewWithStore);

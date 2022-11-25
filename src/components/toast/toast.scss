@@ -5,6 +5,7 @@
   top: 30px;
   background-color: #FFF;
   border-radius: 20px;
+  z-index: 200;
 
   &__container {
     @include flexCenter;

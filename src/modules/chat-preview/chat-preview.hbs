@@ -1,4 +1,5 @@
 <ul class="chat-preview__list">
+  {{#if previewData}}
   {{#each previewData}}
     <li class="chat-preview__item">
       <label class="preview">
@@ -63,4 +64,5 @@
       </label>
     </li>
   {{/each}}
+  {{/if}}
 </ul>

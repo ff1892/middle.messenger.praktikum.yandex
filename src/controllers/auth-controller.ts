@@ -12,8 +12,8 @@ class AuthController extends BaseController {
     return authAPI.login(data)
       .then(() => {
         this.clearInputs(e);
-        chatsController.getChats();
         this.redirect(Route.CHAT);
+        chatsController.getChats();
       })
       .catch(this.onError)
       .finally(this.hideLoader);
@@ -24,8 +24,8 @@ class AuthController extends BaseController {
     return authAPI.signup(data)
       .then(() => {
         this.clearInputs(e);
-        chatsController.getChats();
         this.redirect(Route.CHAT);
+        chatsController.getChats();
       })
       .catch(this.onError)
       .finally(this.hideLoader);
@@ -35,7 +35,7 @@ class AuthController extends BaseController {
     return authAPI.logout()
       .then(() => {
         this.redirect(Route.LOGIN);
-        store.dropState();
+        store.setState('currentChat', { id: null });
       })
       .catch(this.onError);
   }
