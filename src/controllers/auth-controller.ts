@@ -4,7 +4,6 @@ import { BaseController } from './base-controller';
 import { authAPI } from '../api/auth-api';
 import { store } from '../services/store';
 import { chatsController } from './chats-controller';
-import { Toast } from '../components/toast/toast';
 
 class AuthController extends BaseController {
 
