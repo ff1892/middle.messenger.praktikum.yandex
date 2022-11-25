@@ -1,5 +1,5 @@
 import tpl from './button.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type ButtonProps = {
   attrs: {

@@ -1,5 +1,5 @@
 import tpl from './field.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { TextInput } from '../text-input/text-input';
 
 type FieldProps = {

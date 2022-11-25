@@ -1,5 +1,5 @@
 import tpl from './form-layout.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type FormLayoutProps = {
   layoutElement: Block<any>;

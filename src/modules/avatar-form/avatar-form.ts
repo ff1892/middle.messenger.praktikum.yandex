@@ -1,5 +1,5 @@
 import tpl from './avatar-form.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { Button } from '../../components/button/button';
 import { validator } from '../../utils/validator';
 import { userController } from '../../controllers/user-controller';

@@ -1,5 +1,5 @@
 import tpl from './avatar.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { connect } from '../../utils/connect';
 import { RESOURCES_URL } from '../../constants';
 

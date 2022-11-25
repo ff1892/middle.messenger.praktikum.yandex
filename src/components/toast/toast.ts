@@ -1,5 +1,5 @@
 import tpl from './toast.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type ToastProps = {
   text: string,

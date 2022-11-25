@@ -1,5 +1,5 @@
 import tpl from './loader.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 class Loader extends Block {
   constructor(props = {}) {

@@ -1,5 +1,5 @@
 import tpl from './user-profile.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { UserLayout } from '../../layouts/user-layout/user-layout';
 import { UserForm } from '../../modules/user-form/user-form';
 import { UserField } from '../../components/user-field/user-field';

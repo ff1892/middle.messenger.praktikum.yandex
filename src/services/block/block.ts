@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import { v4 as makeUUID } from 'uuid';
 import { TemplateDelegate } from 'handlebars';
-import { EventBus } from './event-bus';
+import { EventBus } from '../event-bus';
 
 type Nullable<T> = T | null;
 

@@ -1,5 +1,5 @@
 import tpl from './message.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type MessageProps = Record<string, any>;
 

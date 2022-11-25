@@ -1,4 +1,4 @@
-import { Block } from './block';
+import { Block } from './block/block';
 import { renderDOM } from '../utils/render-dom';
 import { isEqualString } from '../utils/is-equal-string';
 

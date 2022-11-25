@@ -1,5 +1,5 @@
 import tpl from './chat-conversation.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { Message } from '../../components/message/message';
 import { connect } from '../../utils/connect';
 import { getTimeFromDate } from '../../utils/time';

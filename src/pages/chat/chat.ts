@@ -1,5 +1,5 @@
 import tpl from './chat.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { ChatPanel } from '../../modules/chat-panel/chat-panel';
 import { ChatPreview } from '../../modules/chat-preview/chat-preview';
 import { chatsController } from '../../controllers/chats-controller';

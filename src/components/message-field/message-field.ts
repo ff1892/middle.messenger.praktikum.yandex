@@ -1,5 +1,5 @@
 import tpl from './message-field.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type MessageFieldProps = Record<string, any>;
 

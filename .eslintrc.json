@@ -26,6 +26,7 @@
     "class-methods-use-this": "off",
     "padded-blocks": "off",
     "lines-between-class-members": "off",
-    "max-classes-per-file": 0
+    "max-classes-per-file": 0,
+    "import/no-extraneous-dependencies": "off"
   }
 }

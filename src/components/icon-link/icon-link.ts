@@ -1,5 +1,5 @@
 import tpl from './icon-link.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { router } from '../../services/router';
 
 type IconLinkProps = {

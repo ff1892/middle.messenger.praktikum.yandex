@@ -1,5 +1,5 @@
 import tpl from './text-input.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { connect } from '../../utils/connect';
 
 type TextInputProps = {

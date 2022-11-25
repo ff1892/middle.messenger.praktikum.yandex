@@ -1,5 +1,5 @@
 import tpl from './popup-link.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type PopupLinkProps = {
   secondary?: boolean,

@@ -1,5 +1,5 @@
 import tpl from './modal.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { Button } from '../../components/button/button';
 import { avatarFormUser, avatarFormChat } from '../avatar-form/avatar-form';
 import { validator } from '../../utils/validator';

@@ -1,5 +1,5 @@
 import tpl from './icon-button.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type IconButtonProps = Record<string, any>;
 

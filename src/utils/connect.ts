@@ -1,4 +1,4 @@
-import { Block } from '../services/block';
+import { Block } from '../services/block/block';
 import { store } from '../services/store';
 import { StoreEvents } from '../constants';
 import { isEqual } from './is-equal';

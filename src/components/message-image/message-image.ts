@@ -1,5 +1,5 @@
 import tpl from './message-image.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type MessageImageProps = Record<string, any>;
 

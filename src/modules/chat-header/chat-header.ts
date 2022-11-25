@@ -3,7 +3,7 @@ import addUserIcon from 'bundle-text:../../../static/icons/add-user.svg';
 import deleteUserIcon from 'bundle-text:../../../static/icons/delete-user.svg';
 import deleteChatIcon from 'bundle-text:../../../static/icons/delete-chat.svg';
 import tpl from './chat-header.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { IconButton } from '../../components/icon-button/icon-button';
 import { Popup } from '../../components/popup/popup';
 import { PopupLink } from '../../components/popup-link/popup-link';

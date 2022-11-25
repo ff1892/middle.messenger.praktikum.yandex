@@ -1,6 +1,6 @@
 import { Route } from './route';
 import { Route as RouteList } from '../constants';
-import { Block } from './block';
+import { Block } from './block/block';
 
 class Router {
 

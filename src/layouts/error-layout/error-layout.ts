@@ -1,6 +1,6 @@
 import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
 import tpl from './error-layout.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { IconLink } from '../../components/icon-link/icon-link';
 import { Route } from '../../constants';
 

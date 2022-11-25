@@ -1,7 +1,7 @@
 import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
 import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
 import tpl from './chat-panel.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { SearchInput } from '../../components/search-input/search-input';
 import { ButtonProfile } from '../../components/button-profile/button-profile';
 import { getFormData } from '../../utils/get-formdata';

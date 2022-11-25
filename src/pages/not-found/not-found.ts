@@ -1,5 +1,5 @@
 import tpl from './not-found.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { ErrorLayout } from '../../layouts/error-layout/error-layout';
 import { getCurrentTime } from '../../utils/time';
 

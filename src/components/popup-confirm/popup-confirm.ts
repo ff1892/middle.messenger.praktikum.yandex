@@ -1,5 +1,5 @@
 import tpl from './popup-confirm.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 import { Button } from '../button/button';
 import { validator } from '../../utils/validator';
 import { chatsController } from '../../controllers/chats-controller';

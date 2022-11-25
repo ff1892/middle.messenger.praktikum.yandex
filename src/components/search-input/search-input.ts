@@ -1,5 +1,5 @@
 import tpl from './search-input.hbs';
-import { Block } from '../../services/block';
+import { Block } from '../../services/block/block';
 
 type SearchInputProps = {
   events: {
