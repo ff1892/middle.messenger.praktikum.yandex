@@ -13,7 +13,9 @@ import { authController } from './controllers/auth-controller';
 const onDomLoaded = () => {
   router
     .openPaths(Route.LOGIN, Route.SIGNUP, Route.ERROR, Route.NOTFOUND)
+    .hideAuthPaths(Route.LOGIN, Route.SIGNUP)
     .protectedCb(authController.checkUser.bind(authController))
+    .hiddenAuthCb(authController.checkHiddenAuth.bind(authController))
     .use(Route.LOGIN, LoginPage as typeof Block)
     .use(Route.SIGNUP, SignupPage as typeof Block)
     .use(Route.CHAT, ChatPage as typeof Block)

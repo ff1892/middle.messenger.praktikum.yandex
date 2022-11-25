@@ -4,6 +4,7 @@ import { BaseController } from './base-controller';
 import { authAPI } from '../api/auth-api';
 import { store } from '../services/store';
 import { chatsController } from './chats-controller';
+import { Toast } from '../components/toast/toast';
 
 class AuthController extends BaseController {
 
@@ -36,6 +37,7 @@ class AuthController extends BaseController {
       .then(() => {
         this.redirect(Route.LOGIN);
         store.setState('currentChat', { id: null });
+        store.setState('currentUser', { id: null });
       })
       .catch(this.onError);
   }
@@ -52,10 +54,6 @@ class AuthController extends BaseController {
   }
 
   checkHiddenAuth() {
-    const { currentUser } = store.getState();
-    if (!currentUser || !currentUser.id) {
-      return {};
-    }
     return authAPI.getUser()
       .then(() => {
         this.redirect(Route.CHAT);
