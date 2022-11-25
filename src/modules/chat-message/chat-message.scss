@@ -1,5 +1,4 @@
 .message-form {
-
   &__fieldset {
     display: flex;
     align-items: center;
@@ -29,6 +28,7 @@
 
     &::before {
       @include absolute(50px, 30px);
+
       top: -20px;
     }
   }

@@ -8,6 +8,7 @@
 
   &::before {
     @include absolute(70px, 50px);
+
     left: -5px;
     bottom: -30px;
     z-index: 1000;

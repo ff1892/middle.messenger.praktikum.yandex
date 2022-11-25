@@ -32,21 +32,23 @@ class AvatarWithStore extends Block {
 }
 
 const withUser = connect((state) => {
-  const user = {...state.currentUser };
-  const avatar = user.avatar;
+  const user = { ...state.currentUser };
+  const { avatar } = user;
 
-  return avatar ?
-    { src: RESOURCES_URL + avatar }
+  return avatar
+    ? { src: RESOURCES_URL + avatar }
     : { src: null };
 });
 
 const withChat = connect((state) => {
-  const chat = {...state.currentChat };
-  const avatar = chat.avatar;
+  const chat = { ...state.currentChat };
+  const { avatar } = chat;
 
-  return avatar ?
-    { src: RESOURCES_URL + avatar,
-      alt:  chat.title }
+  return avatar
+    ? {
+      src: RESOURCES_URL + avatar,
+      alt: chat.title,
+    }
     : { src: null };
 });
 

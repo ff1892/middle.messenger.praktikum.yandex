@@ -12,11 +12,11 @@
     "start": "npm run build && node src/server.js",
     "build": "parcel build src/index.html --no-source-maps --dist-dir ./dist",
     "dev": "parcel src/index.html --no-cache --open",
-    "eslint": "eslint ./src --ext .ts",
-    "eslint:fix": "npm run eslint --fix",
-    "stylelint": "stylelint \"src/**/*.scss\" --custom-syntax postcss-scss",
-    "stylelint:fix": "npm run stylelint --fix",
-    "check": "tsc --noEmit"
+    "eslint:check": "eslint --ext .ts ./src ",
+    "eslint:fix": "npm run eslint:check --fix",
+    "stylelint:check": "stylelint \"src/**/*.scss\" --custom-syntax postcss-scss",
+    "stylelint:fix": "npm run stylelint:check --fix",
+    "ts:check": "tsc --noEmit"
   },
   "repository": {
     "type": "git",

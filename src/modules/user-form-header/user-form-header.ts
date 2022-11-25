@@ -17,11 +17,11 @@ class UserFormHeaderBase extends Block {
 }
 
 const withUser = connect((state) => {
-  const user = {...state.currentUser }
+  const user = { ...state.currentUser };
   return {
     title: user.firstName,
     avatar: user.avatar ? RESOURCES_URL + user.avatar : user.avatar,
-  }
+  };
 });
 
 const UserFormHeader = withUser(UserFormHeaderBase);
@@ -55,7 +55,7 @@ const passwordFormHeader = new UserFormHeader('div', {
       click: modalAvatarUser.show.bind(modalAvatarUser),
     },
   }),
-})
+});
 
 export {
   UserFormHeader,

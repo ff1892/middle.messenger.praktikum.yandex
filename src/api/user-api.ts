@@ -35,7 +35,7 @@ class UserAPI extends BaseAPI {
     return this.post(
       ApiRoute.USER_SEARCH,
       { json: true, data },
-    )
+    );
   }
 }
 

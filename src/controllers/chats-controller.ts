@@ -31,7 +31,7 @@ class ChatsController extends BaseController {
     const state = store.getState();
     const newState = { ...state };
     delete newState.currentChat;
-    store.setState('currentChat', {id: null});
+    store.setState('currentChat', { id: null });
   }
 
   deleteChat() {
@@ -89,7 +89,7 @@ class ChatsController extends BaseController {
       .then((user) => {
         if (!user) {
           throw new Error();
-        };
+        }
         const data = {
           users: [user.id],
           chatId: store.getState().currentChat.id,
@@ -116,7 +116,7 @@ class ChatsController extends BaseController {
       .then((user) => {
         if (!user) {
           throw new Error();
-        };
+        }
         const data = {
           users: [user.id],
           chatId: store.getState().currentChat.id,
@@ -138,9 +138,7 @@ class ChatsController extends BaseController {
 
   getToken(id: number) {
     return chatsAPI.getToken(id)
-      .then((token) => {
-        return token as {token: string} | unknown;
-      })
+      .then((token) => token as {token: string} | unknown)
       .catch(this.onError);
   }
 }

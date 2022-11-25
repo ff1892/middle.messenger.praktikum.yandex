@@ -8,7 +8,7 @@ type ToastProps = {
 
 class Toast extends Block {
   constructor(props: ToastProps) {
-    super('div', props)
+    super('div', props);
     this.element?.classList.add('toast');
   }
 
@@ -17,10 +17,10 @@ class Toast extends Block {
   }
 
   show() {
-    document.body.append(this.getContent()!)
+    document.body.append(this.getContent()!);
     setTimeout(() => {
       this.hide();
-    }, 3000)
+    }, 3000);
   }
 
   hide() {

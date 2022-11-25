@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import tpl from './popup-form.hbs';
 import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
@@ -18,14 +19,13 @@ class PopupForm extends Block<PopupFormProps> {
   render() {
     return this.compile(tpl, this.props);
   }
-};
-
+}
 
 const handleSubmit = (
   e: SubmitEvent,
   input: string,
   callback: (e: SubmitEvent, data: string) => void,
-  ) => {
+) => {
   const isValidForm = validator.handleSubmit(e);
   if (!isValidForm) {
     return;
@@ -37,27 +37,29 @@ const handleSubmit = (
 
 const handleAddChat = (e: SubmitEvent) => {
   handleSubmit(
-    e, 'chat',
+    e,
+    'chat',
     (e, data) => chatsController.createChat(e, data),
   );
 };
 
 const handleAddUser = (e: SubmitEvent) => {
   handleSubmit(
-    e, 'login',
+    e,
+    'login',
     (e, data) => chatsController.addUserToChat(e, data),
   );
 };
 
 const handleDeleteUser = (e: SubmitEvent) => {
   handleSubmit(
-    e, 'login',
+    e,
+    'login',
     (e, data) => chatsController.deleteUserFromChat(e, data),
   );
 };
 
-
-const getInputProps = (name: string) =>  ({
+const getInputProps = (name: string) => ({
   attrs: {
     type: 'text',
     name,
@@ -66,7 +68,7 @@ const getInputProps = (name: string) =>  ({
     focus: validator.handleFocus,
     blur: validator.handleFocus,
     input: validator.handleChange,
-  }
+  },
 });
 
 const buttonAttrs = {
@@ -74,7 +76,7 @@ const buttonAttrs = {
     class: 'button',
     type: 'submit',
   },
-}
+};
 
 const popupAddUser = new PopupForm({
   title: 'Добавить пользователя',
@@ -86,9 +88,9 @@ const popupAddUser = new PopupForm({
     ...buttonAttrs,
     value: 'Добавить',
   }),
-    events: {
-      submit: handleAddUser,
-    }
+  events: {
+    submit: handleAddUser,
+  },
 });
 
 const popupDeleteUser = new PopupForm({
@@ -98,12 +100,12 @@ const popupDeleteUser = new PopupForm({
     input: new TextInput(getInputProps('login')),
   }),
   submitButton: new Button({
-    ... buttonAttrs,
+    ...buttonAttrs,
     value: 'Удалить',
   }),
-    events: {
-      submit: handleDeleteUser,
-    }
+  events: {
+    submit: handleDeleteUser,
+  },
 });
 
 const popupAddChat = new PopupForm({
@@ -116,9 +118,9 @@ const popupAddChat = new PopupForm({
     ...buttonAttrs,
     value: 'Создать',
   }),
-    events: {
-      submit: handleAddChat,
-    }
+  events: {
+    submit: handleAddChat,
+  },
 });
 
 export {

@@ -15,12 +15,15 @@ type LinkProps = {
 class Link extends Block<LinkProps> {
   constructor(props: LinkProps) {
 
-    super('a', {...props, events: {
-      click: (e) => {
-        e.preventDefault();
-        router.go(props.attrs.href);
-      }
-    }});
+    super('a', {
+      ...props,
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          router.go(props.attrs.href);
+        },
+      },
+    });
 
     this.element?.classList.add('link');
   }

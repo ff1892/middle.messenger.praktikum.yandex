@@ -19,7 +19,7 @@ const handleSubmit = (e: SubmitEvent) => {
   }
   const formData = validator.getFormData(e);
   userController.updateProfile(formData);
-}
+};
 
 const formInputs = userData.map(({ label, value, attrs }) => {
   const withName = withValue(attrs.name);
@@ -32,12 +32,12 @@ const formInputs = userData.map(({ label, value, attrs }) => {
       blur: validator.handleFocus,
       input: validator.handleChange,
     },
-  })
+  });
 
   return new UserField({
     label,
     input: currentInput,
-  })
+  });
 });
 
 const submitButton = new Button({
@@ -67,7 +67,7 @@ const userForm = new UserForm({
 
 const userLayout = new UserLayout({
   form: userForm,
-})
+});
 
 type UserProfileType = Record<string, any>;
 

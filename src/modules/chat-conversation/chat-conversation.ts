@@ -28,14 +28,12 @@ const withMessages = connect((state) => {
     return { messagesData: [] };
   }
   return {
-    messages: data.map((message: Record<string, any>) => {
-      return new Message({
-        content: message.content,
-        time: getTimeFromDate(new Date(message.time)),
-        isMine: message.userId === user.id,
-        author: `ID: ${message.userId}`,
-      })
-    }).reverse(),
+    messages: data.map((message: Record<string, any>) => new Message({
+      content: message.content,
+      time: getTimeFromDate(new Date(message.time)),
+      isMine: message.userId === user.id,
+      author: `ID: ${message.userId}`,
+    })).reverse(),
   };
 });
 

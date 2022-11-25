@@ -22,7 +22,6 @@
     background-repeat: no-repeat;
     background-position: center center;
 
-
     &:hover {
       background-color: $color-blue-dark;
     }
@@ -47,5 +46,5 @@
   input:focus + label {
     box-shadow: 0 0 20px 0 $color-blue;
     outline: 1px solid $color-white;
-  };
+  }
 }

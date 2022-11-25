@@ -1,28 +1,30 @@
 .loader {
-  background: #fff;
+  background: #FFF;
+
   @include absolute(100vw, 100vh);
   @include flexCenter;
+
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 1000;
 
-
-  &__box{
+  &__box {
     @include flexCenter;
+
     width: 180px;
     height: 180px;
   }
 
-  &__container{
+  &__container {
     height: 15px;
     width: 105px;
     display: flex;
     position: relative;
   }
 
-  &__circle{
+  &__circle {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -30,14 +32,14 @@
     animation: move 600ms linear 0ms infinite;
     margin-right: 30px;
 
-    &:first-child{
+    &:first-child {
       position: absolute;
-      top:0;
-      left:0;
+      top: 0;
+      left: 0;
       animation: grow 600ms linear 0ms infinite;
     }
 
-    &:last-child{
+    &:last-child {
       position: absolute;
       top: 0;
       right: 0;
@@ -47,14 +49,24 @@
   }
 }
 
-
-
 @keyframes grow {
-  from {transform: scale(0,0); opacity: 0;}
-  to {transform: scale(1,1); opacity: 1;}
+  from {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
 }
 
 @keyframes move {
-  from {transform: translateX(0px)}
-  to {transform: translateX(45px)}
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(45px);
+  }
 }

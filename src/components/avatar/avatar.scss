@@ -12,6 +12,7 @@
 
   &__unread {
     @include flexCenter;
+
     position: absolute;
     min-width: 20px;
     min-height: 20px;

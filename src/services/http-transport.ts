@@ -7,10 +7,10 @@ type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
 class HTTPTransport {
 
   get: HTTPMethod = (url, options = {}) => {
-    const getUrl = !!options.data ?
-      url + queryStringify(options.data)
+    const getUrl = options.data
+      ? url + queryStringify(options.data)
       : url;
-    return this.request(getUrl, { ...options, method: ApiMethod.GET }, options.timeout)
+    return this.request(getUrl, { ...options, method: ApiMethod.GET }, options.timeout);
   };
 
   post: HTTPMethod = (url, options = {}) => (
@@ -53,8 +53,8 @@ class HTTPTransport {
       });
 
       xhr.onload = () => {
-        if(xhr.status < 300) {
-          resolve(xhr)
+        if (xhr.status < 300) {
+          resolve(xhr);
         } else {
           reject(xhr);
         }

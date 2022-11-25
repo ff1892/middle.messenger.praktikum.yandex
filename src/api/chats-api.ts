@@ -25,7 +25,7 @@ class ChatsAPI extends BaseAPI {
       {
         json: true,
         notConvert: true,
-        data
+        data,
       },
     );
   }
@@ -47,7 +47,7 @@ class ChatsAPI extends BaseAPI {
       {
         json: true,
         notConvert: true,
-        data
+        data,
       },
     );
   }
@@ -58,7 +58,7 @@ class ChatsAPI extends BaseAPI {
       {
         json: true,
         notConvert: true,
-        data
+        data,
       },
     );
   }
@@ -67,7 +67,7 @@ class ChatsAPI extends BaseAPI {
     return this.post(
       `${ApiRoute.CHATS_TOKEN}/${chatId}`,
       { json: true },
-    )
+    );
   }
 }
 

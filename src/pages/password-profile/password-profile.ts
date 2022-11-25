@@ -20,9 +20,9 @@ const handleSubmit = (e: SubmitEvent) => {
   const formData = validator.getFormData(e);
   delete formData.passwordRepeat;
   userController.updatePassword(e, formData);
-}
+};
 
-const formFieldsData = passwordFormData.map(({label, attrs}) => ({
+const formFieldsData = passwordFormData.map(({ label, attrs }) => ({
   label,
   input: new TextInput({
     attrs,
@@ -30,9 +30,9 @@ const formFieldsData = passwordFormData.map(({label, attrs}) => ({
       focus: validator.handleFocus,
       blur: validator.handleFocus,
       input: validator.handleChange,
-    }
+    },
   }),
-}))
+}));
 
 const formInputs = formFieldsData.map((fieldData) => (
   new UserField(fieldData)

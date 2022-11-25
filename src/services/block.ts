@@ -227,7 +227,7 @@ class Block<P extends Record<string, any> = any> {
 
     const setUpdate = () => {
       this._setUpdate = true;
-    }
+    };
 
     return new Proxy(props, {
 

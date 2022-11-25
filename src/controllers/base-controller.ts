@@ -20,6 +20,8 @@ abstract class BaseController {
 
     const toast = new Toast({ text: message || reason, isError: true });
     toast.show();
+
+    return this;
   }
 
   protected showLoader() {
@@ -33,7 +35,9 @@ abstract class BaseController {
   protected clearInputs(e: SubmitEvent) {
     const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
-    inputs.forEach((input) => input.value = '');
+    inputs.forEach((input) => {
+      input.value = '';
+    });
   }
 
   protected redirect(path: string) {

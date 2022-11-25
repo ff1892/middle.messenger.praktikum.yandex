@@ -1,11 +1,10 @@
 import tpl from './loader.hbs';
 import { Block } from '../../services/block';
 
-
 class Loader extends Block {
   constructor(props = {}) {
 
-    super('div', props)
+    super('div', props);
     this.element?.classList.add('loader');
   }
 
@@ -14,7 +13,7 @@ class Loader extends Block {
   }
 
   show() {
-    document.body.append(this.getContent()!)
+    document.body.append(this.getContent()!);
   }
 
   hide() {

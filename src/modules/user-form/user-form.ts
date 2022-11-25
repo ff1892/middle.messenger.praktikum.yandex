@@ -14,5 +14,4 @@ class UserForm extends Block {
   }
 }
 
-
 export { UserForm };

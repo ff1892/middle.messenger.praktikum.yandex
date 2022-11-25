@@ -86,6 +86,6 @@ const signupInputsData = signupInputs.map((i) => (
       },
     }),
   }
-))
+));
 
 export { signupInputsData };

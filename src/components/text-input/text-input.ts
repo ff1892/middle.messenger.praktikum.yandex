@@ -42,16 +42,16 @@ class TextInputStore extends Block {
   render() {
     return this.compile(tpl, this.props);
   }
-};
+}
 
 const withValue = (name: string) => connect((state) => {
-  const user = {...state.currentUser }
+  const user = { ...state.currentUser };
   const currentValue = user[name];
 
   if (currentValue) {
-    return {value: currentValue};
+    return { value: currentValue };
   }
-  return {value: ''};
+  return { value: '' };
 });
 
 export { TextInput, TextInputStore, withValue };

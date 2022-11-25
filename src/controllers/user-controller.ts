@@ -12,14 +12,14 @@ class UserController extends BaseController {
     return userAPI.updateProfile(data)
       .then((user) => {
         store.setState('currentUser', user);
-        const toast = new Toast({ text: 'Профиль обновлён 👍' })
+        const toast = new Toast({ text: 'Профиль обновлён 👍' });
         toast.show();
       })
       .catch(this.onError)
       .finally(this.hideLoader);
   }
 
-  updatePassword(e: SubmitEvent,data: Record<string, any>) {
+  updatePassword(e: SubmitEvent, data: Record<string, any>) {
     this.showLoader();
 
     return userAPI.updatePassword(data)
@@ -49,7 +49,7 @@ class UserController extends BaseController {
 
   getUserByLogin(login: string) {
 
-     return userAPI.searchUser({ login })
+    return userAPI.searchUser({ login })
       .then((users) => {
         if (Array.isArray(users)) {
           if (!users.length || !users.some((user) => login === user.login)) {
@@ -57,6 +57,7 @@ class UserController extends BaseController {
           }
           return users.filter((user) => login === user.login)[0];
         }
+        return {};
       })
       .catch((err) => {
         this.onError(err, 'Нет пользователя с таким логином');

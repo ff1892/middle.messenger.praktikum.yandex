@@ -21,7 +21,7 @@ class Router {
     this._rootQuery = rootQuery;
     this._paths = [];
     this._openPaths = [];
-    this._hiddenAuthPaths=[];
+    this._hiddenAuthPaths = [];
 
     this.routes = [];
     this.history = window.history;
@@ -38,7 +38,6 @@ class Router {
     if (this._currentRoute && this._currentRoute !== route) {
       this._currentRoute.leave();
     }
-
 
     if (!this._openPaths.includes(pathname)) {
       this._protectedCb();

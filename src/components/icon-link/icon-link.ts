@@ -15,12 +15,15 @@ type IconLinkProps = {
 
 class IconLink extends Block<IconLinkProps> {
   constructor(props: IconLinkProps) {
-    super('a', {...props, events: {
-      click: (e) => {
-        e.preventDefault();
-        router.go(props.attrs.href);
-      }
-    }});
+    super('a', {
+      ...props,
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          router.go(props.attrs.href);
+        },
+      },
+    });
 
     this.element?.classList.add('icon-link');
   }

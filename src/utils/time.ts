@@ -10,5 +10,3 @@ export {
   getTimeFromDate,
   getCurrentTime,
 };
-
-

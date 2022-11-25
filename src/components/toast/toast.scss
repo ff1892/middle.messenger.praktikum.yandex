@@ -1,12 +1,14 @@
 .toast {
   @include absolute(300px);
+
   right: 30px;
   top: 30px;
-  background-color: #fff;
+  background-color: #FFF;
   border-radius: 20px;
 
   &__container {
     @include flexCenter;
+
     padding: 30px 40px;
     border-width: 2px;
     border-style: solid;
@@ -19,7 +21,9 @@
   &__text {
     padding: 0;
     margin: 0;
+
     @include flexCenter;
+
     text-transform: uppercase;
     text-align: center;
     color: inherit;

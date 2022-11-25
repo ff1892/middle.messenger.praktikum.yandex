@@ -43,26 +43,24 @@ class AuthController extends BaseController {
   checkUser() {
     return authAPI.getUser()
       .then((user) => {
-        store.setState('currentUser', user );
+        store.setState('currentUser', user);
       })
       .catch((error) => {
         this.onError(error);
         this.redirect(Route.LOGIN);
-      })
+      });
   }
 
   checkHiddenAuth() {
-    const currentUser = store.getState().currentUser;
+    const { currentUser } = store.getState();
     if (!currentUser || !currentUser.id) {
-      return;
+      return {};
     }
     return authAPI.getUser()
       .then(() => {
         this.redirect(Route.CHAT);
       })
-      .catch((error) => {
-        return error;
-      })
+      .catch((error) => error);
   }
 }
 

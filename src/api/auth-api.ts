@@ -11,7 +11,7 @@ class AuthAPI extends BaseAPI {
     return this.post(
       ApiRoute.AUTH_SIGNUP,
       { json: true, data },
-    )
+    );
   }
 
   login(data: LoginModel) {

@@ -9,8 +9,6 @@ import { store } from '../../services/store';
 import { chatsController } from '../../controllers/chats-controller';
 import { messageController } from '../../controllers/message-controller';
 
-
-
 class ChatLayoutWithStore extends Block {
 
   customize() {
@@ -27,7 +25,7 @@ class ChatLayoutWithStore extends Block {
         // @ts-ignore
         .then(({ token }) => {
           messageController.init({
-            chatId, userId, token
+            chatId, userId, token,
           });
         });
     }
@@ -38,7 +36,7 @@ class ChatLayoutWithStore extends Block {
   render() {
     return this.compile(tpl, this.props);
   }
-};
+}
 
 const withId = connect((state) => {
   const chat = state.currentChat;
@@ -52,6 +50,5 @@ const ChatLayout = new ChatLayoutWithId('div', {
   conversation: ChatConversation,
   message: new ChatMessage(),
 });
-
 
 export { ChatLayout };

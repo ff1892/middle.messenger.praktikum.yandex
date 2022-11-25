@@ -25,6 +25,7 @@
     "no-param-reassign": "off",
     "class-methods-use-this": "off",
     "padded-blocks": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "max-classes-per-file": 0
   }
 }

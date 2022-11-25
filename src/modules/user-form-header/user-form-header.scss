@@ -1,5 +1,4 @@
 .user-form {
-
   &__header {
     display: flex;
     align-items: center;
@@ -8,18 +7,9 @@
 
   &__avatar {
     margin-right: 40px;
-    position: relative;
     width: 70px;
     height: 70px;
     position: relative;
-  }
-
-  &__avatar:hover {
-
-    .user-form__avatar-change {
-      z-index: 10;
-      opacity: 1;
-    }
   }
 
   &__avatar-change {
@@ -37,6 +27,13 @@
     color: $color-white;
     opacity: 0;
     transition: all ease 0.2s;
+  }
+
+  &__avatar:hover {
+    .user-form__avatar-change {
+      z-index: 10;
+      opacity: 1;
+    }
   }
 
   &__img {

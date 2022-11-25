@@ -18,19 +18,19 @@ const handleSubmit = (e: SubmitEvent) => {
   }
   const formData = validator.getFormData(e);
   authController.login(e, formData as LoginModel);
-}
+};
 
 const loginInput = new TextInput({
-    attrs: {
-      name: 'login',
-      type: 'text',
-      placeholder: 'Логин',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
-    },
+  attrs: {
+    name: 'login',
+    type: 'text',
+    placeholder: 'Логин',
+  },
+  events: {
+    focus: validator.handleFocus,
+    blur: validator.handleFocus,
+    input: validator.handleChange,
+  },
 });
 
 const passwordInput = new TextInput({
@@ -45,7 +45,6 @@ const passwordInput = new TextInput({
     input: validator.handleChange,
   },
 });
-
 
 const loginField = new Field({
   label: 'Логин',
@@ -62,7 +61,7 @@ const link = new Link({
   attrs: {
     href: Route.SIGNUP,
   },
-})
+});
 
 const button = new Button({
   attrs: {

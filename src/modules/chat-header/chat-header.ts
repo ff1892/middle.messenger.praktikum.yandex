@@ -80,7 +80,7 @@ const boxPopup = new BoxPopup({
     mouseenter: popup.showParent.bind(popup),
     mouseleave: popup.hideParent.bind(popup),
   },
-})
+});
 
 const avatar = new AvatarWithChat('div', {});
 
@@ -96,7 +96,7 @@ class ChatHeaderWithStore extends Block {
 }
 
 const withCurrentChat = connect((state) => {
-  const chat = {...state.currentChat };
+  const chat = { ...state.currentChat };
   return {
     title: chat.title,
     img: chat.avatar,
@@ -105,7 +105,7 @@ const withCurrentChat = connect((state) => {
 
 const ChatHeaderWithChat = withCurrentChat(ChatHeaderWithStore);
 
-const ChatHeader = new ChatHeaderWithChat( 'div', {
+const ChatHeader = new ChatHeaderWithChat('div', {
   title: 'Чат',
   boxPopup,
   avatar,
@@ -119,7 +119,6 @@ const ChatHeader = new ChatHeaderWithChat( 'div', {
       click: modalAvatarChat.show.bind(modalAvatarChat),
     },
   }),
-  }
-)
+});
 
 export { ChatHeader };

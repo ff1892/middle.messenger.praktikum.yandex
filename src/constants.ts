@@ -1,8 +1,9 @@
+/* eslint-disable no-shadow */
 export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-export const RESOURCES_URL = BASE_URL + '/resources';
+export const RESOURCES_URL = `${BASE_URL}/resources`;
 export const SOCKET_URL = 'wss://ya-praktikum.tech/ws/chats';
 
-export const HEADERS_DEFAULT = {['content-type']: 'application/json'};
+export const HEADERS_DEFAULT = { 'content-type': 'application/json' };
 
 export enum ConvertMethod {
   TO_SNAKE_CASE = 'snakeCase',
@@ -48,7 +49,7 @@ export const ApiMethod = {
 };
 
 export const InputRegexp: Record<string, RegExp> = {
-  LOGIN: /^[a-z]{1}[a-z\d\_-]{2,19}$/i,
+  LOGIN: /^[a-z]{1}[a-z\d_-]{2,19}$/i,
   PASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   OLDPASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
   NEWPASSWORD: /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{8,40}$/,
@@ -58,7 +59,7 @@ export const InputRegexp: Record<string, RegExp> = {
   SECONDNAME: /^[A-ZА-ЯЁ]{1}[A-Za-zА-Яa-яёЁ]{0,20}[-]?[A-Za-zА-Яa-яёЁ]{1,20}$/,
   DISPLAYNAME: /^[\wa-я\-@$!%*#?&]{3,20}$/i,
   MESSAGE: /(?!\s*$).+/,
-  CHAT: /^[a-zа-яё\d]{1}[a-zа-яё\d\_-\s]{2,35}$/i,
+  CHAT: /^[a-zа-яё\d]{1}[a-zа-яё\d_-\s]{2,35}$/i,
 };
 
 export const ValidationMessage: Record<string, string> = {

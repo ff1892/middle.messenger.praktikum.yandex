@@ -24,6 +24,7 @@
 
   &--mine::before {
     @include absolute(20px, 20px, '');
+
     bottom: 18px;
     right: 20px;
     z-index: 20;

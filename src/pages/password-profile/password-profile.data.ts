@@ -19,11 +19,11 @@ export const passwordFormData = [
   },
   {
     label: 'Новый пароль',
-      attrs: {
-        name: 'passwordRepeat',
-        type: 'password',
-        value: '',
-        placeholder: 'Повторите новый пароль',
-      },
+    attrs: {
+      name: 'passwordRepeat',
+      type: 'password',
+      value: '',
+      placeholder: 'Повторите новый пароль',
+    },
   },
 ];

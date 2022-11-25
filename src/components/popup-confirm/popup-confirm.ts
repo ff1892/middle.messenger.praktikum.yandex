@@ -20,7 +20,7 @@ class PopupConfirm extends Block<PopupConfirmProps> {
   render() {
     return this.compile(tpl, this.props);
   }
-};
+}
 
 const popupConfirm = new PopupConfirm({
   title: 'Удалить чат?',

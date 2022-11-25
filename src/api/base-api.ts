@@ -38,48 +38,40 @@ abstract class BaseAPI {
 
     const parsed = JSON.parse(response);
 
-    if(Array.isArray(parsed)) {
+    if (Array.isArray(parsed)) {
       return parsed.map(convertKeysToCamel);
     }
 
-    if(isObject(parsed)) {
+    if (isObject(parsed)) {
       return convertKeysToCamel(parsed);
     }
 
     return parsed;
-  };
-
-  get: MethodType = (url, options?) => {
-    return this._http.get(
-      this._getUrl(url),
-      this._setOptions(options),
-    )
-    .then(this._parseResponse);
   }
 
-  post: MethodType = (url, options?) => {
-    return this._http.post(
-      this._getUrl(url),
-      this._setOptions(options),
-    )
+  get: MethodType = (url, options?) => this._http.get(
+    this._getUrl(url),
+    this._setOptions(options),
+  )
     .then(this._parseResponse);
-  }
 
-  put: MethodType = (url, options?) => {
-    return this._http.put(
-      this._getUrl(url),
-      this._setOptions(options),
-    )
+  post: MethodType = (url, options?) => this._http.post(
+    this._getUrl(url),
+    this._setOptions(options),
+  )
     .then(this._parseResponse);
-  }
 
-  delete: MethodType = (url, options?) => {
-    return this._http.delete(
-      this._getUrl(url),
-      this._setOptions(options),
-    )
+  put: MethodType = (url, options?) => this._http.put(
+    this._getUrl(url),
+    this._setOptions(options),
+  )
     .then(this._parseResponse);
-  }
+
+  delete: MethodType = (url, options?) => this._http.delete(
+    this._getUrl(url),
+    this._setOptions(options),
+  )
+    .then(this._parseResponse);
 }
 
 export { BaseAPI };

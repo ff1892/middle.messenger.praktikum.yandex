@@ -22,7 +22,7 @@ const handleSubmit = (e: SubmitEvent) => {
   const message = input.value;
   messageController.sendMessage(message);
   input.value = '';
-}
+};
 
 const filePopupLink = new PopupLink({
   icon: iconPhoto,
@@ -50,7 +50,7 @@ const stickerPopupLink = new PopupLink({
 
 const popup = new Popup({
   items: [filePopupLink, stickerPopupLink],
-})
+});
 
 const attachButton = new IconButton({
   attrs: {
@@ -86,7 +86,7 @@ const boxPopup = new BoxPopup({
     mouseenter: popup.showParent.bind(popup),
     mouseleave: popup.hideParent.bind(popup),
   },
-})
+});
 
 type ChatMessageProps = {
   attachButton: IconButton,

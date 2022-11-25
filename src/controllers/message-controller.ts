@@ -74,9 +74,8 @@ class MessageController {
       return;
     }
     const messages = setMessage(data);
-    store.setState('messages', messages );
+    store.setState('messages', messages);
   }
-
 
   private _keepAlive() {
     this._interval = setInterval(() => {
@@ -125,10 +124,10 @@ class MessageController {
       return;
     }
     this._cancelKeepAlive();
-    this._removeEvents()
+    this._removeEvents();
     this._socket.close();
   }
-};
+}
 
 const messageController = new MessageController();
 

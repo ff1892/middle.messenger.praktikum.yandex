@@ -1,3 +1,5 @@
+import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
+import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
 import tpl from './chat-panel.hbs';
 import { Block } from '../../services/block';
 import { SearchInput } from '../../components/search-input/search-input';
@@ -7,8 +9,6 @@ import { Popup } from '../../components/popup/popup';
 import { PopupLink } from '../../components/popup-link/popup-link';
 import { Route } from '../../constants';
 import { router } from '../../services/router';
-import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
-import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
 import { modalAddChat } from '../modal/modal';
 import { AvatarWithUser } from '../../components/avatar/avatar';
 
@@ -23,8 +23,8 @@ const profileLink = new PopupLink({
       e.preventDefault();
       router.go(Route.USERFORM);
     },
-  }
-})
+  },
+});
 
 const newChatBtn = new PopupLink({
   icon: newChat,
@@ -35,8 +35,8 @@ const newChatBtn = new PopupLink({
   },
   events: {
     click: () => modalAddChat.show(),
-  }
-})
+  },
+});
 
 const popup = new Popup({
   items: [profileLink, newChatBtn],
@@ -53,7 +53,7 @@ const profile = new ButtonProfile({
   events: {
     mouseenter: popup.showParent.bind(popup),
     mouseleave: popup.hideParent.bind(popup),
-  }
+  },
 });
 
 const searchInput = new SearchInput({

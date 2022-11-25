@@ -19,7 +19,7 @@ const handleSubmit = (e: SubmitEvent) => {
   const formData = validator.getFormData(e);
   delete formData.passwordRepeat;
   authController.signup(e, formData as SignupModel);
-}
+};
 
 const signupInputs = signupInputsData.map((inputData) => {
   const inputProps = { ...inputData };
@@ -36,9 +36,9 @@ const button = new Button({
 
 const link = new Link({
   text: 'Есть аккаунт?',
-    attrs: {
-      href: Route.LOGIN,
-    },
+  attrs: {
+    href: Route.LOGIN,
+  },
 });
 
 const signupFormProps = {
@@ -47,7 +47,7 @@ const signupFormProps = {
   button,
   link,
   events: {
-  submit: handleSubmit,
+    submit: handleSubmit,
   },
 };
 

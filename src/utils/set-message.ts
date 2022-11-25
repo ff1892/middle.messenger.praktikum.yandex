@@ -6,7 +6,7 @@ type Data = Record<string, any>;
 
 export const setMessage = (data: Data): Data => {
   const isArray = Array.isArray(data);
-  const messages = store.getState().messages;
+  const { messages } = store.getState();
 
   if (isArray && !data.length) {
     return [];
@@ -26,4 +26,3 @@ export const setMessage = (data: Data): Data => {
 
   return [null];
 };
-
