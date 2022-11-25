@@ -1,4 +1,4 @@
-import { Block } from '../services/block/block';
+import { Block } from '../services/block';
 
 const renderDOM = (query: string, block: Block) => {
 

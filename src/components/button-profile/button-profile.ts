@@ -1,5 +1,5 @@
 import tpl from './button-profile.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { Popup } from '../popup/popup';
 import { Avatar } from '../avatar/avatar';
 

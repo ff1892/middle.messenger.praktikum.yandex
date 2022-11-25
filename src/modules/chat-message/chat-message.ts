@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 import iconAttach from 'bundle-text:../../../static/icons/attach.svg';
 import iconSend from 'bundle-text:../../../static/icons/message.svg';
 import iconPhoto from 'bundle-text:../../../static/icons/photo.svg';
 import iconSticker from 'bundle-text:../../../static/icons/smile.svg';
 import tpl from './chat-message.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { IconButton } from '../../components/icon-button/icon-button';
 import { MessageField } from '../../components/message-field/message-field';
 import { validator } from '../../utils/validator';
@@ -32,7 +33,7 @@ const filePopupLink = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('Add photo'),
+    click: () => console.log('Add photo'),
   },
 });
 
@@ -44,7 +45,7 @@ const stickerPopupLink = new PopupLink({
     role: 'button',
   },
   events: {
-    click: () => alert('Add sticker'),
+    click: () => console.log('Add sticker'),
   },
 });
 

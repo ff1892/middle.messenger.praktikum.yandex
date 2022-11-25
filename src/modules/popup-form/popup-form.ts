@@ -1,6 +1,6 @@
 /* eslint-disable no-shadow */
 import tpl from './popup-form.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
 import { validator } from '../../utils/validator';
 import { TextInput } from '../../components/text-input/text-input';

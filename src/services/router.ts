@@ -1,6 +1,6 @@
 import { Route } from './route';
 import { Route as RouteList } from '../constants';
-import { Block } from './block/block';
+import { Block } from './block';
 
 class Router {
 
@@ -49,7 +49,6 @@ class Router {
 
     this._currentRoute = route;
     route.render();
-
   }
 
   private _getPath(pathname: string) {
@@ -112,6 +111,10 @@ class Router {
   hideAuthPaths(...paths: string[]) {
     this._hiddenAuthPaths = paths;
     return this;
+  }
+
+  get currentRoute() {
+    return this._currentRoute;
   }
 }
 

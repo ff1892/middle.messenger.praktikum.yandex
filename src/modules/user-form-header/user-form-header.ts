@@ -1,5 +1,5 @@
 import tpl from './user-form-header.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { Button } from '../../components/button/button';
 import { modalAvatarUser } from '../modal/modal';
 import { connect } from '../../utils/connect';

@@ -1,5 +1,5 @@
 import tpl from './link.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { router } from '../../services/router';
 
 type LinkProps = {

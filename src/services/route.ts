@@ -1,4 +1,4 @@
-import { Block } from './block/block';
+import { Block } from './block';
 import { renderDOM } from '../utils/render-dom';
 import { isEqualString } from '../utils/is-equal-string';
 
@@ -42,6 +42,10 @@ class Route {
     }
 
     this._block.show();
+  }
+
+  get pathName() {
+    return this._pathname;
   }
 }
 

@@ -1,5 +1,5 @@
 import tpl from './user-form.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 
 type UserFormType = Record<string, any>;
 

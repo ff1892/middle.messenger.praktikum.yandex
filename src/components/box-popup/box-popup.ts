@@ -1,5 +1,5 @@
 import tpl from './box-popup.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { Popup } from '../popup/popup';
 import { IconButton } from '../icon-button/icon-button';
 

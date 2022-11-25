@@ -1,5 +1,5 @@
 import tpl from './popup.hbs';
-import { Block } from '../../services/block/block';
+import { Block } from '../../services/block';
 import { PopupLink } from '../popup-link/popup-link';
 
 type PopupProps = {

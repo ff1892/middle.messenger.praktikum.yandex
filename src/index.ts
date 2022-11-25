@@ -7,7 +7,7 @@ import { PasswordProfilePage } from './pages/password-profile/password-profile';
 import { ChatPage } from './pages/chat/chat';
 import { Route } from './constants';
 import { router } from './services/router';
-import { Block } from './services/block/block';
+import { Block } from './services/block';
 import { authController } from './controllers/auth-controller';
 
 const onDomLoaded = () => {

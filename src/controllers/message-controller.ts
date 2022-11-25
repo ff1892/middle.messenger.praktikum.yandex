@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { SOCKET_URL } from '../constants';
 import { Toast } from '../components/toast/toast';
 import { setMessage } from '../utils/set-message';
