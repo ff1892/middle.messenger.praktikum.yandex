@@ -1,0 +1,55 @@
+.modal {
+  background-color: $color-black-40;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+
+  &__container {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 50px 20px;
+    background-color: $color-white;
+    margin-top: 150px;
+    max-width: 400px;
+    border-radius: 20px;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    &::before {
+      position: absolute;
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: $color-blue;
+      z-index: 1000;
+      top: 12px;
+      right: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: $color-blue;
+      z-index: 1000;
+      top: 12px;
+      right: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -6,7 +6,8 @@
     "indentation": [2, {"ignore": ["inside-parens"]}],
     "selector-class-pattern": null,
     "import-notation": "string",
-    "string-quotes": "single"
+    "string-quotes": "single",
+    "at-rule-no-unknown": null
   },
   "ignoreFiles": [
     "dist/*"

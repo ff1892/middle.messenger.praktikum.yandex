@@ -1,5 +1,5 @@
 import { InputRegexp, ValidationMessage } from '../constants';
-import getFormData from './get-formdata';
+import { getFormData } from './get-formdata';
 
 class Validator {
 
@@ -18,6 +18,9 @@ class Validator {
     this.handleFocus = this.handleFocus.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitAvatar = this.handleSubmitAvatar.bind(this);
+    this.handleChangeAvatar = this.handleChangeAvatar.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   private _checkValue(value: string, regexp: RegExp) {
@@ -26,7 +29,8 @@ class Validator {
 
   private _checkValueRepeat(input: HTMLInputElement) {
     const parent = input.closest('form') as HTMLFormElement;
-    const sibling = parent.querySelector('input[name="password"]') as HTMLInputElement;
+    const sibling = parent.querySelector('input[name="password"]') as HTMLInputElement
+    || parent.querySelector('input[name="newPassword"]') as HTMLInputElement;
 
     return input.value !== ''
       ? input.value === sibling.value
@@ -36,7 +40,7 @@ class Validator {
   private _checkIsValid(input: HTMLInputElement) {
     const inputName = input.name.toUpperCase();
 
-    if (inputName === 'PASSWORD_REPEAT') {
+    if (inputName === 'PASSWORDREPEAT') {
       return this._checkValueRepeat(input);
     }
 
@@ -107,16 +111,50 @@ class Validator {
     }
   }
 
+  private _disableButton(e: SubmitEvent) {
+    const form = e.target as HTMLFormElement;
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (!button) {
+      return;
+    }
+    button.disabled = true;
+  }
+
+  private _enableButton(input: HTMLInputElement) {
+    const form = input.closest('form');
+    if (!form) {
+      return;
+    }
+    const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    if (!button) {
+      return;
+    }
+    button.disabled = false;
+  }
+
   public handleFocus(e: FocusEvent) {
     this._validateInput(e.target as HTMLInputElement);
   }
 
   public handleChange(e: KeyboardEvent) {
-    this._removeError(e.target as HTMLInputElement);
+    const input = e.target as HTMLInputElement;
+    this._removeError(input);
+    this._enableButton(input);
+  }
+
+  public getFormData(e: SubmitEvent) {
+    return getFormData(e);
+  }
+
+  public closeModal() {
+    const modal = document.querySelector('.modal');
+    if (modal) {
+      modal.remove();
+    }
   }
 
   public handleSubmit(e: SubmitEvent) {
-    getFormData(e);
+    e.preventDefault();
 
     const form = e.target as HTMLFormElement;
     const inputs = form.querySelectorAll('input');
@@ -124,16 +162,35 @@ class Validator {
     inputs.forEach(this._validateInput);
     const isValidForm = [...inputs].every(this._checkIsValid);
 
-    if (isValidForm) {
-      // eslint-disable-next-line no-console
-      console.log('Все поля валидны');
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('Какие-то поля невалидны');
+    if (!isValidForm) {
+      this._disableButton(e);
+      return false;
     }
+
+    this.closeModal();
+    return true;
+  }
+
+  public handleSubmitAvatar(e: SubmitEvent) {
+    e.preventDefault();
+
+    const form = e.target as HTMLFormElement;
+    const input = form.querySelector('input')!;
+
+    if (!input?.value) {
+      this._setText(input, ValidationMessage.AVATAR);
+      return false;
+    }
+
+    return true;
+  }
+
+  public handleChangeAvatar(e: FormDataEvent) {
+    const input = e.target as HTMLInputElement;
+    this._setText(input, '');
   }
 }
 
 const validator = new Validator();
 
-export default validator;
+export { validator };

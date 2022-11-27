@@ -1,14 +1,14 @@
-type TListeners = Record<string, Array<(...args: any[]) => void>>;
-type TCallback = (...args: any[]) => void;
+type Listeners = Record<string, Array<(...args: any[]) => void>>;
+type Callback = (...args: any[]) => void;
 
 class EventBus {
-  private readonly listeners: TListeners;
+  private readonly listeners: Listeners;
 
   constructor() {
     this.listeners = {};
   }
 
-  subscribe(event: string, callback: TCallback) {
+  subscribe(event: string, callback: Callback) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
@@ -16,7 +16,7 @@ class EventBus {
     this.listeners[event].push(callback);
   }
 
-  unsubscribe(event: string, callback: TCallback) {
+  unsubscribe(event: string, callback: Callback) {
     if (!this.listeners[event]) {
       throw new Error(`Нет события: ${event}`);
     }
@@ -28,7 +28,7 @@ class EventBus {
 
   emit(event:string, ...args: any[]) {
     if (!this.listeners[event]) {
-      throw new Error(`Нет события: ${event}`);
+      return;
     }
 
     this.listeners[event].forEach((listener) => {
@@ -37,4 +37,4 @@ class EventBus {
   }
 }
 
-export default EventBus;
+export { EventBus };

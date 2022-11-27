@@ -1,0 +1,13 @@
+{{#if isError}}
+<div class="toast__container toast__container--error">
+  <p class="toast__text">
+    {{text}}
+  </p>
+</div>
+{{else}}
+<div class="toast__container">
+  <p class="toast__text">
+    {{text}}
+  </p>
+</div>
+{{/if}}

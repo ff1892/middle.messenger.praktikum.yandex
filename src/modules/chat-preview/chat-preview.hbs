@@ -1,7 +1,68 @@
 <ul class="chat-preview__list">
-  {{#each previews}}
+  {{#if previewData}}
+  {{#each previewData}}
     <li class="chat-preview__item">
-      {{{this}}}
+      <label class="preview">
+      <input
+        class="preview__input visually-hidden"
+        type="radio"
+        name="avatar"
+        value="{{this.id}}"
+      >
+        <div class="preview__container">
+
+          <div class="preview__avatar">
+            <div class="avatar">
+              {{#if this.avatar}}
+                <img
+                  class="avatar__image"
+                  src="{{this.avatar}}"
+                  alt="{{this.title}}"
+                >
+                {{else}}
+                <img
+                  class="avatar__image"
+                  src="img/avatar-default.png"
+                  alt="Аватар по умолчанию"
+                >
+                {{/if}}
+              </div>
+
+              {{#if this.unreadCount}}
+                <span class="avatar__unread">
+                  {{this.unreadCount}}
+                </span>
+              {{/if}}
+          </div>
+
+          <h3 class="preview__title">
+            {{this.title}}
+          </h3>
+
+          <p class="preview__text">
+            {{#if this.lastMessage.content}}
+              {{this.lastMessage.content}}
+            {{else}}
+              <span class="preview__text--default">
+                Пока нет сообщений
+              </span>
+            {{/if}}
+          </p>
+
+          <time
+            class="preview__time"
+            datetime="{{this.date}}">
+            {{this.dateString}}
+          </time>
+
+          <div class="preview__tick">
+            {{#if this.tickIcon}}
+              {{{this.tickIcon}}}
+            {{/if}}
+          </div>
+      </div>
+      </label>
     </li>
   {{/each}}
+  {{/if}}
 </ul>

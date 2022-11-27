@@ -1,6 +1,6 @@
-import Block from '../../services/block';
 import tpl from './preview.hbs';
-import cutString from '../../utils/cut-string';
+import { Block } from '../../services/block';
+import { cutString } from '../../utils/cut-string';
 
 type PreviewProps = Record<string, any>;
 
@@ -8,7 +8,7 @@ class Preview extends Block<PreviewProps> {
   constructor(props: PreviewProps) {
     props.text = cutString(45, props.text);
     props.title = cutString(22, props.title);
-    super('div', props);
+    super('label', props);
     this.element?.classList.add('preview');
   }
 
@@ -17,4 +17,4 @@ class Preview extends Block<PreviewProps> {
   }
 }
 
-export default Preview;
+export { Preview };

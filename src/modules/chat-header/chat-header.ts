@@ -1,19 +1,92 @@
 import menuIcon from 'bundle-text:../../../static/icons/menu.svg';
-import Block from '../../services/block';
+import addUserIcon from 'bundle-text:../../../static/icons/add-user.svg';
+import deleteUserIcon from 'bundle-text:../../../static/icons/delete-user.svg';
+import deleteChatIcon from 'bundle-text:../../../static/icons/delete-chat.svg';
 import tpl from './chat-header.hbs';
-import IconButton from '../../components/icon-button/icon-button';
+import { Block } from '../../services/block';
+import { IconButton } from '../../components/icon-button/icon-button';
+import { Popup } from '../../components/popup/popup';
+import { PopupLink } from '../../components/popup-link/popup-link';
+import { BoxPopup } from '../../components/box-popup/box-popup';
+import {
+  modalAddUser,
+  modalDeleteUser,
+  modalConfirm,
+  modalAvatarChat,
+} from '../modal/modal';
+import { connect } from '../../utils/connect';
+import { AvatarWithChat } from '../../components/avatar/avatar';
+import { Button } from '../../components/button/button';
+
+const addUserLink = new PopupLink({
+  icon: addUserIcon,
+  text: 'Добавить пользователя',
+  attrs: {
+    type: 'button',
+    role: 'button',
+  },
+  events: {
+    click: () => modalAddUser.show(),
+  },
+});
+
+const deleteUserLink = new PopupLink({
+  secondary: true,
+  icon: deleteUserIcon,
+  text: 'Удалить пользователя',
+  attrs: {
+    type: 'button',
+    role: 'button',
+  },
+  events: {
+    click: () => modalDeleteUser.show(),
+  },
+});
+
+const deleteChatLink = new PopupLink({
+  secondary: true,
+  icon: deleteChatIcon,
+  text: 'Удалить чат',
+  attrs: {
+    type: 'button',
+    role: 'button',
+  },
+  events: {
+    click: () => modalConfirm.show(),
+  },
+});
+
+const popup = new Popup({
+  items: [
+    addUserLink,
+    deleteUserLink,
+    deleteChatLink,
+  ],
+});
 
 const iconButton = new IconButton({
   type: 'button',
   icon: menuIcon,
 });
 
-type ChatHeaderProps = Record<string, any>;
+const boxPopup = new BoxPopup({
+  attrs: {
+    class: 'chat-header__button',
+  },
+  wrapperClass: 'chat-header__popup visually-hidden',
+  iconButton,
+  popup,
+  events: {
+    mouseenter: popup.showParent.bind(popup),
+    mouseleave: popup.hideParent.bind(popup),
+  },
+});
 
-class ChatHeader extends Block<ChatHeaderProps> {
-  constructor(props: ChatHeaderProps = {}) {
-    props.menuButton = iconButton;
-    super('div', props);
+const avatar = new AvatarWithChat('div', {});
+
+class ChatHeaderWithStore extends Block {
+
+  customize() {
     this.element?.classList.add('chat-header');
   }
 
@@ -22,4 +95,30 @@ class ChatHeader extends Block<ChatHeaderProps> {
   }
 }
 
-export default ChatHeader;
+const withCurrentChat = connect((state) => {
+  const chat = { ...state.currentChat };
+  return {
+    title: chat.title,
+    img: chat.avatar,
+  };
+});
+
+const ChatHeaderWithChat = withCurrentChat(ChatHeaderWithStore);
+
+const ChatHeader = new ChatHeaderWithChat('div', {
+  title: 'Чат',
+  boxPopup,
+  avatar,
+  buttonChange: new Button({
+    attrs: {
+      type: 'button',
+      class: 'chat-header__avatar-change',
+    },
+    value: 'Поменять аватар',
+    events: {
+      click: modalAvatarChat.show.bind(modalAvatarChat),
+    },
+  }),
+});
+
+export { ChatHeader };

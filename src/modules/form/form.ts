@@ -1,14 +1,14 @@
-import Block from '../../services/block';
 import tpl from './form.hbs';
-import Field from '../../components/field/field';
+import { Block } from '../../services/block';
+import { Field } from '../../components/field/field';
+import { Link } from '../../components/link/link';
+import { Button } from '../../components/button/button';
 
 type FormProps = {
   title: string,
-  link?: {
-    href: string,
-    text: string,
-  }
+  link?: Link,
   inputs: Field[],
+  button: Button,
   events: {
     submit: (e: SubmitEvent) => void;
   }
@@ -25,4 +25,4 @@ class Form extends Block<FormProps> {
   }
 }
 
-export default Form;
+export { Form };

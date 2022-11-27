@@ -1,82 +1,50 @@
-import validator from '../../utils/validator';
-
 export const userData = [
   {
     label: 'Почта',
+    value: '',
     attrs: {
       name: 'email',
       type: 'text',
-      value: 'pochta@yandex.ru',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
     label: 'Логин',
+    value: '',
     attrs: {
       name: 'login',
       type: 'text',
-      value: 'MessengerCeo',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
+    value: '',
     label: 'Имя',
     attrs: {
-      name: 'first_name',
+      name: 'firstName',
       type: 'text',
-      value: 'Александр',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
+    value: '',
     label: 'Фамилия',
     attrs: {
-      name: 'second_name',
+      name: 'secondName',
       type: 'text',
-      value: 'Александров',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
+    value: '',
     label: 'Имя в чате',
     attrs: {
-      name: 'display_name',
+      name: 'displayName',
       type: 'text',
-      value: 'Алекс',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
   {
+    value: '',
     label: 'Телефон',
     attrs: {
       name: 'phone',
       type: 'text',
-      value: '+75555555555',
-    },
-    events: {
-      focus: validator.handleFocus,
-      blur: validator.handleFocus,
-      input: validator.handleChange,
     },
   },
 ];

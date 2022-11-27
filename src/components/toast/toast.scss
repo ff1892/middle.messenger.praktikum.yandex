@@ -1,0 +1,38 @@
+.toast {
+  @include absolute(300px);
+
+  right: 30px;
+  top: 30px;
+  background-color: #FFF;
+  border-radius: 20px;
+  z-index: 200;
+
+  &__container {
+    @include flexCenter;
+
+    padding: 30px 40px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 30px;
+    border-color: $color-blue;
+    color: $color-blue;
+    box-shadow: 0 5px 10px 0 $color-black-10;
+  }
+
+  &__text {
+    padding: 0;
+    margin: 0;
+
+    @include flexCenter;
+
+    text-transform: uppercase;
+    text-align: center;
+    color: inherit;
+    font-size: 15px;
+  }
+
+  &__container--error {
+    border-color: $color-red;
+    color: $color-red;
+  }
+}

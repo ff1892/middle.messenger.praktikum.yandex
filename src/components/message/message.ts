@@ -1,5 +1,5 @@
-import Block from '../../services/block';
 import tpl from './message.hbs';
+import { Block } from '../../services/block';
 
 type MessageProps = Record<string, any>;
 
@@ -22,4 +22,4 @@ class Message extends Block<MessageProps> {
   }
 }
 
-export default Message;
+export { Message };

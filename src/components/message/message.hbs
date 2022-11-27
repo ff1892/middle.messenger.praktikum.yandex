@@ -1,5 +1,9 @@
 <div class="message__container">
-    {{content}}
+  {{#if isMine}}
+  {{else}}
+    <h4 class="message__author">{{author}}</h4>
+  {{/if}}
+    <p class="message__text">{{content}}</p>
 </div>
 <div class="message__timestamp">
   {{time}}

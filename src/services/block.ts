@@ -1,11 +1,11 @@
 /* eslint-disable no-use-before-define */
 import { v4 as makeUUID } from 'uuid';
 import { TemplateDelegate } from 'handlebars';
-import EventBus from './event-bus';
+import { EventBus } from './event-bus';
 
 type Nullable<T> = T | null;
 
-class Block<P extends Record<string, any>> {
+class Block<P extends Record<string, any> = any> {
 
   static EVENTS = {
     INIT: 'init',
@@ -14,7 +14,7 @@ class Block<P extends Record<string, any>> {
     FLOW_RENDER: 'flow:render',
   };
 
-  protected props: Record<string, any>;
+  protected props: P;
 
   protected children: Record<string, Block<P>>;
 
@@ -49,6 +49,9 @@ class Block<P extends Record<string, any>> {
     this._registerEvents(eventBus);
     eventBus.emit(Block.EVENTS.INIT);
 
+  }
+
+  customize(): void {
   }
 
   private _getChildren(propsAndChildren: P | {}) {
@@ -86,6 +89,7 @@ class Block<P extends Record<string, any>> {
   private _createResources() {
     const { tagName } = this._meta!;
     this._element = this._createDocumentElement(tagName);
+    this.customize();
     this.addAttribute();
   }
 
@@ -182,15 +186,15 @@ class Block<P extends Record<string, any>> {
     const { props, children, childrenArr } = this._getChildren(nextProps);
 
     if (Object.values(props).length) {
-      Object.assign(this.props, nextProps);
+      Object.assign(this.props, props);
     }
 
     if (Object.values(children).length) {
-      Object.assign(this.children, nextProps);
+      Object.assign(this.children, children);
     }
 
     if (Object.values(childrenArr).length) {
-      Object.assign(this.childrenArr, nextProps);
+      Object.assign(this.childrenArr, childrenArr);
     }
 
     if (this._setUpdate) {
@@ -211,6 +215,7 @@ class Block<P extends Record<string, any>> {
     const block = this.render();
     this.removeEvents();
     this._element!.innerHTML = '';
+    this.addAttribute();
     this._element!.appendChild(block);
     this.addEvents();
   }
@@ -220,6 +225,10 @@ class Block<P extends Record<string, any>> {
   }
 
   private _makeProxyProps(props: any) {
+
+    const setUpdate = () => {
+      this._setUpdate = true;
+    };
 
     return new Proxy(props, {
 
@@ -231,7 +240,7 @@ class Block<P extends Record<string, any>> {
       set(target, prop, value) {
         if (target[prop] !== value) {
           target[prop] = value;
-          this._setUpdate = true;
+          setUpdate();
         }
         return true;
       },
@@ -275,4 +284,4 @@ class Block<P extends Record<string, any>> {
   }
 }
 
-export default Block;
+export { Block };

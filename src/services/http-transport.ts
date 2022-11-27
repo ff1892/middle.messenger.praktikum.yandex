@@ -1,49 +1,38 @@
-import queryStringify from '../utils/query-stringify';
+import { queryStringify } from '../utils/query-stringify';
 import { ApiMethod } from '../constants';
 
 type Options = Record<string, any>;
+type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>;
 
 class HTTPTransport {
 
-  get(url:string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.GET },
-      options.timeout,
-    );
-  }
+  get: HTTPMethod = (url, options = {}) => {
+    const getUrl = options.data
+      ? url + queryStringify(options.data)
+      : url;
+    return this.request(getUrl, { ...options, method: ApiMethod.GET }, options.timeout);
+  };
 
-  post(url: string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.POST },
-      options.timeout,
-    );
-  }
+  post: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.POST }, options.timeout)
+  );
 
-  put(url: string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.PUT },
-      options.timeout,
-    );
-  }
+  put: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.PUT }, options.timeout)
+  );
 
-  delete(url:string, options: Options = {}) {
-    return this.request(
-      url,
-      { ...options, method: ApiMethod.DELETE },
-      options.timeout,
-    );
-  }
+  delete: HTTPMethod = (url, options = {}) => (
+    this.request(url, { ...options, method: ApiMethod.DELETE }, options.timeout)
+  );
 
-  request(
-    url:string,
-    options: Options = {},
-    timeout = 5000,
-  ) {
+  private request(url:string, options: Options = {}, timeout = 5000): Promise<XMLHttpRequest> {
 
-    const { headers = {}, method, data } = options;
+    const {
+      headers = {},
+      method,
+      data,
+      json = false,
+    } = options;
 
     return new Promise((resolve, reject) => {
 
@@ -52,32 +41,35 @@ class HTTPTransport {
         return;
       }
 
-      const xhr = new XMLHttpRequest();
       const isGet = method === ApiMethod.GET;
 
-      xhr.open(
-        method,
-        isGet && !!data
-          ? `${url}${queryStringify(data)}`
-          : url,
-      );
+      const xhr = new XMLHttpRequest();
+
+      xhr.open(method, url);
+      xhr.withCredentials = true;
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
       xhr.onload = () => {
-        resolve(xhr);
+        if (xhr.status < 300) {
+          resolve(xhr);
+        } else {
+          reject(xhr);
+        }
       };
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
+      xhr.onabort = () => reject(xhr);
+      xhr.onerror = () => reject(xhr);
 
       xhr.timeout = timeout;
-      xhr.ontimeout = reject;
+      xhr.ontimeout = () => reject(xhr);
 
       if (isGet || !data) {
         xhr.send();
+      } else if (json) {
+        xhr.send(JSON.stringify(data));
       } else {
         xhr.send(data);
       }
@@ -85,4 +77,6 @@ class HTTPTransport {
   }
 }
 
-export default HTTPTransport;
+const httpTransport = new HTTPTransport();
+
+export { httpTransport };

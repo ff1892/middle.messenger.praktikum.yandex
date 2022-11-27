@@ -1,26 +1,11 @@
 import tpl from './user-form.hbs';
-import Block from '../../services/block';
-import UserField from '../../components/user-field/user-field';
-import Button from '../../components/button/button';
+import { Block } from '../../services/block';
 
-type UserFormType = {
-  avatar: string,
-  avatarDescription: string,
-  inputs: UserField[];
-  title: string,
-  button: Button,
-  link?: {
-    href: string,
-    text: string,
-  },
-  events: {
-    submit: (e: SubmitEvent) => void;
-  }
-};
+type UserFormType = Record<string, any>;
 
-class UserForm extends Block<UserFormType> {
+class UserForm extends Block {
   constructor(props: UserFormType) {
-    super('form', props);
+    super('section', props);
     this.element?.classList.add('user-form');
   }
 
@@ -29,4 +14,4 @@ class UserForm extends Block<UserFormType> {
   }
 }
 
-export default UserForm;
+export { UserForm };

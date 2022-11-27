@@ -1,0 +1,50 @@
+.avatar-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 30px;
+    color: $color-blue;
+    font-size: 17px;
+    text-transform: uppercase;
+  }
+
+  &__label {
+    margin-bottom: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $color-blue;
+    cursor: pointer;
+    background-image: url('../static/icons/add-avatar.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    &:hover {
+      background-color: $color-blue-dark;
+    }
+  }
+
+  &__submit {
+    padding-top: 50px;
+    position: relative;
+    font-size: 15px;
+  }
+
+  &__error {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 10px;
+    color: $color-red;
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  input:focus + label {
+    box-shadow: 0 0 20px 0 $color-blue;
+    outline: 1px solid $color-white;
+  }
+}

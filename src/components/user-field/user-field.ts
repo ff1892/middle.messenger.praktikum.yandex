@@ -1,14 +1,14 @@
 import tpl from './user-field.hbs';
-import Block from '../../services/block';
-import TextInput from '../text-input/text-input';
+import { Block } from '../../services/block';
+import { TextInput } from '../text-input/text-input';
 
-type UserFieldType = {
+type UserFieldProps = {
   label: string,
   input: TextInput,
-};
+}
 
-class UserField extends Block<UserFieldType> {
-  constructor(props: UserFieldType) {
+class UserField extends Block {
+  constructor(props: UserFieldProps) {
     super('div', props);
     this.element?.classList.add('user-field');
   }
@@ -18,4 +18,4 @@ class UserField extends Block<UserFieldType> {
   }
 }
 
-export default UserField;
+export { UserField };

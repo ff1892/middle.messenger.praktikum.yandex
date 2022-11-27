@@ -1,10 +1,9 @@
-import Block from '../../services/block';
-import ErrorLayout from '../../layouts/error-layout/error-layout';
 import tpl from './error.hbs';
+import { Block } from '../../services/block';
+import { ErrorLayout } from '../../layouts/error-layout/error-layout';
 import { getCurrentTime } from '../../utils/time';
 
-const currentDate = new Date();
-const date = currentDate.toISOString();
+const date = new Date().toISOString();
 const dateString = getCurrentTime();
 
 const layoutData = {
@@ -20,7 +19,7 @@ class ErrorPage extends Block<ErrorPageProps> {
   constructor(props: ErrorPageProps = {}) {
     props.errorLayout = new ErrorLayout(layoutData);
 
-    super('div', props);
+    super('main', props);
     this.element?.classList.add('error-page');
   }
 
@@ -29,4 +28,4 @@ class ErrorPage extends Block<ErrorPageProps> {
   }
 }
 
-export default ErrorPage;
+export { ErrorPage };

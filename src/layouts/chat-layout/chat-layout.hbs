@@ -1,0 +1,17 @@
+{{#if currentId}}
+  <section class="chat-current__header">
+    {{{header}}}
+  </section>
+  <section class="chat-current__conversation">
+    {{{conversation}}}
+  </section>
+  <section class="chat-current__message">
+    {{{message}}}
+  </section>
+  {{else}}
+  <div class="no-current">
+    <p class="no-current__text">
+      Выберите чат или создайте новый 💌
+    </p>
+  </div>
+{{/if}}

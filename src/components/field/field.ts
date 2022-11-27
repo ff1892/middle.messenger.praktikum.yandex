@@ -1,6 +1,6 @@
-import Block from '../../services/block';
 import tpl from './field.hbs';
-import TextInput from '../text-input/text-input';
+import { Block } from '../../services/block';
+import { TextInput } from '../text-input/text-input';
 
 type FieldProps = {
   label: string,
@@ -17,4 +17,4 @@ class Field extends Block<FieldProps> {
   }
 }
 
-export default Field;
+export { Field };

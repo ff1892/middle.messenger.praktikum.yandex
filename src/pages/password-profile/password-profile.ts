@@ -1,70 +1,44 @@
 import tpl from './password-profile.hbs';
-import Block from '../../services/block';
-import UserLayout from '../../layouts/user-layout/user-layout';
-import UserForm from '../../modules/user-form/user-form';
-import UserField from '../../components/user-field/user-field';
-import Button from '../../components/button/button';
-import getFormData from '../../utils/get-formdata';
+import { Block } from '../../services/block';
+import { UserLayout } from '../../layouts/user-layout/user-layout';
+import { UserForm } from '../../modules/user-form/user-form';
+import { UserField } from '../../components/user-field/user-field';
+import { Button } from '../../components/button/button';
+import { TextInput } from '../../components/text-input/text-input';
+import { validator } from '../../utils/validator';
 import { Route } from '../../constants';
-import TextInput from '../../components/text-input/text-input';
-import validator from '../../utils/validator';
+import { Link } from '../../components/link/link';
+import { passwordFormHeader } from '../../modules/user-form-header/user-form-header';
+import { passwordFormData } from './password-profile.data';
+import { userController } from '../../controllers/user-controller';
 
-const formFieldsData = [
-  {
-    label: 'Старый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'old_password',
-        type: 'password',
-        value: '',
-        placeholder: 'Ваш старый пароль',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Новый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'password',
-        type: 'password',
-        value: '',
-        placeholder: 'Не менее шести символов',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-  {
-    label: 'Новый пароль',
-    input: new TextInput({
-      attrs: {
-        name: 'password_repeat',
-        type: 'password',
-        value: '',
-        placeholder: 'Повторите новый пароль',
-      },
-      events: {
-        focus: validator.handleFocus,
-        blur: validator.handleFocus,
-        input: validator.handleChange,
-      },
-    }),
-  },
-];
+const handleSubmit = (e: SubmitEvent) => {
+  const isValid = validator.handleSubmit(e);
+  if (!isValid) {
+    return;
+  }
+  const formData = validator.getFormData(e);
+  delete formData.passwordRepeat;
+  userController.updatePassword(e, formData);
+};
 
-const inputs = formFieldsData.map((fieldData) => (
+const formFieldsData = passwordFormData.map(({ label, attrs }) => ({
+  label,
+  input: new TextInput({
+    attrs,
+    events: {
+      focus: validator.handleFocus,
+      blur: validator.handleFocus,
+      input: validator.handleChange,
+    },
+  }),
+}));
+
+const formInputs = formFieldsData.map((fieldData) => (
   new UserField(fieldData)
 ));
 
-const button = new Button({
+const submitButton = new Button({
   attrs: {
     class: 'button',
     type: 'submit',
@@ -72,18 +46,20 @@ const button = new Button({
   value: 'Изменить пароль',
 });
 
-const passwordForm = new UserForm({
-  title: 'Алекс',
-  avatar: 'img/avatar-default.png',
-  avatarDescription: 'Аватар по умолчанию',
-  link: {
+const formLink = new Link({
+  text: 'Изменить данные профиля',
+  attrs: {
     href: Route.USERFORM,
-    text: 'Изменить данные профиля',
   },
-  button,
-  inputs,
+});
+
+const passwordForm = new UserForm({
+  header: passwordFormHeader,
+  link: formLink,
+  button: submitButton,
+  inputs: formInputs,
   events: {
-    submit: validator.handleSubmit,
+    submit: handleSubmit,
   },
 });
 
@@ -94,7 +70,7 @@ class PasswordProfilePage extends Block<PasswordProfileType> {
     props.userLayout = new UserLayout({
       form: passwordForm,
     });
-    super('section', props);
+    super('main', props);
     this.element?.classList.add('user-profile-page');
   }
 
@@ -103,4 +79,4 @@ class PasswordProfilePage extends Block<PasswordProfileType> {
   }
 }
 
-export default PasswordProfilePage;
+export { PasswordProfilePage };

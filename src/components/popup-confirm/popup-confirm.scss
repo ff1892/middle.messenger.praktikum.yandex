@@ -1,0 +1,19 @@
+.popup-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 60px;
+    color: $color-blue;
+    font-size: 17px;
+    text-transform: uppercase;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+  }
+}
