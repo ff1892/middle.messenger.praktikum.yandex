@@ -16,7 +16,8 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: "static", to: "static" },
+        { from: "static/img", to: "img" },
+        { from: "static/icons", to: "icons" },
       ],
     })
   ],
@@ -49,8 +50,12 @@ module.exports = {
         ],
       },
       {
-        test: /\.(jpe?g|png|svg)$/i,
+        test: /\.(jpe?g|png)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.(svg)$/i,
+        use: "svg-inline-loader",
       },
       {
         test: /\.s[ac]ss$/i,

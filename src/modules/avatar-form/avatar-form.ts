@@ -5,6 +5,7 @@ import { validator } from '../../utils/validator';
 import { userController } from '../../controllers/user-controller';
 import { store } from '../../services/store';
 import { chatsController } from '../../controllers/chats-controller';
+import addAvatarIcon from '../../../static/icons/add-avatar.svg';
 
 type AvatarFormProps = Record<string, any>;
 
@@ -61,6 +62,7 @@ const avatarFormUser = new AvatarForm({
     },
     value: 'Поменять аватар',
   }),
+  icon: addAvatarIcon,
   events: {
     submit: handleSubmitUser,
     change: validator.handleChangeAvatar,
@@ -75,6 +77,7 @@ const avatarFormChat = new AvatarForm({
     },
     value: 'Поменять аватар',
   }),
+  icon: addAvatarIcon,
   events: {
     submit: handleSubmitChat,
     change: validator.handleChangeAvatar,

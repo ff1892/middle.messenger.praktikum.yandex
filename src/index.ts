@@ -9,6 +9,7 @@ import { Route } from './constants';
 import { router } from './services/router';
 import { Block } from './services/block';
 import { authController } from './controllers/auth-controller';
+import './style.scss';
 
 const onDomLoaded = () => {
   router
