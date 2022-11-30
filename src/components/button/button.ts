@@ -8,9 +8,6 @@ type ButtonProps = {
     'aria-label'?: string,
   },
   value?: string,
-
-
-
   events?: Record<string, any>,
 }
 
