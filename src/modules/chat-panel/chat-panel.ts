@@ -1,5 +1,5 @@
-import iconProfile from 'bundle-text:../../../static/icons/profile.svg';
-import newChat from 'bundle-text:../../../static/icons/new-chat.svg';
+import iconProfile from '../../../static/icons/profile.svg';
+import newChat from '../../../static/icons/new-chat.svg';
 import tpl from './chat-panel.hbs';
 import { Block } from '../../services/block';
 import { SearchInput } from '../../components/search-input/search-input';
