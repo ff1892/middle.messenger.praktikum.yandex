@@ -20,6 +20,11 @@
     "lint:all": "npm run eslint:check && npm run stylelint:check && npm run ts:check",
     "test": "ts-mocha src/**/*.test.ts --require test/test.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint:all && npm run test"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex.git"
@@ -48,6 +53,7 @@
     "eslint-plugin-react": "7.31.10",
     "handlebars-loader": "1.7.2",
     "html-webpack-plugin": "5.5.0",
+    "husky": "8.0.2",
     "jsdom": "20.0.3",
     "mocha": "10.0.0",
     "postcss-scss": "4.0.5",
