@@ -10,6 +10,7 @@ import { router } from './services/router';
 import { Block } from './services/block';
 import { authController } from './controllers/auth-controller';
 import './style.scss';
+import { chatsController } from './controllers/chats-controller';
 
 const onDomLoaded = () => {
   router
@@ -17,6 +18,10 @@ const onDomLoaded = () => {
     .hideAuthPaths(Route.LOGIN, Route.SIGNUP)
     .protectedCb(authController.checkUser.bind(authController))
     .hiddenAuthCb(authController.checkHiddenAuth.bind(authController))
+    .setIncludedRoutes({
+      path: Route.CHAT,
+      cb: chatsController.getCurrentChatByHash.bind(chatsController),
+    })
     .use(Route.LOGIN, LoginPage as typeof Block)
     .use(Route.SIGNUP, SignupPage as typeof Block)
     .use(Route.CHAT, ChatPage as typeof Block)
