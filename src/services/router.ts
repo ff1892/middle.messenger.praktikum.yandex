@@ -72,7 +72,7 @@ class Router {
   }
 
   private _checkBasePath(pathname: string) {
-    const basePathExp = /^\/\w+/i;
+    const basePathExp = /^\/[\w-]+/i;
     const [basePath] = pathname.match(basePathExp) || '/';
     return basePath;
   }
