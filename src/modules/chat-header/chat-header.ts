@@ -1,7 +1,7 @@
-import menuIcon from 'bundle-text:../../../static/icons/menu.svg';
-import addUserIcon from 'bundle-text:../../../static/icons/add-user.svg';
-import deleteUserIcon from 'bundle-text:../../../static/icons/delete-user.svg';
-import deleteChatIcon from 'bundle-text:../../../static/icons/delete-chat.svg';
+import menuIcon from '../../../static/icons/menu.svg';
+import deleteUserIcon from '../../../static/icons/delete-user.svg';
+import deleteChatIcon from '../../../static/icons/delete-chat.svg';
+import addUserIcon from '../../../static/icons/add-user.svg';
 import tpl from './chat-header.hbs';
 import { Block } from '../../services/block';
 import { IconButton } from '../../components/icon-button/icon-button';

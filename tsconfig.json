@@ -1,12 +1,19 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2019",
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "sourceMap": true,
-    "strictNullChecks": true
+  "ts-node":{
+      "files":true
   },
-  "include": [ "src" ]
+  "compilerOptions": {
+      "target": "ES2017",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "noImplicitAny": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "sourceMap": true,
+      "strictNullChecks": true
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Recommended"
 }

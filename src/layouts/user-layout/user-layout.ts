@@ -1,4 +1,4 @@
-import iconArrow from 'bundle-text:../../../static/icons/back-arrow.svg';
+import iconArrow from '../../../static/icons/back-arrow.svg';
 import tpl from './user-layout.hbs';
 import { Block } from '../../services/block';
 import { IconLink } from '../../components/icon-link/icon-link';

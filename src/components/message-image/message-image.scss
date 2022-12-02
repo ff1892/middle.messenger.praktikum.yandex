@@ -28,7 +28,7 @@
     bottom: 18px;
     right: 20px;
     z-index: 20;
-    background-image: url('../static/icons/tick.svg');
+    background-color: $color-white;
   }
 
   &--read::after {
@@ -39,7 +39,7 @@
     bottom: 18px;
     right: 16px;
     z-index: 20;
-    background-image: url('../static/icons/tick.svg');
+    background-color: $color-white;
   }
 
   &--mine &__picture {

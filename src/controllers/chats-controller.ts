@@ -5,6 +5,8 @@ import { getCurrentChatById } from '../utils/get-current-chat';
 import { Toast } from '../components/toast/toast';
 import { validator } from '../utils/validator';
 import { userController } from './user-controller';
+import { router } from '../services/router';
+import { Route } from '../constants';
 
 class ChatsController extends BaseController {
 
@@ -19,11 +21,44 @@ class ChatsController extends BaseController {
       .finally(this.hideLoader);
   }
 
+  getCurrentChatByHash(id: number) {
+    const activeChat = store.getState().currentChat;
+
+    if (activeChat && activeChat.id === id) {
+      return;
+    }
+
+    if (!activeChat) {
+      this.getChats()
+        .then(() => {
+          this._setCurrentToState(id);
+        });
+    }
+
+    this._setCurrentToState(id);
+  }
+
+  private _setCurrentToState(id: number) {
+
+    const chats = store.getState().chatsList;
+    if (chats && chats.length) {
+      const currentChat = getCurrentChatById(id, chats);
+      if (Object.keys(currentChat).length && currentChat.id) {
+        store.setState('currentChat', currentChat);
+      } else {
+        const toast = new Toast({ text: 'Нет чата с таким id', isError: true });
+        toast.show();
+        store.setState('currentChat', { id: null });
+      }
+    }
+  }
+
   getCurrentChat(id: number) {
     const chats = store.getState().chatsList;
     if (chats.length) {
       const currentChat = getCurrentChatById(id, chats);
       store.setState('currentChat', currentChat);
+      router.go(`${Route.CHAT}#${id}`);
     }
   }
 
@@ -31,6 +66,7 @@ class ChatsController extends BaseController {
     const state = store.getState();
     const newState = { ...state };
     delete newState.currentChat;
+    router.go(Route.CHAT);
     store.setState('currentChat', { id: null });
   }
 

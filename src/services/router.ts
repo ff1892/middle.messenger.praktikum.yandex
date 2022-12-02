@@ -11,6 +11,7 @@ class Router {
   private _hiddenAuthPaths: string[];
   private _protectedCb: () => void;
   private _hiddenAuthCb: () => void;
+  private _includedRoutes: { path: string, cb: (id: number) => void }[];
 
   routes: Route[];
   history: History;
@@ -22,17 +23,29 @@ class Router {
     this._paths = [];
     this._openPaths = [];
     this._hiddenAuthPaths = [];
+    this._includedRoutes = [];
 
     this.routes = [];
     this.history = window.history;
 
   }
 
-  private _onRoute(pathname: string) {
+  private _onRoute(path: string) {
+
+    const pathname = this._checkBasePath(path);
 
     const route = this.getRoute(pathname);
     if (!route) {
       return;
+    }
+
+    if (this._isIncludedList(pathname) && window.location.hash) {
+      const currentRoute = this._includedRoutes.find(
+        (currentPath) => currentPath.path === pathname,
+      );
+      if (currentRoute) {
+        currentRoute.cb(+window.location.hash.slice(1));
+      }
     }
 
     if (this._currentRoute && this._currentRoute !== route) {
@@ -56,6 +69,19 @@ class Router {
       return pathname;
     }
     return RouteList.NOTFOUND;
+  }
+
+  private _checkBasePath(pathname: string) {
+    const basePathExp = /^\/[\w-]+/i;
+    const [basePath] = pathname.match(basePathExp) || '/';
+    return basePath;
+  }
+
+  private _isIncludedList(pathname:string) {
+    if (!this._includedRoutes.length) {
+      return false;
+    }
+    return this._includedRoutes.some(({ path }) => path === pathname);
   }
 
   use(pathname: string, block: typeof Block, rootQuery = this._rootQuery) {
@@ -110,6 +136,11 @@ class Router {
 
   hideAuthPaths(...paths: string[]) {
     this._hiddenAuthPaths = paths;
+    return this;
+  }
+
+  setIncludedRoutes(...paths: {path: string, cb: () => void}[]) {
+    this._includedRoutes = paths;
     return this;
   }
 

@@ -11,22 +11,6 @@
     text-transform: uppercase;
   }
 
-  &__label {
-    margin-bottom: 15px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: $color-blue;
-    cursor: pointer;
-    background-image: url('../static/icons/add-avatar.svg');
-    background-repeat: no-repeat;
-    background-position: center center;
-
-    &:hover {
-      background-color: $color-blue-dark;
-    }
-  }
-
   &__submit {
     padding-top: 50px;
     position: relative;
