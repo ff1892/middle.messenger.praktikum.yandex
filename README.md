@@ -22,7 +22,7 @@ Web-приложение **Messenger** позволяет общаться в ч
 1. Typescript: реализация реактивного фреймворка
 2. Шаблонизарор Handlebars
 3. Стили: SCSS
-4. Работа с REST API и Service Workers API
+4. Работа с REST API и Web Sockets API
 5. SPA роутинг
 6. Webpack-сборка
 7. Pre-commit (Husky, lint-staged)
