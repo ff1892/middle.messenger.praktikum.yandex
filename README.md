@@ -6,7 +6,7 @@ Web-приложение **Messenger** позволяет общаться в ч
 
 ## 🚀 Деплой
 
-[Render](https://messenger-ff1892.onrender.com)
+[Netlify](https://ff1892-messenger.netlify.app/)
 
 ## 💡 Функциональность
 
