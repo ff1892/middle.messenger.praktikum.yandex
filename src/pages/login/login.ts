@@ -25,6 +25,7 @@ const loginInput = new TextInput({
     name: 'login',
     type: 'text',
     placeholder: 'Логин',
+    value: 'ff1892',
   },
   events: {
     focus: validator.handleFocus,
@@ -38,6 +39,7 @@ const passwordInput = new TextInput({
     name: 'password',
     type: 'password',
     placeholder: '●●●●●',
+    value: 'Ff1892ff1892',
   },
   events: {
     focus: validator.handleFocus,
